@@ -11,15 +11,18 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
-  <a href="https://github.com/abel-otegbola/EnQuest">
-    <img src="/public/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
-<h3 align="center">project_title</h3>
+
+
+<div align="center">
+  
+![Rectangle 13](https://github.com/abel-otegbola/EnQuest/assets/59369762/5abf82ff-29d0-42ad-ac79-800d362371f9)
+
+
+<h3 align="center">EnQuest</h3>
 
   <p align="center">
-    project_description
+    Renewable energy awareness website. Showcasing household and simple innovative projects that use renewable energy sources and can be made with little cost
     <br />
     <a href="https://github.com/abel-otegbola/EnQuest"><strong>Explore the docs »</strong></a>
     <br />
@@ -64,25 +67,15 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+![Home (3)~2](https://github.com/abel-otegbola/EnQuest/assets/59369762/02573ad3-29eb-43d9-b768-e085dc5833f9)
 
-[![EnQuest][product-screenshot]](https://example.com)
-[![EnQuest][product-figma-design]](https://www.figma.com/proto/dGbDU8SHKJ3nrom8AiFbQD/EnQuest?type=design&node-id=3-18&t=295i7xynUOqi9npQ-0&scaling=scale-down&page-id=2%3A4)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `abel-otegbola`EnQuestame`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+![EnQuest Design](https://www.figma.com/proto/dGbDU8SHKJ3nrom8AiFbQD/EnQuest?type=design&node-id=3-18&t=295i7xynUOqi9npQ-0&scaling=scale-down&page-id=2%3A4)
 
 
 
 ### Built With
 
 * [![React][React.js]][React-url]
-* [![Typescript][Typescript]][Typescript-url]
-* [![Tailwind][Tailwind]][Tailwind-url]
-* [![Firebase][Svelte.dev]][Svelte-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- GETTING STARTED -->
@@ -112,15 +105,6 @@ To get a local copy up and running follow these simple example steps.
    ```js
    npm run dev;
    ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -158,15 +142,6 @@ Don't forget to give the project a star! Thanks again!
 
 
 
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- CONTACT -->
 ## Contact
 
@@ -184,9 +159,6 @@ Project Link: [https://github.com/abel-otegbola/EnQuest](https://github.com/abel
 * []()
 * []()
 * []() -->
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
