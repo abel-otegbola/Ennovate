@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800;900&family=Nova+Square&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -18,5 +18,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+h1, h2, h3, h4, h5 {
   font-family: "Nova Square", cursive;
+}
+body {
+  font-family: 'Noto Sans', sans-serif
 }
