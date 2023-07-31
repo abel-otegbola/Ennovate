@@ -4,7 +4,7 @@ import logo from "../../assets/logo.png"
 
 function DashboardTopbar() {
     return (
-        <div className="flex items-center justify-between bg-black p-2 border border-transparent border-b-gray-100/[0.2]">
+        <div className="flex items-center justify-between bg-black p-2 px-4 border border-transparent border-b-gray-100/[0.09]">
 
             {/* Brand name and logo */}
             <a href="/" className="flex gap-2">
