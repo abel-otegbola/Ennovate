@@ -1,16 +1,16 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/home/home'
+import Dashboard from './pages/dashboard'
 
 function App() {
 
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
         </Routes>
-      </BrowserRouter>
-    </>
+        <Dashboard />
+    </BrowserRouter>
   )
 }
 
