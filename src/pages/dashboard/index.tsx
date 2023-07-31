@@ -8,13 +8,13 @@ function Dashboard() {
     return (
         <>
             <DashboardTopbar />
-            <div className="flex">
+            <div className="md:flex">
                 <LeftBar />
-                <div className="flex-1">   
+                <div className="xl:w-[82%] lg:w-[78%] md:w-[73%] ">
                     <Routes>
-                        <Route path="/dashboard/" element={<Navigate to={"/dashboard/home"} />} />
-                        <Route path="/dashboard/home" element={<DashboardHome />} />
-                        <Route path="/dashboard/projects" element={<Projects />} />
+                        <Route path="/" element={<Navigate to={"/dashboard/home"} />} />
+                        <Route path="/home" element={<DashboardHome />} />
+                        <Route path="/projects" element={<Projects />} />
                     </Routes>
                 </div>
             </div>
