@@ -10,7 +10,7 @@ function DashboardTopbar() {
 
             <a href="/" className="md:ml-0 ml-10 py-2 flex gap-2">
                 <img src={logo} className="w-[25px] h-[25px]" />
-                <span className="mt-1">Ennovate</span>
+                <span className="mt-[2px]">Ennovate</span>
             </a>
 
             <div className="md:w-[50%] md:block hidden">
@@ -20,7 +20,7 @@ function DashboardTopbar() {
             <div className="flex items-center gap-3">
                 <a href="/notifications" className="relative">
                     <FiBell className="text-2xl p-1 rounded" />
-                    <span className="absolute p-[0.5px] px-[4px] text-[10px] rounded-full -top-1 right-0 bg-gradient-to-r from-purple to-green text-white">2</span>
+                    <span className="absolute p-[3px] px-[3px] text-[10px] rounded-full top-0 right-1 bg-gradient-to-r from-purple to-green text-white"></span>
                 </a>
                 <a href="/notifications" className="relative">
                     <FiSettings className="text-2xl p-1 rounded" />
