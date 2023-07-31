@@ -1,12 +1,16 @@
 import Searchbar from "../searchbar/searchbar";
-import { FiBell, FiSettings } from "react-icons/fi"
+import { FiBell, FiSettings } from "react-icons/fi";
+import logo from "../../assets/logo.png"
 
 function DashboardTopbar() {
     return (
         <div className="flex items-center justify-between bg-black p-2 border border-transparent border-b-gray-100/[0.2]">
 
             {/* Brand name and logo */}
-            <a href="/">Ennovate</a>
+            <a href="/" className="flex gap-2">
+                <img src={logo} className="w-[25px] h-[25px]" />
+                <span className="mt-1">Ennovate</span>
+            </a>
 
             <Searchbar />
 
