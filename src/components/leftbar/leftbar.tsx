@@ -30,7 +30,7 @@ function LeftBar() {
     return (
         <>
         <button className="md:hidden fixed z-50 top-0 left-0 p-5 text-lg opacity-[0.6] " onClick={() => setOpen(!open)}><FaBars /></button>
-        <div className={`xl:w-[18%] lg:w-[22%] md:w-[27%] py-[20px] text-[12px] h-screen md:sticky fixed top-[60px] left-0 bg-black border border-transparent border-r-slate-100/[0.09] overflow-hidden z-5 transition-all duration-700 ${open ? " w-[240px]": "w-0"}`}>
+        <div className={`xl:w-[18%] lg:w-[22%] md:w-[27%] py-[20px] text-[12px] h-screen md:sticky fixed top-[60px] left-0 bg-black border border-transparent border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px]": "w-0"}`}>
             
             {
                 generalLinks.map(link => {return (

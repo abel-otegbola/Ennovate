@@ -18,7 +18,7 @@ function ProjectGrid({ id, img, title, info }: Project ) {
                 <h2 className="py-2">{title}</h2>
                 <p className="text-[12px]">{info}</p>
             </div>
-            <div className={`lg:static text-[12px] h-full absolute top-0 right-0 bg-gray-100/[0.02] overflow-hidden transition-all duration-700 ${openSide ? "lg:w-[50%] w-[75%]" : "lg:w-[50%] w-0"}`}>
+            <div className={`lg:static text-[12px] h-full absolute top-0 right-0 bg-[#1d1d23] overflow-hidden transition-all duration-700 ${openSide ? "lg:w-[50%] w-[75%]" : "lg:w-[50%] w-0"}`}>
                 <p className="p-4">other details</p>
             </div>
         </div>
