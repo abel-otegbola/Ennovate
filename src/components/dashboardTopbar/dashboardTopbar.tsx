@@ -4,23 +4,26 @@ import logo from "../../assets/logo.png"
 
 function DashboardTopbar() {
     return (
-        <div className="flex items-center justify-between bg-black p-2 px-4 border border-transparent border-b-gray-100/[0.09]">
+        <div className="flex items-center justify-between sticky top-0 left-0 w-full bg-black p-2 px-4 border border-transparent border-b-gray-100/[0.09] z-10">
 
             {/* Brand name and logo */}
-            <a href="/" className="flex gap-2">
+
+            <a href="/" className="md:ml-0 ml-10 py-2 flex gap-2">
                 <img src={logo} className="w-[25px] h-[25px]" />
                 <span className="mt-1">Ennovate</span>
             </a>
 
-            <Searchbar />
+            <div className="md:w-[50%] md:block hidden">
+                <Searchbar />
+            </div>
 
             <div className="flex items-center gap-3">
                 <a href="/notifications" className="relative">
-                    <FiBell className="text-3xl p-1 rounded" />
+                    <FiBell className="text-2xl p-1 rounded" />
                     <span className="absolute p-[0.5px] px-[4px] text-[10px] rounded-full -top-1 right-0 bg-gradient-to-r from-purple to-green text-white">2</span>
                 </a>
                 <a href="/notifications" className="relative">
-                    <FiSettings className="text-3xl p-1 rounded" />
+                    <FiSettings className="text-2xl p-1 rounded" />
                 </a>
             </div>
         </div>
