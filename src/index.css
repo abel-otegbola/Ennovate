@@ -25,3 +25,23 @@ h1, h2, h3, h4, h5 {
 body {
   font-family: 'Noto Sans', sans-serif
 }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 20px;
+    height: 4px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 0;
+    background: #f7f4ed00;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #07694a00;
+    border-radius: 0;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #cb10a28a;
+  }
+  
