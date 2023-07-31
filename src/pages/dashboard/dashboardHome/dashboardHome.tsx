@@ -37,7 +37,7 @@ function DashboardHome() {
                     categories.map(category => {
                         return (
                             <div key={category.id} className={`${active === category.title ? "text-green" : "hover:text-green"}`} onClick={() => setActive(category.title)}>
-                                <div className={`h-[150px] w-[200px] bg-slate-200/[0.08] cursor-pointer rounded ${active === category.title ? "border border-green bg-green/[0.2]" : "hover:border hover:border-green hover:bg-green/[0.2]"}`}></div>
+                                <div className={`h-[150px] w-[200px] bg-slate-200/[0.08] cursor-pointer rounded ${active === category.title ? "border border-green/[0.5]" : "hover:border hover:border-green/[0.5]"}`}></div>
                                 <h2 className="p-2">{category.title}</h2>
                             </div>
                         )
