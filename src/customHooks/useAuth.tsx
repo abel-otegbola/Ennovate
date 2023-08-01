@@ -4,7 +4,8 @@ import { createContext, useEffect } from 'react';
 export const AuthContext = createContext<null | any >(null);
 
 import { useLocalStorage } from "./useLocalStorage";
-const auth = getAuth()
+import { app } from "../firebase/firebase";
+const auth = getAuth(app)
 
 export const AuthProvider = ({ children }: any) => {
     const [user, setUser] = useLocalStorage("user", null);
