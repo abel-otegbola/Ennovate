@@ -7,6 +7,7 @@ import { useEffect } from 'react'
 import Footer from './components/footer/footer'
 import Login from './pages/login/login'
 import FinishSignup from './pages/finishSignup/finishSignup'
+import { AuthProvider } from './customHooks/useAuth'
 
 function App() {
   useEffect(() => {
@@ -20,17 +21,19 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className='bg-slate-100 dark:bg-[#101014] text-black dark:text-white text-[12px]'>
-        <Topbar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/settings' element={<Settings />} />
-          <Route path='/login' element={<Login />} />
-          <Route path={"/finishSignup"} element={<FinishSignup />} />
-          <Route path="/dashboard/*" element={<Dashboard />} />
-        </Routes>
-        <Footer />
-      </div>
+      <AuthProvider>
+        <div className='bg-slate-100 dark:bg-[#101014] text-black dark:text-white text-[12px]'>
+          <Topbar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/settings' element={<Settings />} />
+            <Route path='/login' element={<Login />} />
+            <Route path={"/finishSignup"} element={<FinishSignup />} />
+            <Route path="/dashboard/*" element={<Dashboard />} />
+          </Routes>
+          <Footer />
+        </div>
+      </AuthProvider>
     </BrowserRouter>
   )
 }
