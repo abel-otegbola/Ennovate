@@ -2,9 +2,17 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import DashboardHome from "./dashboardHome/dashboardHome";
 import Projects from "./projects/projects";
 import LeftBar from "../../components/leftbar/leftbar";
+import { useContext } from "react";
+import { AuthContext } from "../../customHooks/useAuth";
 
 function Dashboard() {
-    return (
+    const { user } = useContext(AuthContext); 
+
+    if(!user) {
+        return <Navigate to={"/login"} />
+    }
+    else {
+        return (
         <>
             <div className="md:flex">
                 <LeftBar />
@@ -17,7 +25,9 @@ function Dashboard() {
                 </div>
             </div>
         </>
-    )
+        )
+    }
+    
 }
 
 export default Dashboard

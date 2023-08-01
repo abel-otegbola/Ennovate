@@ -50,7 +50,7 @@ function DashboardHome() {
                 {
                     Projects.filter(item => item.title === active).map(project => {
                         return (
-                            <ProjectGrid id={project.id} img={project.img} title={project.title} info={project.info} />
+                            <ProjectGrid key={project.id} id={project.id} img={project.img} title={project.title} info={project.info} />
                         )
                     })
                 }

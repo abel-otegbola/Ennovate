@@ -32,7 +32,7 @@ function FinishSignup() {
             <p className="my-2">Please continue to the dashboard</p>
                     
             <label htmlFor="email" className="block py-2 pt-4">Email:</label>
-            <input className="p-[12px] bg-transparent w-full outline-none border border-gray-400/[0.3] focus:border-green/[0.5] rounded" id="email" name="email" type="email" placeholder="Enter your email" onChange={(e) => setEmail(e.target.value)} />
+            <input className="p-[12px] bg-transparent max-w-[300px] outline-none border border-gray-400/[0.3] focus:border-green/[0.5] rounded" id="email" name="email" type="email" placeholder="Enter your email" onChange={(e) => setEmail(e.target.value)} />
             <p className="mt-2 text-[10px] text-red-500">{error}</p>
 
             <Button text={"Dashboard"} link={"/dashboard"} />
