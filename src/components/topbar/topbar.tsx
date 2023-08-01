@@ -1,6 +1,7 @@
 import Searchbar from "../searchbar/searchbar";
 import { FiBell, FiSettings } from "react-icons/fi";
 import logo from "../../assets/logo.png"
+import { FaUser } from "react-icons/fa";
 
 function Topbar() {
     return (
@@ -18,13 +19,16 @@ function Topbar() {
             </div>
 
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
                 <a href="/notifications" className="relative">
                     <FiBell className="text-2xl p-1 rounded" />
                     <span className="absolute p-[3px] px-[3px] text-[10px] rounded-full top-0 right-1 bg-gradient-to-r from-purple to-green text-white"></span>
                 </a>
                 <a href="/settings" className="relative">
                     <FiSettings className="text-2xl p-1 rounded" />
+                </a>
+                <a href="/dashboard" className="block rounded-full bg-slate-100/[0.5] outline outline-green/[0.3]">
+                    <FaUser className="p-2 text-3xl" />
                 </a>
             </div>
         </div>
