@@ -5,6 +5,7 @@ import Settings from './pages/settings/settings'
 import Topbar from './components/topbar/topbar'
 import { useEffect } from 'react'
 import Footer from './components/footer/footer'
+import Login from './pages/login/login'
 
 function App() {
   useEffect(() => {
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/settings' element={<Settings />} />
+          <Route path='/login' element={<Login />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
         </Routes>
         <Footer />
