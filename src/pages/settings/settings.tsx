@@ -1,6 +1,8 @@
 import { FiUser, FiSettings, FiShield, FiGlobe, FiTablet } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { FaBars, FaCheckCircle, FaTimes } from "react-icons/fa";
+import dark from "../../assets/dark.png"
+import light from "../../assets/light.png"
 
 interface Link {
     id: number; label: string; icon: any, link: string
@@ -20,9 +22,9 @@ function Settings() {
     const [theme, setTheme] = useState(localStorage.theme)
 
     const themes: Themes = [
-        { id: 0, img: "./", title: "System preference" },
-        { id: 1, img: "./", title: "light" },
-        { id: 2, img: "./", title: "dark" },
+        { id: 0, img: dark, title: "System preference" },
+        { id: 1, img: light, title: "light" },
+        { id: 2, img: dark, title: "dark" },
     ]
 
     const generalLinks: Links = [
@@ -95,7 +97,9 @@ function Settings() {
                                 return (
                                     <div key={item.id} className={`relative ${item.title === theme ? "text-green" : "hover:text-green"}`} onClick={() => setTheme(item.title)}>
                                         { theme === item.title ? <FaCheckCircle className="absolute -top-1 -right-1 text-lg text-green" /> : "" }
-                                        <div className={`h-[150px] w-full bg-gray-200 dark:bg-slate-200/[0.08] cursor-pointer rounded ${theme === item.title ? "border border-green/[0.5]" : "hover:border hover:border-green/[0.5]"}`}></div>
+                                        <div className={`w-full bg-gray-200 dark:bg-slate-200/[0.08] cursor-pointer rounded  ${theme === item.title ? "border border-green/[0.5]" : "hover:border hover:border-green/[0.5]"}`}>
+                                            <img src={item.img} className="w-full rounded" />
+                                        </div>
                                         <h2 className="p-2 capitalize">{item.title}</h2>
                                     </div>
                                 )
@@ -108,7 +112,24 @@ function Settings() {
                     <h3 id="account" className="py-2 opacity-[0.6] text-lg">Account</h3>
                     <h3 className="pb-2 pt-4 text-sm">Profile</h3>
                     <p className="opacity-[0.6]">Update your photo and personal details</p>
-                    
+                    <div className="py-6">
+                        <div className="md:flex items-center">
+                            <p className="md:w-[30%] md:mb-0 mb-2">Username: </p>
+                            <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full outline-none focus:border-2 focus:border-green" type="text" placeholder="Change your username" defaultValue={"Abelo"} />
+                        </div>
+                    </div>
+                    <div className="py-6">
+                        <div className="md:flex items-center">
+                            <p className="md:w-[30%] md:mb-0 mb-2">Email: </p>
+                            <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full outline-none focus:border-2 focus:border-green" type="email" placeholder="Change your email" defaultValue={"Abelo@gmail.com"} />
+                        </div>
+                    </div>
+                    <div className="py-6">
+                        <div className="md:flex items-center">
+                            <p className="md:w-[23%] md:mb-0 mb-2">Your photo: </p>
+                            <div className="h-[60px] w-[60px] rounded bg-slate-100 dark:bg-slate-200/[0.04]"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
