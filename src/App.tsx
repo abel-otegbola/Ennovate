@@ -3,8 +3,17 @@ import Home from './pages/home/home'
 import Dashboard from './pages/dashboard'
 import Settings from './pages/settings/settings'
 import Topbar from './components/topbar/topbar'
+import { useEffect } from 'react'
 
 function App() {
+  useEffect(() => {
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+    } else {
+    document.documentElement.classList.remove('dark')
+    }
+  })
 
   return (
     <BrowserRouter>

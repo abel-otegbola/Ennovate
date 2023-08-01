@@ -17,7 +17,7 @@ interface Themes extends Array<Theme>{}
 function Settings() {
     const [open, setOpen] = useState(false)
     const [active, setActive] = useState("General")
-    const [theme, setTheme] = useState("System preference")
+    const [theme, setTheme] = useState(localStorage.theme)
 
     const themes: Themes = [
         { id: 0, img: "./", title: "System preference" },
@@ -51,9 +51,12 @@ function Settings() {
     useEffect(() => {
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
+            document.documentElement.classList.add('dark')
         } else {
-        document.documentElement.classList.remove('dark')
+            document.documentElement.classList.remove('dark')
+        }
+        if(!localStorage.theme) {
+            setTheme("System preference")
         }
     }, [theme])
 
