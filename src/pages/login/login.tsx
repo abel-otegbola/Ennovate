@@ -10,7 +10,7 @@ function Login() {
 
     const signup = () => {
         const actionCodeSettings = {
-            url: 'https://enquest.netlify.app/login',
+            url: 'https://enquest.netlify.app/finishSignup',
             handleCodeInApp: true
         };
 
@@ -29,7 +29,7 @@ function Login() {
     
 
     return (
-            <div className="w-full flex flex-wrap jutify-between bg-white dark:bg-none items-center px-[3%] py-[5%]">
+            <div className="w-full flex flex-wrap jutify-between bg-white dark:bg-black items-center px-[3%] py-[5%]">
                 <div className="sm:max-w-[400px] w-full m-auto md:py-0 py-[10%]">
                     <p className="py-[3%] md:text-[40px] font-bold md:leading-[45px] text-[30px] bg-clip-text text-transparent bg-gradient-to-r from-purple to-green">Welcome!</p>
                     <p className="pb-6">Login to share your ideas, get insights and join in the projects of making the world a better place.</p>
