@@ -4,6 +4,7 @@ import Dashboard from './pages/dashboard'
 import Settings from './pages/settings/settings'
 import Topbar from './components/topbar/topbar'
 import { useEffect } from 'react'
+import Footer from './components/footer/footer'
 
 function App() {
   useEffect(() => {
@@ -17,13 +18,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className='bg-slate-100 dark:bg-[#101014] text-black dark:text-white'>
+      <div className='bg-slate-100 dark:bg-[#101014] text-black dark:text-white text-[12px]'>
         <Topbar />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/settings' element={<Settings />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   )
