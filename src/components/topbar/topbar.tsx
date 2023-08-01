@@ -2,9 +2,9 @@ import Searchbar from "../searchbar/searchbar";
 import { FiBell, FiSettings } from "react-icons/fi";
 import logo from "../../assets/logo.png"
 
-function DashboardTopbar() {
+function Topbar() {
     return (
-        <div className="flex items-center justify-between sticky top-0 left-0 w-full bg-white dark:bg-black p-2 px-4 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.09] z-10">
+        <div className="flex items-center justify-between sticky top-0 left-0 w-full bg-white dark:bg-black p-2 px-4 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.09] z-20">
 
             {/* Brand name and logo */}
 
@@ -16,6 +16,7 @@ function DashboardTopbar() {
             <div className="md:w-[50%] md:block hidden">
                 <Searchbar />
             </div>
+
 
             <div className="flex items-center gap-3">
                 <a href="/notifications" className="relative">
@@ -30,4 +31,4 @@ function DashboardTopbar() {
     )
 }
 
-export default DashboardTopbar;
+export default Topbar;

@@ -22,20 +22,20 @@ function LeftBar() {
     ]
     const userLinks: Links = [
         { id: 0, label: "Notifications", icon: <FiBell />, link: "/dashboard/notifications", msg: "" },
-        { id: 1, label: "Settings", icon: <FiSettings />, link: "/dashboard/settings", msg: "2" },
+        { id: 1, label: "Settings", icon: <FiSettings />, link: "/settings", msg: "2" },
         { id: 2, label: "Help", icon: <FiHeadphones />, link: "/dashboard/help", msg: "" },
         { id: 2, label: "Logout", icon: <FiLogOut />, link: "#", msg: "" }
     ]
 
     return (
         <>
-        <button className="md:hidden fixed z-50 top-0 left-0 p-5 text-lg opacity-[0.6] " onClick={() => setOpen(!open)}><FaBars /></button>
+        <button className="md:hidden fixed z-30 top-0 left-0 p-5 text-lg opacity-[0.6] " onClick={() => setOpen(!open)}><FaBars /></button>
         <div className={`xl:w-[18%] lg:w-[22%] md:w-[27%] py-[20px] text-[12px] h-screen md:sticky fixed top-[60px] left-0 bg-white dark:bg-black border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px]": "w-0"}`}>
             
             {
                 generalLinks.map(link => {return (
-                    <a key={link.id} href={link.link} className={`flex items-center justify-between w-full p-2 my-[1px] px-4 hover:bg-slate-100 dark:hover:bg-gray-200/[0.07] ${pathname === link.link ? "bg-slate-100 dark:bg-gray-200/[0.07] border border-transparent border-r-green text-green" : ""}`}>
-                        <span className="w-[30px]">{link.icon}</span>
+                    <a key={link.id} href={link.link} className={`flex items-center justify-between w-full p-2 my-[1px] px-4 hover:bg-slate-100 dark:hover:bg-gray-200/[0.07] ${pathname === link.link ? "bg-gray-100 dark:bg-gray-200/[0.07] border border-transparent border-r-green text-green" : ""}`}>
+                        <span className="w-[30px] text-[14px]">{link.icon}</span>
                         <span className="flex-1 p-2 break-normal">{link.label}</span>
                         <span className="p-[0px] px-2 rounded text-[10px] bg-purple/[0.1]">{link.msg}</span>
                     </a>
@@ -45,8 +45,8 @@ function LeftBar() {
             <p className="border border-transparent border-t-gray-100/[0.07] my-5 w-full"></p>
             {
                 userLinks.map(link => {return (
-                    <a key={link.id} href={link.link} className={`flex items-center justify-between w-full p-2 my-[1px] px-4 hover:bg-slate-100 dark:hover:bg-gray-200/[0.07] ${pathname === link.link ? "bg-slate-100 dark:bg-gray-200/[0.07] border border-transparent border-r-green text-green" : ""}`}>
-                        <span className="w-[30px]">{link.icon}</span>
+                    <a key={link.id} href={link.link} className={`flex items-center justify-between w-full p-2 my-[1px] px-4 hover:bg-slate-100 dark:hover:bg-gray-200/[0.07] ${pathname === link.link ? "bg-gray-100 dark:bg-gray-200/[0.07] border border-transparent border-r-green text-green" : ""}`}>
+                        <span className="w-[30px] text-[14px]">{link.icon}</span>
                         <span className="flex-1 p-2 break-normal">{link.label}</span>
                         <span className="p-[0px] px-2 rounded text-[10px] bg-purple/[0.1]">{link.msg}</span>
                     </a>

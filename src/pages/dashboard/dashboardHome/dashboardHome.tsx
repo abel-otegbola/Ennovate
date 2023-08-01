@@ -14,9 +14,9 @@ function DashboardHome() {
         { id: 1, img: "./", title: "Solar Thermal Energy", info: "Wind turbine projects which involves using wind as source of energy" },
         { id: 2, img: "./", title: "Biomass", info: "Wind turbine projects which involves using wind as source of energy" },
         { id: 3, img: "./", title: "Green Hydrogen", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 3, img: "./", title: "Biofuel", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 3, img: "./", title: "Nuclear Energy", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 4, img: "./", title: "Hydro Electricity", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 4, img: "./", title: "Biofuel", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 5, img: "./", title: "Nuclear Energy", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 6, img: "./", title: "Hydro Electricity", info: "Wind turbine projects which involves using wind as source of energy" },
     ]
     
     const Projects: Categories = [
@@ -24,9 +24,9 @@ function DashboardHome() {
         { id: 1, img: "./", title: "Solar Thermal Energy", info: "Wind turbine projects which involves using wind as source of energy" },
         { id: 2, img: "./", title: "Biomass", info: "Wind turbine projects which involves using wind as source of energy" },
         { id: 3, img: "./", title: "Green Hydrogen", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 3, img: "./", title: "Biofuel", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 3, img: "./", title: "Nuclear Energy", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 4, img: "./", title: "Hydro Electricity", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 4, img: "./", title: "Biofuel", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 5, img: "./", title: "Nuclear Energy", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 6, img: "./", title: "Hydro Electricity", info: "Wind turbine projects which involves using wind as source of energy" },
     ]
 
     return (
