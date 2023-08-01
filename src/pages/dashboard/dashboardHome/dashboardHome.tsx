@@ -32,12 +32,12 @@ function DashboardHome() {
     return (
         <div className="p-[3%] w-full">
             <h1 className="px-2">Renewable Energy Sources</h1>
-            <div className="w-full flex gap-4 border border-transparent border-y-gray-100/[0.1] bg-slate-100/[0.01] p-2 my-4 text-[12px] overflow-x-auto scrollbar">
+            <div className="w-full flex gap-4 border border-transparent border-y-gray-200 dark:border-y-gray-100/[0.1] bg-white dark:bg-slate-100/[0.01] p-2 my-4 text-[12px] overflow-x-auto scrollbar">
                 {
                     categories.map(category => {
                         return (
                             <div key={category.id} className={`${active === category.title ? "text-green" : "hover:text-green"}`} onClick={() => setActive(category.title)}>
-                                <div className={`h-[150px] w-[200px] bg-slate-200/[0.08] cursor-pointer rounded ${active === category.title ? "border border-green/[0.5]" : "hover:border hover:border-green/[0.5]"}`}></div>
+                                <div className={`h-[150px] w-[200px] bg-slate-100 dark:bg-slate-200/[0.08] cursor-pointer rounded ${active === category.title ? "border border-green/[0.5]" : "hover:border hover:border-green/[0.5]"}`}></div>
                                 <h2 className="p-2">{category.title}</h2>
                             </div>
                         )

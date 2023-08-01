@@ -6,7 +6,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className='bg-[#101014]'>
+      <div className='bg-slate-100 dark:bg-[#101014]'>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
