@@ -22,8 +22,8 @@ function ProjectGrid({ id, img, title, info }: Project ) {
                         </div>
                     </div>                    
                 </div>
-                <div className={`flex justify-center items-center h-[300px] w-full bg-slate-100 dark:bg-slate-200/[0.04] cursor-pointer rounded hover:border hover:border-green hover:bg-green/[0.2]`}>
-                    <img src={img} className="hidden" />
+                <div className={`flex justify-center items-center w-full bg-slate-100 dark:bg-slate-200/[0.04] cursor-pointer rounded hover:border hover:border-green hover:bg-green/[0.2]`}>
+                    <img src={img} className="w-full max-h-[300px]" />
                 </div>
                 <h2 className="py-2">{title}</h2>
                 <p className="text-[12px]">{info}</p>

@@ -20,13 +20,13 @@ function DashboardHome() {
     ]
     
     const Projects: Categories = [
-        { id: 0, img: "./", title: "Wind Power", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 1, img: "./", title: "Solar Thermal Energy", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 2, img: "./", title: "Biomass", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 3, img: "./", title: "Green Hydrogen", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 4, img: "./", title: "Biofuel", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 5, img: "./", title: "Nuclear Energy", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 6, img: "./", title: "Hydro Electricity", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 0, img: "https://www.bing.com/images/blob?bcid=qHlJMURYFOcFgg", title: "Wind Power", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 1, img: "https://www.bing.com/images/blob?bcid=qHlJMURYFOcFgg", title: "Solar Thermal Energy", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 2, img: "https://www.bing.com/images/blob?bcid=qHlJMURYFOcFgg", title: "Biomass", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 3, img: "https://www.bing.com/images/blob?bcid=qHlJMURYFOcFgg", title: "Green Hydrogen", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 4, img: "https://www.bing.com/images/blob?bcid=qHlJMURYFOcFgg", title: "Biofuel", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 5, img: "https://www.bing.com/images/blob?bcid=qHlJMURYFOcFgg", title: "Nuclear Energy", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 6, img: "https://www.bing.com/images/blob?bcid=qHlJMURYFOcFgg", title: "Hydro Electricity", info: "Wind turbine projects which involves using wind as source of energy" },
     ]
 
     return (
