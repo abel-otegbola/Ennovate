@@ -1,8 +1,9 @@
 import { FiUser, FiSettings, FiShield, FiGlobe, FiTablet } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { FaBars, FaCheckCircle, FaTimes } from "react-icons/fa";
-import dark from "../../assets/dark.png"
-import light from "../../assets/light.png"
+import dark from "../../assets/dark.png";
+import light from "../../assets/light.png";
+import system from "../../assets/system.png";
 
 interface Link {
     id: number; label: string; icon: any, link: string
@@ -22,7 +23,7 @@ function Settings() {
     const [theme, setTheme] = useState(localStorage.theme)
 
     const themes: Themes = [
-        { id: 0, img: dark, title: "System preference" },
+        { id: 0, img: system, title: "System" },
         { id: 1, img: light, title: "light" },
         { id: 2, img: dark, title: "dark" },
     ]
@@ -58,7 +59,7 @@ function Settings() {
             document.documentElement.classList.remove('dark')
         }
         if(!localStorage.theme) {
-            setTheme("System preference")
+            setTheme("System")
         }
     }, [theme])
 
