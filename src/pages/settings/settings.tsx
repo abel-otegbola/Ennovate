@@ -1,9 +1,10 @@
 import { FiUser, FiSettings, FiShield, FiGlobe, FiTablet } from "react-icons/fi";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaBars, FaCheckCircle, FaTimes } from "react-icons/fa";
 import dark from "../../assets/dark.png";
 import light from "../../assets/light.png";
 import system from "../../assets/system.png";
+import { AuthContext } from "../../customHooks/useAuth";
 
 interface Link {
     id: number; label: string; icon: any, link: string
@@ -21,6 +22,7 @@ function Settings() {
     const [open, setOpen] = useState(false)
     const [active, setActive] = useState("General")
     const [theme, setTheme] = useState(localStorage.theme)
+    const { user } = useContext(AuthContext)
 
     const themes: Themes = [
         { id: 0, img: system, title: "System" },
@@ -30,7 +32,7 @@ function Settings() {
 
     const generalLinks: Links = [
         { id: 0, label: "General", icon: <FiSettings />, link: "#general" },
-        { id: 1, label: "Account", icon: <FiUser />, link: "#account" },
+        { id: 1, label: "Account", icon: <FiUser />, link: user ? "#account" : "/login" },
         { id: 2, label: "Authorized Apps", icon: <FiTablet />, link: "#apps" },
         { id: 3, label: "App language", icon: <FiGlobe />, link: "#language" },
         { id: 4, label: "Privacy & Safety", icon: <FiShield />, link: "#privacy" },
@@ -109,29 +111,34 @@ function Settings() {
                     </div>
                 </div>
 
-                <div className="py-8 text-[12px]">
-                    <h3 id="account" className="py-2 opacity-[0.6] text-lg">Account</h3>
-                    <h3 className="pb-2 pt-4 text-sm">Profile</h3>
-                    <p className="opacity-[0.6]">Update your photo and personal details</p>
-                    <div className="py-6">
-                        <div className="md:flex items-center">
-                            <p className="md:w-[30%] md:mb-0 mb-2">Username: </p>
-                            <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full outline-none focus:border-2 focus:border-green" type="text" placeholder="Change your username" defaultValue={"Abelo"} />
+                {
+                    user ?
+                    <div className="py-8 text-[12px]">
+                        <h3 id="account" className="py-2 opacity-[0.6] text-lg">Account</h3>
+                        <h3 className="pb-2 pt-4 text-sm">Profile</h3>
+                        <p className="opacity-[0.6]">Update your photo and personal details</p>
+                        <div className="py-6">
+                            <div className="md:flex items-center">
+                                <p className="md:w-[30%] md:mb-0 mb-2">Username: </p>
+                                <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full outline-none focus:border-2 focus:border-green" type="text" placeholder="Change your username" defaultValue={user?.disaplayName} />
+                            </div>
+                        </div>
+                        <div className="py-6">
+                            <div className="md:flex items-center">
+                                <p className="md:w-[30%] md:mb-0 mb-2">Email: </p>
+                                <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full outline-none focus:border-2 focus:border-green" type="email" placeholder="Change your email" defaultValue={user?.email} />
+                            </div>
+                        </div>
+                        <div className="py-6">
+                            <div className="md:flex items-center">
+                                <p className="md:w-[23%] md:mb-0 mb-2">Your photo: </p>
+                                <div className="h-[60px] w-[60px] rounded bg-slate-100 dark:bg-slate-200/[0.04]"></div>
+                            </div>
                         </div>
                     </div>
-                    <div className="py-6">
-                        <div className="md:flex items-center">
-                            <p className="md:w-[30%] md:mb-0 mb-2">Email: </p>
-                            <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full outline-none focus:border-2 focus:border-green" type="email" placeholder="Change your email" defaultValue={"Abelo@gmail.com"} />
-                        </div>
-                    </div>
-                    <div className="py-6">
-                        <div className="md:flex items-center">
-                            <p className="md:w-[23%] md:mb-0 mb-2">Your photo: </p>
-                            <div className="h-[60px] w-[60px] rounded bg-slate-100 dark:bg-slate-200/[0.04]"></div>
-                        </div>
-                    </div>
-                </div>
+                    : ""
+                }
+                
             </div>
 
         </div>
