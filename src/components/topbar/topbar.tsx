@@ -2,8 +2,16 @@ import Searchbar from "../searchbar/searchbar";
 import { FiBell, FiSettings } from "react-icons/fi";
 import logo from "../../assets/logo.png"
 import { FaUser } from "react-icons/fa";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../customHooks/useAuth";
 
 function Topbar() {
+    const {user} = useContext(AuthContext)
+
+    useEffect(() => {
+        console.log(user)
+    }, [user])
+
     return (
         <div className="flex items-center justify-between sticky top-0 left-0 w-full bg-white dark:bg-black p-2 px-4 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.09] z-20">
 
