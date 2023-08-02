@@ -16,22 +16,22 @@
 
 <div align="center">
   
-![Rectangle 13](https://github.com/abel-otegbola/EnQuest/assets/59369762/5abf82ff-29d0-42ad-ac79-800d362371f9)
+![Rectangle 13](https://github.com/abel-otegbola/Ennovate/assets/59369762/5abf82ff-29d0-42ad-ac79-800d362371f9)
 
 
-<h3 align="center">EnQuest</h3>
+<h3 align="center">Ennovate</h3>
 
   <p align="center">
     Renewable energy awareness website. Showcasing household and simple innovative projects that use renewable energy sources and can be made with little cost
     <br />
-    <a href="https://github.com/abel-otegbola/EnQuest"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/abel-otegbola/Ennovate"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://enquest.netlify.app">View Demo</a>
+    <a href="https://ennovate.netlify.app">View Demo</a>
     ·
-    <a href="https://github.com/abel-otegbola/EnQuest/issues">Report Bug</a>
+    <a href="https://github.com/abel-otegbola/Ennovate/issues">Report Bug</a>
     ·
-    <a href="https://github.com/abel-otegbola/EnQuest/issues">Request Feature</a>
+    <a href="https://github.com/abel-otegbola/Ennovate/issues">Request Feature</a>
   </p>
 </div>
 
@@ -67,9 +67,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-![Home (3)~2](https://github.com/abel-otegbola/EnQuest/assets/59369762/02573ad3-29eb-43d9-b768-e085dc5833f9)
-
-![EnQuest Design](https://www.figma.com/proto/dGbDU8SHKJ3nrom8AiFbQD/EnQuest?type=design&node-id=3-18&t=295i7xynUOqi9npQ-0&scaling=scale-down&page-id=2%3A4)
+![Home (3)~2](https://github.com/abel-otegbola/Ennovate/assets/59369762/02573ad3-29eb-43d9-b768-e085dc5833f9)
 
 
 
@@ -95,7 +93,7 @@ To get a local copy up and running follow these simple example steps.
 
 2. Clone the repo
    ```sh
-   git clone https://github.com/abel-otegbola/EnQuest.git
+   git clone https://github.com/abel-otegbola/Ennovate.git
    ```
 3. Install NPM packages
    ```sh
@@ -147,7 +145,7 @@ Don't forget to give the project a star! Thanks again!
 
 Your Name - [@twitter_handle](https://twitter.com/Abel_Otegbola) - abel15655@gmail.com
 
-Project Link: [https://github.com/abel-otegbola/EnQuest](https://github.com/abel-otegbola/EnQuest)
+Project Link: [https://github.com/abel-otegbola/EnQuest](https://github.com/abel-otegbola/Ennovate)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -163,18 +161,18 @@ Project Link: [https://github.com/abel-otegbola/EnQuest](https://github.com/abel
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/abel-otegbola/EnQuest.svg?style=for-the-badge
-[contributors-url]: https://github.com/abel-otegbola/EnQuest/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/abel-otegbola/EnQuest.svg?style=for-the-badge
-[forks-url]: https://github.com/abel-otegbola/EnQuest/network/members
-[stars-shield]: https://img.shields.io/github/stars/abel-otegbola/EnQuest.svg?style=for-the-badge
-[stars-url]: https://github.com/abel-otegbola/EnQuest/stargazers
-[issues-shield]: https://img.shields.io/github/issues/abel-otegbola/EnQuest.svg?style=for-the-badge
-[issues-url]: https://github.com/abel-otegbola/EnQuest/issues
-[license-shield]: https://img.shields.io/github/license/abel-otegbola/EnQuest.svg?style=for-the-badge
-[license-url]: https://github.com/abel-otegbola/EnQuest/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/abel-otegbola/Ennovate.svg?style=for-the-badge
+[contributors-url]: https://github.com/abel-otegbola/Ennovate/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/abel-otegbola/Ennovate.svg?style=for-the-badge
+[forks-url]: https://github.com/abel-otegbola/Ennovate/network/members
+[stars-shield]: https://img.shields.io/github/stars/abel-otegbola/Ennovate.svg?style=for-the-badge
+[stars-url]: https://github.com/abel-otegbola/Ennovate/stargazers
+[issues-shield]: https://img.shields.io/github/issues/abel-otegbola/Ennovate.svg?style=for-the-badge
+[issues-url]: https://github.com/abel-otegbola/Ennovate/issues
+[license-shield]: https://img.shields.io/github/license/abel-otegbola/Ennovate.svg?style=for-the-badge
+[license-url]: https://github.com/abel-otegbola/Ennovate/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://linkedin.com/in/abel-otegbola
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
