@@ -4,6 +4,7 @@ import Projects from "./projects/projects";
 import LeftBar from "../../components/leftbar/leftbar";
 import { useContext } from "react";
 import { AuthContext } from "../../customHooks/useAuth";
+import Create from "./create/create";
 
 function Dashboard() {
     const { user } = useContext(AuthContext); 
@@ -21,6 +22,7 @@ function Dashboard() {
                         <Route path="/" element={<Navigate to={"/dashboard/home"} />} />
                         <Route path="/home" element={<DashboardHome />} />
                         <Route path="/projects" element={<Projects />} />
+                        <Route path="/create" element={<Create />} />
                     </Routes>
                 </div>
             </div>
