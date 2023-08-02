@@ -18,16 +18,23 @@ function Login() {
         };
 
         const auth = getAuth(app);
-        sendSignInLinkToEmail(auth, email, actionCodeSettings)
-        .then(() => {
-            localStorage.setItem('emailForSignIn', email);
-            setSuccess("Account activation link has been sent to the email address you provided.")
-        })
-        .catch((error) => {
-            const code = error.code;
-            const msg = error.message;
-            setError({ code, msg })
-        });
+
+        if(email === "") {
+            setError({ code: "410", msg: "Please input your email address" })
+        }
+        else {
+            sendSignInLinkToEmail(auth, email, actionCodeSettings)
+            .then(() => {
+                localStorage.setItem('emailForSignIn', email);
+                setSuccess("Account activation link has been sent to the email address you provided.")
+            })
+            .catch((error) => {
+                const code = error.code;
+                const msg = error.message;
+                setError({ code, msg })
+            });
+        }
+        
     }
 
     const socialSignIn = (type: string) => {
@@ -53,7 +60,7 @@ function Login() {
     }, [])
 
     return (
-            <div className="w-full flex flex-wrap jutify-between bg-white dark:bg-black items-center px-[3%] py-[5%]">
+            <div className="w-full flex flex-wrap jutify-between bg-white dark:bg-black items-center md:px-[3%] p-6 py-[5%]">
                 <div className="sm:max-w-[400px] w-full m-auto md:py-0 py-[10%]">
                     <p className="py-[3%] md:text-[40px] font-bold md:leading-[45px] text-[30px] bg-clip-text text-transparent bg-gradient-to-r from-purple to-green">Welcome!</p>
                     <p className="pb-6">Login to share your ideas, get insights and join in the projects of making the world a better place.</p>
@@ -93,7 +100,7 @@ function Login() {
                         </div> : "" 
                     }
 
-                    <label htmlFor="email" className="block py-2 pt-4">Signin with Email:</label>
+                    <label htmlFor="email" className="block p-2 pt-4">Signin with Email:</label>
                     <input className="p-[12px] bg-transparent w-full outline-none border border-gray-400/[0.3] focus:border-green/[0.5] rounded" id="email" name="email" type="email" placeholder="Enter your email" onChange={(e) => setEmail(e.target.value)} />
                     
                     <button className="w-full p-[15px] rounded bg-purple hover:bg-fuchsia-800 text-white mt-8" onClick={() => signup()}>Login</button>
