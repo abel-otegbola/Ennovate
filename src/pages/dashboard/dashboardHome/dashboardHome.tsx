@@ -20,9 +20,11 @@ function DashboardHome() {
 
     return (
         <div className="p-[3%] w-full">
-            <div className="flex justify-between">
+            <div className="flex flex-wrap gap-6 justify-between">
                 <h1 className="px-2 text-lg">Explore Newest Renewable Energy Projects</h1>
-                <Button text={"Create New Project"} link={"/dashboard/create"} />
+                <div className="ml-2">
+                    <Button text={"Create New Project"} link={"/dashboard/create"} />
+                </div>
             </div>
             
             <div className="w-full flex gap-4 border border-transparent border-y-gray-200 dark:border-y-gray-100/[0.1] bg-white dark:bg-slate-100/[0.01] p-2 my-4 text-[12px] overflow-x-auto scrollbar">
@@ -30,7 +32,7 @@ function DashboardHome() {
                     Projects.map(project => {
                         return (
                             <div key={project.id} className={`${active === project.title ? "text-green" : "hover:text-green"}`} onClick={() => setActive(project.title)}>
-                                <div className={`h-[150px] md:w-[300px] w-full bg-slate-200 dark:bg-slate-200/[0.08] cursor-pointer rounded ${active === project.title ? "border border-green/[0.5]" : "hover:border hover:border-green/[0.5]"}`}></div>
+                                <div className={`h-[150px] w-[300px] bg-slate-200 dark:bg-slate-200/[0.08] cursor-pointer rounded ${active === project.title ? "border border-green/[0.5]" : "hover:border hover:border-green/[0.5]"}`}></div>
                                 <h2 className="p-2">{project.title}</h2>
                             </div>
                         )
