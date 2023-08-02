@@ -22,7 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <div className='bg-slate-100 dark:bg-[#101014] text-black dark:text-white text-[12px]'>
+        <div className='bg-slate-100 dark:bg-[#101014] text-black dark:text-white/[0.8] text-[12px]'>
           <Topbar />
           <Routes>
             <Route path='/' element={<Home />} />
