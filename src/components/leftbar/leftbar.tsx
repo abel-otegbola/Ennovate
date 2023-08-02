@@ -18,7 +18,7 @@ function LeftBar() {
     const generalLinks: Links = [
         { id: 0, label: "Dashboard", icon: <FiTablet />, link: "/dashboard/home", msg: "" },
         { id: 1, label: "Projects", icon: <FiBox />, link: "/dashboard/projects", msg: "20" },
-        { id: 3, label: "Create", icon: <FiPenTool />, link: "/dashboard/myprojects", msg: "" },
+        { id: 3, label: "Create", icon: <FiPenTool />, link: "/dashboard/create", msg: "" },
         { id: 4, label: "Collaborate", icon: <FiUsers />, link: "/dashboard/collaborate", msg: "" },
     ]
     const userLinks: Links = [
