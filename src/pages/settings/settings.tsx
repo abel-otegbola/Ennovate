@@ -20,7 +20,7 @@ interface Themes extends Array<Theme>{}
 
 function Settings() {
     const [open, setOpen] = useState(false)
-    const [active, setActive] = useState("General")
+    const [active, setActive] = useState("Appearance")
     const [theme, setTheme] = useState(localStorage.theme)
     const { user } = useContext(AuthContext)
 
@@ -31,10 +31,10 @@ function Settings() {
     ]
 
     const generalLinks: Links = [
-        { id: 0, label: "General", icon: <FiSettings />, link: "#general" },
-        { id: 1, label: "Account", icon: <FiUser />, link: user ? "#account" : "/login" },
-        { id: 2, label: "Authorized Apps", icon: <FiTablet />, link: "#apps" },
-        { id: 3, label: "App language", icon: <FiGlobe />, link: "#language" },
+        { id: 0, label: "Appearance", icon: <FiSettings />, link: "#appearance" },
+        { id: 1, label: "Preferences", icon: <FiUser />, link: "#preferences" },
+        { id: 2, label: "Profile", icon: <FiTablet />, link: user ? "#account" : "/login" },
+        { id: 3, label: "Notifications", icon: <FiGlobe />, link: "#notifications" },
         { id: 4, label: "Privacy & Safety", icon: <FiShield />, link: "#privacy" },
     ]
 
@@ -82,7 +82,7 @@ function Settings() {
             {
                 generalLinks.map(link => {return (
                     <a key={link.id} href={link.link} onClick={() => setActive(link.label)} className={`flex items-center justify-between w-full p-2 my-[1px] px-4 hover:bg-slate-100 dark:hover:bg-gray-200/[0.07] ${active === link.label ? "bg-slate-100 dark:bg-gray-200/[0.07] border border-transparent border-r-green text-green" : ""}`}>
-                        <span className="w-[30px]">{link.icon}</span>
+                        <span className="w-[30px] text-lg">{link.icon}</span>
                         <span className="flex-1 p-2 break-normal">{link.label}</span>
                     </a>
                 )})
@@ -91,7 +91,7 @@ function Settings() {
             <div className="md:m-2 p-4 bg-white dark:bg-[#1d1d23]/[0.5] flex-1">
                 <h2 className="text-xl pb-3 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.08]">Settings</h2>
                 <div className="py-8 text-[12px]">
-                    <h3 id="general" className="py-2 opacity-[0.6] text-lg">General</h3>
+                    <h3 id="appearance" className="py-2 opacity-[0.6] text-lg">Appearance</h3>
                     <h3 className="pb-2 pt-4 text-sm">Interface theme</h3>
                     <p className="opacity-[0.6]">Select or customize your ui theme</p>
                     <div className="grid grid-cols-3 gap-4 py-2">
@@ -120,7 +120,7 @@ function Settings() {
                         <div className="py-6">
                             <div className="md:flex items-center">
                                 <p className="md:w-[30%] md:mb-0 mb-2">Username: </p>
-                                <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full outline-none focus:border-2 focus:border-green" type="text" placeholder="Change your username" defaultValue={user?.disaplayName} />
+                                <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full outline-none focus:border-2 focus:border-green" type="text" placeholder="Change your username" defaultValue={user?.displayName} />
                             </div>
                         </div>
                         <div className="py-6">
