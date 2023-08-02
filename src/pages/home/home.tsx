@@ -24,7 +24,7 @@ function Home()  {
                     <p className="p-1 rounded-full bg-white dark:bg-slate-100/[0.05] w-fit border border-slate-100/[0.04] px-3 mb-3">A better world, one project at a time</p>
                     <p className="py-[3%] md:text-[40px] font-bold md:leading-[45px] text-[30px]">Learn, Explore, Share, and Create with the World's <span className=" bg-clip-text text-transparent bg-gradient-to-r from-purple to-green">Renewable Energy</span></p>
                     <p className="pb-6">Explore a wide range of renewable energy projects and find the ones that are right for you. Share your own renewable energy projects with the community and get feedback from others. Create new renewable energy projects and help to make a difference in the world.</p>
-                    <Button text={"Get Involved"} link={"#"} />
+                    <Button text={"Get Involved"} link={"/dashboard"} />
                 </div>
                 
                 <div className="p-4 h-[350px] md:w-[45%] w-full rounded-lg bg-gray-200 dark:bg-gray-200/[0.09]">
@@ -34,7 +34,7 @@ function Home()  {
             </header>
 
             <section className="py-[70px] bg-white dark:bg-gray-100/[0.02]">
-                <h2 className="text-3xl text-center py-4 mb-8">Explore Amazing Projects</h2>
+                <h2 className="md:text-3xl text-xl text-center py-4 mb-8">Explore Amazing Projects</h2>
 
                 <div className="w-full flex gap-4 p-2 my-4 text-[12px] overflow-x-auto scrollbar">
                     {
@@ -51,7 +51,7 @@ function Home()  {
             </section>
 
             <section className="md:px-[7%] px-[3%] py-[70px]">
-                <h2 className="text-3xl text-center py-4 mb-8">Features</h2>
+                <h2 className="md:text-3xl text-xl text-center py-4 mb-8">Features</h2>
                 <div className="">
                     <div className="w-full grid md:grid-cols-2 grid-cols-1 gap-4">
                         <div className="md:p-8 p-4 rounded border border-gray-100/[0.09] bg-white dark:bg-transparent shadow">
