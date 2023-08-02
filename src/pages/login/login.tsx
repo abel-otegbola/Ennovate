@@ -58,9 +58,9 @@ function Login() {
                     <p className="py-[3%] md:text-[40px] font-bold md:leading-[45px] text-[30px] bg-clip-text text-transparent bg-gradient-to-r from-purple to-green">Welcome!</p>
                     <p className="pb-6">Login to share your ideas, get insights and join in the projects of making the world a better place.</p>
 
-                    <div className="grid grid-cols-2 gap-4 my-8">
+                    <div className="grid grid-cols-1 gap-4 my-8">
                         {
-                            ['Google', 'Facebook', 'Twitter', 'Linkedin'].map((social,i )=> {
+                            ['Google'].map((social,i )=> {
                                 return (
                                     <button key={i} onClick={() => socialSignIn(social)} className="flex items-center justify-center gap-4 p-[12px] border border-gray-200 dark:border-gray-100/[0.09] w-full rounded hover:border-green hover:dark:border-green hover:text-green">
                                         { social === "Google" ? <FaGoogle /> : social === "Facebook" ? <FaFacebook /> : social === "Twitter" ? <FaTwitter /> : social === "Linkedin" ? <FaLinkedin /> : "" }
