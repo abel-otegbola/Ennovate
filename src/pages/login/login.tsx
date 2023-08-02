@@ -13,7 +13,7 @@ function Login() {
 
     const signup = () => {
         const actionCodeSettings = {
-            url: `${import.meta.env.MODE === "development" ? "http://localhost:5173" : "https://enquest.netlify.app"}/finishSignup`,
+            url: `${import.meta.env.MODE === "development" ? "http://localhost:5173" : "https://ennovate.netlify.app"}/finishSignup`,
             handleCodeInApp: true
         };
 
