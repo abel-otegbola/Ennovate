@@ -20,7 +20,7 @@ function Topbar() {
 
             {/* Brand name and logo */}
 
-            <a href="/" className={`md:ml-0 ${pathname.indexOf("dashboard") !== -1 ? "ml-10" : ""} py-2 flex gap-2`}>
+            <a href="/" className={`md:ml-0 ${pathname.indexOf("dashboard" || "settings") !== -1 ? "ml-10" : ""} py-2 flex gap-2`}>
                 <img src={logo} className="w-[25px] h-[25px]" />
                 <h1 className="mt-[2px] text-lg">Ennovate</h1>
             </a>

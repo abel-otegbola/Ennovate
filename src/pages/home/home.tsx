@@ -1,5 +1,6 @@
 import { FaBrain, FaConnectdevelop, FaObjectGroup, FaPenFancy } from "react-icons/fa";
 import Button from "../../components/button/button";
+import ProjectGrid from "../../components/projectGrid/projectGrid";
 
 interface Project {
     id: number, img: any, title: string, info: string
@@ -48,6 +49,11 @@ function Home()  {
                         })
                     }
                 </div>
+
+                <div className="text-center flex flex-col items-center py-4 px-6">
+                    <p className="mb-4">Get involved in the renewable energy community by posting your own projects or participating in discussions.</p>
+                    <Button text="Get Involved" link={"/dashboard"} />
+                </div>
             </section>
 
             <section className="md:px-[7%] px-[3%] py-[70px]">
@@ -78,6 +84,23 @@ function Home()  {
                 </div>
 
             </section>
+
+            <section  className="md:px-[7%] px-[3%] py-[70px]">
+                <h2 className="md:text-3xl text-xl text-center py-4 mb-8">Amazing New Projects</h2>
+                {
+                    projects.slice(0,4).map(project => {
+                        return (
+                            <ProjectGrid key={project.id} project={project} />
+                        )
+                    })
+                }
+                
+                <div className="text-center flex flex-col items-center py-[10%] px-6 my-4 rounded bg-white dark:bg-gray-100/[0.02]">
+                    <p className="mb-4">Help to make a difference in the world by supporting renewable energy projects</p>
+                    <Button text="Make a difference" link={"/dashboard"} />
+                </div>
+            </section>
+
         </main>
     )
 }

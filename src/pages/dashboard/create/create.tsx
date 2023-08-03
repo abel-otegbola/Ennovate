@@ -29,7 +29,7 @@ function Create() {
     }
 
     return (
-        <div className="p-[3%] relative"> 
+        <div className="p-[3%] relative bg-white dark:bg-black"> 
             {    
             error ? 
             <div className="absolute bg-white/[0.8] dark:bg-black/[0.9] backdrop-blur-sm top-0 left-0 w-full h-full flex items-center justify-center">

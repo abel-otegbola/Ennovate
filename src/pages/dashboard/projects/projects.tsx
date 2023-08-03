@@ -50,7 +50,7 @@ function Projects() {
                 {
                     Projects.filter(item => item.title === active).map(project => {
                         return (
-                            <ProjectGrid key={project.id} id={project.id} img={project.img} title={project.title} info={project.info} />
+                            <ProjectGrid key={project.id} project={project} />
                         )
                     })
                 }
