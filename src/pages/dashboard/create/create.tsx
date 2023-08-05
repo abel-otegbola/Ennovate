@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "../../../components/button/button";
 import { FaTimesCircle } from "react-icons/fa";
+import Upload from "../../../components/upload/upload";
+import { database } from "../../../firebase/firebase";
+import { ref, set } from "firebase/database";
+import { AuthContext } from "../../../customHooks/useAuth";
+import { nanoid } from "nanoid";
 
 function Create() {
     const [title, setTitle] = useState("")
@@ -9,7 +14,11 @@ function Create() {
     const [equipment, setEquipment] = useState("")
     const [equipments, setEquipments] = useState<string[]>([])
     const [procedures, setProcedures] = useState("")
+    const [img, setImg] = useState({ name: "", type: "", url: "" })
+    const [video, setVideo] = useState({ name: "", type: "", url: "" })
+    const [links, setLinks] = useState("")
     const [error, setError] = useState("")
+    const { user } = useContext(AuthContext)
 
     const addEquipment = () => {
         if(equipment !== "") {
@@ -25,7 +34,11 @@ function Create() {
     }
 
     const submitProject = () => {
-        console.log(title, category, description, equipments, procedures)
+        const projectId = nanoid();
+        set(ref(database, 'projects/' + projectId), {
+            title, category, description, equipments, procedures, img, video, links, user: user.email
+          });
+        console.log()
     }
 
     return (
@@ -91,6 +104,24 @@ function Create() {
                         <div className="flex items-center w-full border border-gray-200/[0.5] rounded p-1 pr-2 ">
                             <textarea className="p-[12px] rounded bg-transparent min-h-[200px] border-none flex-1 outline-none focus:border-2 focus:border-green" onChange={(e) => setProcedures(e.target.value)} placeholder="Highlight the project procedures"></textarea>
                         </div>
+                    </div>
+                </div>
+                <div className="py-6">
+                    <div className="md:flex">
+                        <p className="md:w-[30%] md:mb-0 py-2">Image: </p>
+                        <Upload id={1} accept={"image/*"} img={img} setImg={setImg} />
+                    </div>
+                </div>
+                <div className="py-6">
+                    <div className="md:flex">
+                        <p className="md:w-[30%] md:mb-0 py-2">Video: </p>
+                        <Upload id={2} accept={"video/*"} img={video} setImg={setVideo} />
+                    </div>
+                </div>
+                <div className="py-6">
+                    <div className="md:flex">
+                        <p className="md:w-[30%] md:mb-0 py-2">Other Links: </p>
+                        <textarea className="p-[12px] rounded bg-transparent min-h-[200px] border border-gray-200/[0.4] flex-1 outline-none focus:border-2 focus:border-green" onChange={(e) => setLinks(e.target.value)}></textarea>
                     </div>
                 </div>
 
