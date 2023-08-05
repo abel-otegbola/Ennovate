@@ -1,22 +1,23 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Button from "../../../components/button/button"
-
-interface Category {
-    id: number, img: any, title: string, info: string
-}
-interface Categories extends Array<Category>{}
+import { database } from "../../../firebase/firebase"
+import { onValue, ref } from "firebase/database"
 
 function DashboardHome() {
     const [active, setActive] = useState("Wind Power")
-    const Projects: Categories = [
-        { id: 0, img: "", title: "Wind Power", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 1, img: "", title: "Solar Thermal Energy", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 2, img: "", title: "Biomass", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 3, img: "", title: "Green Hydrogen", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 4, img: "", title: "Biofuel", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 5, img: "", title: "Nuclear Energy", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 6, img: "", title: "Hydro Electricity", info: "Wind turbine projects which involves using wind as source of energy" },
-    ]
+    const [projects, setProjects] = useState<any>([])
+
+    useEffect(() => {
+        const projectsRef = ref(database, 'projects/');
+        let arr: any[] = []
+        onValue(projectsRef, (snapshot) => {
+            const data: any = snapshot.val();
+            Object.keys(data).map((key: any) => {
+                arr.push({id: key, data: data[key]})
+            })
+            setProjects(arr)
+        });
+    }, [])
 
     return (
         <div className="p-[3%] w-full">
@@ -29,12 +30,14 @@ function DashboardHome() {
             
             <div className="w-full flex gap-4 border border-transparent border-y-gray-200 dark:border-y-gray-100/[0.1] bg-white dark:bg-slate-100/[0.01] p-2 my-4 text-[12px] overflow-x-auto scrollbar">
                 {
-                    Projects.map(project => {
+                    projects.map((project: any) => {
                         return (
-                            <div key={project.id} className={`${active === project.title ? "text-green" : "hover:text-green"}`} onClick={() => setActive(project.title)}>
-                                <div className={`h-[150px] w-[300px] bg-slate-200 dark:bg-slate-200/[0.08] cursor-pointer rounded ${active === project.title ? "border border-green/[0.5]" : "hover:border hover:border-green/[0.5]"}`}></div>
-                                <h2 className="p-2">{project.title}</h2>
-                            </div>
+                            <a href={`/project/?id=${project.id}`} key={project.id} className={`${active === project.data.title ? "text-green" : "hover:text-green"}`} onClick={() => setActive(project.data.title)}>
+                                <div className={`h-[150px] w-[300px] bg-slate-200 dark:bg-slate-200/[0.08] cursor-pointer rounded ${active === project.data.title ? "border border-green/[0.5]" : "hover:border hover:border-green/[0.5]"}`}>
+                                    <img src={project.data.img.url} className="w-full h-full object-cover" />
+                                </div>
+                                <h2 className="p-2">{project.data.title}</h2>
+                            </a>
                         )
                     })
                 }

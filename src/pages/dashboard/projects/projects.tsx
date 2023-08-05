@@ -1,5 +1,7 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ProjectGrid from "../../../components/projectGrid/projectGrid"
+import { database } from "../../../firebase/firebase"
+import { onValue, ref } from "firebase/database"
 
 interface Category {
     id: number, img: any, title: string, info: string
@@ -7,11 +9,12 @@ interface Category {
 interface Categories extends Array<Category>{}
 
 function Projects() {
-    const [active, setActive] = useState("Wind Power")
+    const [active, setActive] = useState("solar")
+    const [projects, setProjects] = useState<any>([])
 
     const categories: Categories = [
         { id: 0, img: "./", title: "Wind Power", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 1, img: "./", title: "Solar Thermal Energy", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 1, img: "./", title: "solar", info: "Wind turbine projects which involves using wind as source of energy" },
         { id: 2, img: "./", title: "Biomass", info: "Wind turbine projects which involves using wind as source of energy" },
         { id: 3, img: "./", title: "Green Hydrogen", info: "Wind turbine projects which involves using wind as source of energy" },
         { id: 4, img: "./", title: "Biofuel", info: "Wind turbine projects which involves using wind as source of energy" },
@@ -19,15 +22,18 @@ function Projects() {
         { id: 6, img: "./", title: "Hydro Electricity", info: "Wind turbine projects which involves using wind as source of energy" },
     ]
     
-    const Projects: Categories = [
-        { id: 0, img: "", title: "Wind Power", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 1, img: "", title: "Solar Thermal Energy", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 2, img: "", title: "Biomass", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 3, img: "", title: "Green Hydrogen", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 4, img: "", title: "Biofuel", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 5, img: "", title: "Nuclear Energy", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 6, img: "", title: "Hydro Electricity", info: "Wind turbine projects which involves using wind as source of energy" },
-    ]
+
+    useEffect(() => {
+        const projectsRef = ref(database, 'projects/');
+        let arr: any[] = []
+        onValue(projectsRef, (snapshot) => {
+            const data: any = snapshot.val();
+            Object.keys(data).map((key: any) => {
+                arr.push({id: key, data: data[key]})
+            })
+            setProjects(arr)
+        });
+    }, [])
 
     return (
         <div className="p-[3%] w-full">
@@ -45,12 +51,12 @@ function Projects() {
                 }
             </div>
             
-            <h3 className="px-2 text-transparent bg-clip-text bg-gradient-to-b from-purple to-green mt-12">{active}</h3>
+            <h3 className="px-2 text-transparent bg-clip-text bg-gradient-to-b from-purple to-green mt-12 capitalized">{active} Energy</h3>
             <div className="py-2">
                 {
-                    Projects.filter(item => item.title === active).map(project => {
+                    projects.filter((item: any) => item.data.category === active).map((project: any) => {
                         return (
-                            <ProjectGrid key={project.id} project={project} />
+                            <ProjectGrid key={project.id} id={project.id} project={project.data} />
                         )
                     })
                 }
