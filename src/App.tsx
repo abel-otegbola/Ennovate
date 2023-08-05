@@ -8,6 +8,7 @@ import Footer from './components/footer/footer'
 import Login from './pages/login/login'
 import FinishSignup from './pages/finishSignup/finishSignup'
 import { AuthProvider } from './customHooks/useAuth'
+import Project from './pages/project/project'
 
 function App() {
   useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/settings' element={<Settings />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/project' element={<Project />} />
             <Route path={"/finishSignup"} element={<FinishSignup />} />
             <Route path="/dashboard/*" element={<Dashboard />} />
           </Routes>
