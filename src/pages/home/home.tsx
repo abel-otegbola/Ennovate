@@ -1,22 +1,25 @@
 import { FaBrain, FaConnectdevelop, FaObjectGroup, FaPenFancy } from "react-icons/fa";
 import Button from "../../components/button/button";
 import ProjectGrid from "../../components/projectGrid/projectGrid";
+import { useEffect, useState } from "react";
+import { database } from "../../firebase/firebase";
+import { onValue, ref } from "firebase/database";
 
-interface Project {
-    id: number, img: any, title: string, info: string
-}
-interface Projects extends Array<Project>{}
 
 function Home()  {
-    const projects: Projects = [
-        { id: 0, img: "", title: "Wind Power", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 1, img: "", title: "Solar Thermal Energy", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 2, img: "", title: "Biomass", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 3, img: "", title: "Green Hydrogen", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 4, img: "", title: "Biofuel", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 5, img: "", title: "Nuclear Energy", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 6, img: "", title: "Hydro Electricity", info: "Wind turbine projects which involves using wind as source of energy" },
-    ]
+    const [data, setData] = useState<any>([])
+
+    useEffect(() => {
+        const projectsRef = ref(database, 'projects/');
+        let arr: any[] = []
+        onValue(projectsRef, (snapshot) => {
+            const data: any = snapshot.val();
+            Object.keys(data).map((key: any) => {
+                arr.push({id: key, data: data[key]})
+            })
+            setData(arr)
+        });
+    }, [])
 
     return (
         <main>
@@ -25,7 +28,7 @@ function Home()  {
                     <p className="p-1 rounded-full bg-white dark:bg-slate-100/[0.05] w-fit border border-slate-100/[0.04] px-3 mb-3">A better world, one project at a time</p>
                     <p className="py-[3%] md:text-[40px] font-bold md:leading-[45px] text-[30px]">Learn, Explore, Share, and Create with the World's <span className=" bg-clip-text text-transparent bg-gradient-to-r from-purple to-green">Renewable Energy</span></p>
                     <p className="pb-6">Explore a wide range of renewable energy projects and find the ones that are right for you. Share your own renewable energy projects with the community and get feedback from others. Create new renewable energy projects and help to make a difference in the world.</p>
-                    <Button text={"Get Involved"} link={"/dashboard"} />
+                    <Button text={"Get Started"} link={"/dashboard"} />
                 </div>
                 
                 <div className="p-4 h-[350px] md:w-[45%] w-full rounded-lg bg-gray-200 dark:bg-gray-200/[0.09]">
@@ -39,11 +42,12 @@ function Home()  {
 
                 <div className="w-full flex gap-4 p-2 my-4 text-[12px] overflow-x-auto scrollbar">
                     {
-                        projects.map(project => {
+                        data?.map((project: any) => {
                             return (
                                 <div key={project.id} className="hover:text-green">
-                                    <div className={`md:h-[250px] md:w-[500px] h-[200px] w-[350px] bg-slate-200 dark:bg-slate-200/[0.08] cursor-pointer roundedborder hover:border hover:border-green/[0.5]`}></div>
-                                    
+                                    <div className={`md:h-[250px] md:w-[500px] h-[200px] w-[350px] bg-slate-200 dark:bg-slate-200/[0.08] cursor-pointer roundedborder hover:border hover:border-green/[0.5]`}>
+                                        <img src={project.data.img.url} className="w-full h-full object-cover" />
+                                    </div>
                                 </div>
                             )
                         })
@@ -88,9 +92,9 @@ function Home()  {
             <section  className="md:px-[7%] px-[3%] py-[70px]">
                 <h2 className="md:text-3xl text-xl text-center py-4 mb-8">Amazing New Projects</h2>
                 {
-                    projects.slice(0,4).map(project => {
+                    data?.slice(0,4).map((project:any) => {
                         return (
-                            <ProjectGrid key={project.id} project={project} />
+                            <ProjectGrid key={project.id} project={project.data} />
                         )
                     })
                 }
