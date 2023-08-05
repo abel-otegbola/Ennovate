@@ -68,21 +68,21 @@ function Project() {
                 </div>
 
                 <div className="p-[3%] flex-1">
-                    <div className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.1]">
+                    <div className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.04]">
                         <h1 className="md:text-4xl text-xl font-bold py-2">{project.title}</h1>
                         <p>By: {project.user}</p>
                         <div className="flex items-center gap-4">
                             <p>{project.date}</p>
                         </div>
                     </div>
-                    <div className={`flex justify-center items-center md:w-[70%] w-full py-10 md:h-[400px] h-[350px] cursor-pointer rounded border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.1]`}>
+                    <div className={`flex justify-center items-center md:w-[70%] w-full py-10 md:h-[400px] h-[350px] cursor-pointer rounded border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.04]`}>
                         <img src={project.img?.url} className="w-full h-full object-cover" />
                     </div>
-                    <div id="description" className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.1]">
+                    <div id="description" className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.04]">
                         <h1 className="text-lg py-2">Description</h1>
                         <p>{project.description}</p>
                     </div>
-                    <div id="equipments" className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.1]">
+                    <div id="equipments" className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.04]">
                         <h1 className="text-lg py-2">Equipments</h1>
                         {project.equipments.map((equipment, i) => {
                             return (
@@ -90,11 +90,11 @@ function Project() {
                             )
                         })}
                     </div>
-                    <div id="procedures" className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.1]">
+                    <div id="procedures" className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.04]">
                         <h1 className="text-lg py-2">Procedures</h1>
                         <p>{project.procedures}</p>
                     </div>
-                    <div className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.1]">
+                    <div className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.04]">
                         <h1 className="text-lg py-2">Links</h1>
                         <p>{project.links}</p>
                     </div>
