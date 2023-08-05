@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { FaEllipsisV } from "react-icons/fa"
 
-function ProjectGrid({ project }: any ) {
+function ProjectGrid({ project, id }: any ) {
     const [openSide, setOpenSide] = useState(false)
 
     return (
-        <div className="relative flex items-stretch mt-4 bg-white dark:bg-gray-100/[0.01]">
+        <a href={`/project/?id=${id}`} className="relative flex items-stretch mt-4 bg-white dark:bg-gray-100/[0.01]">
             <button className="lg:hidden block p-6 px-4 absolute top-0 right-0 opacity-[0.3] hover:opacity-[1] z-10" onClick={() => setOpenSide(!openSide)}><FaEllipsisV /></button>
             <div key={project.id} className="md:w-[50%] w-full p-[20px]">
                 <div className="flex items-center my-2 gap-4">
@@ -13,8 +13,8 @@ function ProjectGrid({ project }: any ) {
                     <div className="text-[10px]">
                         <h3>User</h3>
                         <div className="flex items-center gap-4">
-                            <p>12 Jan 2023</p>
-                            <p className="text-purple/[0.6]">Collaborate</p>
+                            <p>{project.date}</p>
+                            <p className="text-purple/[0.6]"></p>
                         </div>
                     </div>                    
                 </div>
@@ -30,7 +30,7 @@ function ProjectGrid({ project }: any ) {
                 <p className="p-4">Procedures:</p>
                 <p className="px-4">{project.procedures}</p>
             </div>
-        </div>
+        </a>
     )
 }
 
