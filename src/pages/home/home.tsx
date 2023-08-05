@@ -46,8 +46,9 @@ function Home()  {
                         data?.map((project: any) => {
                             return (
                                 <a href={`/project/?id=${project.id}`} key={project.id} className="hover:text-green">
-                                    <div className={`md:h-[250px] md:w-[500px] h-[200px] w-[350px] bg-slate-200 dark:bg-slate-200/[0.08] cursor-pointer roundedborder hover:border hover:border-green/[0.5]`}>
+                                    <div className={`relative md:h-[250px] md:w-[500px] h-[200px] w-[350px] bg-slate-200 dark:bg-slate-200/[0.08] cursor-pointer roundedborder hover:border hover:border-green/[0.5]`}>
                                         <img src={project.data.img.url} className="w-full h-full object-cover" />
+                                        <p className="absolute bottom-0 left-0 p-3 bg-gray-200 dark:bg-black">{project.data.title}</p>
                                     </div>
                                 </a>
                             )
