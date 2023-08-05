@@ -5,6 +5,7 @@ import dark from "../../assets/dark.png";
 import light from "../../assets/light.png";
 import system from "../../assets/system.png";
 import { AuthContext } from "../../customHooks/useAuth";
+import { useLocalStorage } from "../../customHooks/useLocalStorage";
 
 interface Link {
     id: number; label: string; icon: any, link: string
@@ -22,6 +23,7 @@ function Settings() {
     const [open, setOpen] = useState(false)
     const [active, setActive] = useState("Appearance")
     const [theme, setTheme] = useState(localStorage.theme)
+    const [fontSize, setFontSize] = useLocalStorage("size", 12)
     const { user } = useContext(AuthContext)
 
     const themes: Themes = [
@@ -108,6 +110,20 @@ function Settings() {
                                 )
                             })
                         }
+                    </div>
+
+                    <h3 id="preferences" className="py-2 opacity-[0.6] text-lg">Preferences</h3>
+                    <h3 className="pb-2 pt-4 text-sm">Font</h3>
+                    <p className="opacity-[0.6]">Font size</p>
+                    <div className="flex items-center gap-4 py-2">
+                        <select className="w-[100px] p-4 rounded bg-black text-white" onChange={(e) => setFontSize(e.target.value)} defaultValue={fontSize}>
+                        {
+                            [10, 12, 16, 20].map((item, i) => (
+                                <option key={i} className="bg-black text-white">{item}</option>
+                            ))
+                        }
+                        </select>
+                        <p style={{ fontSize: fontSize }}>Renewable energy will help us achieve 100% free CO<sub>2</sub> emission</p>
                     </div>
                 </div>
 

@@ -20,10 +20,18 @@ function App() {
     }
   })
 
+  const fontSize = localStorage.getItem("size")
+
+  const font = fontSize ? fontSize : 12
+
+  useEffect(() => {
+    console.log(fontSize)
+  }, [])
+
   return (
     <BrowserRouter>
       <AuthProvider>
-        <div className='bg-slate-100 dark:bg-[#101014] text-black dark:text-white/[0.8] text-[12px]'>
+        <div className={`bg-slate-100 dark:bg-[#101014] text-black dark:text-white/[0.8]`} style={{ fontSize: font }}>
           <Topbar />
           <Routes>
             <Route path='/' element={<Home />} />
