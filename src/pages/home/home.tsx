@@ -4,6 +4,7 @@ import ProjectGrid from "../../components/projectGrid/projectGrid";
 import { useEffect, useState } from "react";
 import { database } from "../../firebase/firebase";
 import { onValue, ref } from "firebase/database";
+import hero from "../../assets/renewable.jpg"
 
 
 function Home()  {
@@ -31,8 +32,8 @@ function Home()  {
                     <Button text={"Get Started"} link={"/dashboard"} />
                 </div>
                 
-                <div className="p-4 h-[350px] md:w-[45%] w-full rounded-lg bg-gray-200 dark:bg-gray-200/[0.09]">
-                    <img className="hidden rounded w-full h-full bg-slate-100/[0.08]" alt="renewable energy sources illustration" />
+                <div className="p-4 md:h-[350px] md:w-[45%] w-full rounded-lg bg-gradient-to-r from-purple/[0.3] to-green/[0.3]">
+                    <img src={hero} className="rounded w-full h-full bg-slate-100/[0.08] object-cover" alt="renewable energy sources illustration" />
                 </div>
                 
             </header>
