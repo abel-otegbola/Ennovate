@@ -35,8 +35,9 @@ function Create() {
 
     const submitProject = () => {
         const projectId = nanoid();
+        const date = new Date().toLocaleString('en-GB')
         set(ref(database, 'projects/' + projectId), {
-            title, category, description, equipments, procedures, img, video, links, user: user.email
+            title, category, description, equipments, procedures, img, video, links, user: user.email, date
           });
         console.log()
     }
