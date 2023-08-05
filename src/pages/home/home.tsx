@@ -44,11 +44,11 @@ function Home()  {
                     {
                         data?.map((project: any) => {
                             return (
-                                <div key={project.id} className="hover:text-green">
+                                <a href={`/project/?id=${project.id}`} key={project.id} className="hover:text-green">
                                     <div className={`md:h-[250px] md:w-[500px] h-[200px] w-[350px] bg-slate-200 dark:bg-slate-200/[0.08] cursor-pointer roundedborder hover:border hover:border-green/[0.5]`}>
                                         <img src={project.data.img.url} className="w-full h-full object-cover" />
                                     </div>
-                                </div>
+                                </a>
                             )
                         })
                     }
@@ -94,7 +94,7 @@ function Home()  {
                 {
                     data?.slice(0,4).map((project:any) => {
                         return (
-                            <ProjectGrid key={project.id} project={project.data} />
+                            <ProjectGrid key={project.id} id={project.id} project={project.data} />
                         )
                     })
                 }
