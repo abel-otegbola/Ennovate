@@ -4,6 +4,7 @@ import { FiBox, FiInfo, FiList, FiUsers, FiVideo } from "react-icons/fi";
 import { useSearchParams } from "react-router-dom";
 import { database } from "../../firebase/firebase";
 import { child, get, ref } from "firebase/database";
+import Chat from "../../components/chat/chat";
 
 interface Link {
     id: number; label: string; icon: any, link: string
@@ -25,9 +26,9 @@ function Project() {
         { id: 4, label: "Estimations", icon: <FaMoneyCheck />, link: "#estimations" },
         { id: 5, label: "Comments", icon: <FiUsers />, link: "#comments" },
     ]
+    const id = searchParams.get("id")
 
     useEffect(() => {
-        const id = searchParams.get("id")
         const dbRef = ref(database);
         get(child(dbRef, `projects/${id}`))
         .then((snapshot) => {
@@ -45,16 +46,12 @@ function Project() {
     return (
         <>
             <button className="md:hidden fixed z-50 top-0 left-0 p-5 text-lg opacity-[0.6] " onClick={() => setOpen(!open)}>{open ? <FaTimes /> : <FaBars />}</button>
-            <div className="md:flex items-start">
-                <div className={`xl:w-[18%] lg:w-[22%] md:w-[27%] text-[12px] h-screen md:sticky fixed top-[60px] left-0 bg-white dark:bg-black border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px]": "w-0"}`}>  
+            <div className="md:flex">
+                <div className={`xl:w-[18%] lg:w-[22%] md:w-[27%] h-screen md:sticky fixed top-[60px] left-0 bg-white dark:bg-black border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px]": "w-0"}`}>  
                     <div className="flex items-center my-2 gap-4 p-4">
                         <div className="h-[40px] w-[40px] rounded bg-slate-100 dark:bg-slate-200/[0.04]"></div>
                         <div className="text-[10px]">
                             <h3>{project.user}</h3>
-                            <div className="flex items-center gap-4">
-                                <p>{project.date}</p>
-                                <p>{project.category}</p>
-                            </div>
                         </div>                    
                     </div>
                     {
@@ -68,21 +65,22 @@ function Project() {
                 </div>
 
                 <div className="p-[3%] flex-1">
-                    <div className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.04]">
+                    <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="md:text-4xl text-xl font-bold py-2">{project.title}</h1>
                         <p>By: {project.user}</p>
                         <div className="flex items-center gap-4">
                             <p>{project.date}</p>
+                            <p>{project.category}</p>
                         </div>
                     </div>
-                    <div className={`flex justify-center items-center md:w-[70%] w-full py-10 md:h-[400px] h-[350px] cursor-pointer rounded border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.04]`}>
+                    <div className={`flex justify-center items-center w-full py-10 md:h-[400px] h-[350px] cursor-pointer rounded border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]`}>
                         <img src={project.img?.url} className="w-full h-full object-cover" />
                     </div>
-                    <div id="description" className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.04]">
+                    <div id="description" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="text-lg py-2">Description</h1>
                         <p>{project.description}</p>
                     </div>
-                    <div id="equipments" className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.04]">
+                    <div id="equipments" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="text-lg py-2">Equipments</h1>
                         {project.equipments.map((equipment, i) => {
                             return (
@@ -90,14 +88,18 @@ function Project() {
                             )
                         })}
                     </div>
-                    <div id="procedures" className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.04]">
+                    <div id="procedures" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="text-lg py-2">Procedures</h1>
                         <p>{project.procedures}</p>
                     </div>
-                    <div className="py-10 border border-transparent border-b-gray-200 dark: border-b-gray-100/[0.04]">
+                    <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="text-lg py-2">Links</h1>
                         <p>{project.links}</p>
                     </div>
+                </div>
+
+                <div className="md:sticky top-[60px] h-screen bg-white dark:bg-black md:w-[30%] border border-transparent border-l-gray-200 dark:border-l-gray-100/[0.09]">
+                    <Chat project_id={id} />
                 </div>
             </div>
         </>

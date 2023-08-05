@@ -41,7 +41,7 @@ function Home()  {
             <section className="py-[70px] bg-white dark:bg-gray-100/[0.02]">
                 <h2 className="md:text-3xl text-xl text-center py-4 mb-8">Explore Amazing Projects</h2>
 
-                <div className="w-full flex gap-4 p-2 my-4 text-[12px] overflow-x-auto scrollbar">
+                <div className="w-full flex gap-4 p-2 my-4 overflow-x-auto scrollbar">
                     {
                         data?.map((project: any) => {
                             return (

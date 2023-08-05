@@ -22,10 +22,10 @@ function App() {
 
   const fontSize = localStorage.getItem("size")
 
-  const font = fontSize ? fontSize : 12
+  let font = fontSize ? JSON.parse(fontSize.replace(/&quot;/g, '"')) : "14px"
 
   useEffect(() => {
-    console.log(fontSize)
+    console.log(font)
   }, [])
 
   return (

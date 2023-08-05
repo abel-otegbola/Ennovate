@@ -28,7 +28,7 @@ function DashboardHome() {
                 </div>
             </div>
             
-            <div className="w-full flex gap-4 border border-transparent border-y-gray-200 dark:border-y-gray-100/[0.1] bg-white dark:bg-slate-100/[0.01] p-2 my-4 text-[12px] overflow-x-auto scrollbar">
+            <div className="w-full flex gap-4 border border-transparent border-y-gray-200 dark:border-y-gray-100/[0.1] bg-white dark:bg-slate-100/[0.01] p-2 my-4 overflow-x-auto scrollbar">
                 {
                     projects.map((project: any) => {
                         return (

@@ -22,9 +22,9 @@ function ProjectGrid({ project, id }: any ) {
                     <img src={project.img.url} className="w-full h-full object-cover" />
                 </div>
                 <h2 className="py-2">{project.title}</h2>
-                <p className="text-[12px]">{project.info}</p>
+                <p className="">{project.info}</p>
             </div>
-            <div className={`lg:static text-[12px] lg:h-auto h-full absolute top-0 right-0 bg-slate-200 dark:bg-[#1d1d23] overflow-hidden overflow-y-auto transition-all duration-700 ${openSide ? "lg:w-[50%] w-[75%]" : "lg:w-[50%] w-0"}`}>
+            <div className={`lg:static lg:h-auto h-full absolute top-0 right-0 bg-slate-200 dark:bg-[#1d1d23] overflow-hidden overflow-y-auto transition-all duration-700 ${openSide ? "lg:w-[50%] w-[75%]" : "lg:w-[50%] w-0"}`}>
                 <p className="p-4">Description:</p>
                 <p className="px-4">{project.description}</p>
                 <p className="p-4">Procedures:</p>

@@ -4,27 +4,21 @@ function Footer() {
             <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-[30px] p-[3%] border border-transparent border-t-gray-200/[0.09]">
                 <ul className="w-full">
                     <h2 className="py-2 text-lg">Products</h2>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">Household</a></li>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">Students</a></li>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">Fundings</a></li>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">Community</a></li>
+                    <li className="py-[5px] flex w-full"><a href="/dashboard/projects" className="py-[5px] w-full hover:text-green">Projects</a></li>
+                    <li className="py-[5px] flex w-full"><a href="https://sdgs.un.org" className="py-[5px] w-full hover:text-green">Learn</a></li>
+                    <li className="py-[5px] flex w-full"><a href="/dashboard/create" className="py-[5px] w-full hover:text-green">Create</a></li>
                 </ul>
                 <ul className="w-full">
-                    <h2 className="py-2 text-lg">Resources</h2>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">Projects</a></li>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">Learn</a></li>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">Launch</a></li>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">Collaborations</a></li>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">FAQs</a></li>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">Terms of Service</a></li>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">Privacy Policy</a></li>
+                    <h2 className="py-2 text-lg">Support</h2>
+                    <li className="py-[5px] flex w-full"><a href="/FAQs" className="py-[5px] w-full hover:text-green">FAQs</a></li>
+                    <li className="py-[5px] flex w-full"><a href="/terms&conditions" className="py-[5px] w-full hover:text-green">Terms of Service</a></li>
+                    <li className="py-[5px] flex w-full"><a href="/privacypolicy" className="py-[5px] w-full hover:text-green">Privacy Policy</a></li>
                 </ul>
                 <ul className="w-full">
-                    <h2 className="py-2 text-lg">Solutions</h2>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">Project Resources</a></li>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">Renewable sources</a></li>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">Careers</a></li>
-                    <li className="py-[5px] flex w-full"><a href="/projects" className="py-[5px] w-full hover:text-green">Guides</a></li>
+                    <h2 className="py-2 text-lg">Resources and Blogs</h2>
+                    <li className="py-[5px] flex w-full"><a href="/dashboard/projects" className="py-[5px] w-full hover:text-green">Project Resources</a></li>
+                    <li className="py-[5px] flex w-full"><a href="https://sdgs.un.org/goals/goal7" className="py-[5px] w-full hover:text-green">SDG goal7 - Access to affordable, reliable, sustainable and modern energy</a></li>
+                    <li className="py-[5px] flex w-full"><a href="https://sdgs.un.org/events/hlpf-2023-side-event-youth-engagement-systemic-transformation-sdg-summit-implementing-global" className="py-[5px] w-full hover:text-green">Youth engagement for systemic transformation at SDG-summit</a></li>
                 </ul>
                 <ul className="w-full">
                     <h2 className="py-1 text-lg mb-3">Ennovate</h2>

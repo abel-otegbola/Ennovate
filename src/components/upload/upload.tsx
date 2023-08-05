@@ -3,11 +3,16 @@ import { useEffect, useState } from "react";
 import { handleUpload } from "../../firebase/storage";
 import { getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
-function Upload({ img, setImg, accept, id }: any) {
+function Upload({ images, setImages, accept, id }: any) {
     const [show, setShow] = useState(false)
     const [uploadStatus, setUploadStatus] = useState({status: "", percent: 0})
+    const [img, setImg] = useState({id: "", name: "", type: "", url: "" })
 
-    const uploadImg = () => {
+    useEffect(() => {
+        setImg(images?.filter((image: any) => image.id === id)[0])
+    }, [images])
+
+    const uploadImg = (img: any) => {
         handleUpload(img.file)
         .then(result => {
             const uploadTask = uploadBytesResumable(result, img.file);
@@ -27,7 +32,15 @@ function Upload({ img, setImg, accept, id }: any) {
                 getDownloadURL(uploadTask.snapshot.ref)
                 .then((url) => {
                     setUploadStatus({status: "finished", percent: 100});
-                    setImg({ name: img.name, url, type: img.type })
+                    let newImages = images.map((image: any) => {
+                        if(image.id === id) {
+                            return ({ id, name: img.name, url, type: img.type})
+                        }
+                        else {
+                            image
+                        }
+                })
+                    setImages(newImages)
                 });
             }
             )
@@ -40,20 +53,17 @@ function Upload({ img, setImg, accept, id }: any) {
         const file = e.target.files[0];
       
         reader.onloadend = function () {
-          setImg({name: file.name, url: reader.result, type: file.type, file});
+            let newImages = images.map((item: any) => {
+                if(item.id === id) {
+                    return ({id, name: file.name, url: reader.result, type: file.type, file})
+                }
+                else {
+                    item
+                }
+            })
+            setImages(newImages)
         }
-      
-        if (file) {
-          reader.readAsDataURL(file);
-        } else {
-          
-        }
-        console.log(file.name, file.type, reader.result)
     }
-
-    useEffect(() => {
-        console.log(img)
-    }, [img])
 
     // const deleteImg = (img: any) => {
     //     const desertRef = ref(storage, `files/${img}`);
@@ -67,12 +77,13 @@ function Upload({ img, setImg, accept, id }: any) {
     // }
 
     return (
-        <div className="py-[3%]">
+        <div className="">
+            
             <div className="">
                 <div className="p-4 rounded flex">
                     <div>
                         {
-                            show ? 
+                            show ?
                             <>
                             {
                                 img?.type.indexOf("image") !== -1 ?
@@ -100,7 +111,7 @@ function Upload({ img, setImg, accept, id }: any) {
                                         <div onClick={uploadImg}>
                                             <button className="p-[10px] px-6 rounded border border-gray-200/[0.2]">Upload</button>
                                         </div>
-                                        <button className="p-[10px] px-6 rounded border border-red-200/[0.2]" onClick={() => { setImg({ name: "", url: "", type: ""}) }}>Delete</button>
+                                        <button className="p-[10px] px-6 rounded border border-red-200/[0.2]" onClick={() => { setImg({id , name: "", url: "", type: ""}) }}>Delete</button>
                                     </div>
                                 : ""
                             }
@@ -113,7 +124,7 @@ function Upload({ img, setImg, accept, id }: any) {
                 {
                     uploadStatus.status ? 
                         <div className="m-4">
-                            <p className="text-[12px] mb-2">{uploadStatus?.status} : {uploadStatus?.percent}%</p>
+                            <p className="mb-2">{uploadStatus?.status} : {uploadStatus?.percent}%</p>
                             <p className="w-full min-h-[10px] rounded-lg bg-slate-200">
                                 <p className={`min-h-[10px] rounded-lg bg-green`} style={{ width: `${uploadStatus?.percent}%` }}></p>
                             </p>

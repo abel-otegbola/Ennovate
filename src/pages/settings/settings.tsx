@@ -1,4 +1,4 @@
-import { FiUser, FiSettings, FiShield, FiGlobe, FiTablet } from "react-icons/fi";
+import { FiUser, FiSettings, FiTablet } from "react-icons/fi";
 import { useContext, useEffect, useState } from "react";
 import { FaBars, FaCheckCircle, FaTimes } from "react-icons/fa";
 import dark from "../../assets/dark.png";
@@ -23,7 +23,7 @@ function Settings() {
     const [open, setOpen] = useState(false)
     const [active, setActive] = useState("Appearance")
     const [theme, setTheme] = useState(localStorage.theme)
-    const [fontSize, setFontSize] = useLocalStorage("size", 12)
+    const [fontSize, setFontSize] = useLocalStorage("size", "14px")
     const { user } = useContext(AuthContext)
 
     const themes: Themes = [
@@ -35,9 +35,7 @@ function Settings() {
     const generalLinks: Links = [
         { id: 0, label: "Appearance", icon: <FiSettings />, link: "#appearance" },
         { id: 1, label: "Preferences", icon: <FiUser />, link: "#preferences" },
-        { id: 2, label: "Profile", icon: <FiTablet />, link: user ? "#account" : "/login" },
-        { id: 3, label: "Notifications", icon: <FiGlobe />, link: "#notifications" },
-        { id: 4, label: "Privacy & Safety", icon: <FiShield />, link: "#privacy" },
+        { id: 2, label: "Profile", icon: <FiTablet />, link: user ? "#account" : "/login" }
     ]
 
     useEffect(() => {
@@ -71,7 +69,7 @@ function Settings() {
         <>
         <button className="md:hidden fixed z-50 top-0 left-0 p-5 text-lg opacity-[0.6] " onClick={() => setOpen(!open)}>{open ? <FaTimes /> : <FaBars />}</button>
         <div className="md:flex items-start">
-            <div className={`xl:w-[18%] lg:w-[22%] md:w-[27%] text-[12px] h-screen md:sticky fixed top-[60px] left-0 bg-white dark:bg-black border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px]": "w-0"}`}>  
+            <div className={`xl:w-[18%] lg:w-[22%] md:w-[27%] h-screen md:sticky fixed top-[60px] left-0 bg-white dark:bg-black border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px]": "w-0"}`}>  
                 <div className="flex items-center my-2 gap-4 p-4">
                     <div className="h-[40px] w-[40px] rounded bg-slate-100 dark:bg-slate-200/[0.04]"></div>
                     <div className="text-[10px]">
@@ -92,7 +90,9 @@ function Settings() {
             </div>
             <div className="md:m-2 p-4 bg-white dark:bg-[#1d1d23]/[0.5] flex-1">
                 <h2 className="text-xl pb-3 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.08]">Settings</h2>
-                <div className="py-8 text-[12px]">
+
+
+                <div className="py-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.08]">
                     <h3 id="appearance" className="py-2 opacity-[0.6] text-lg">Appearance</h3>
                     <h3 className="pb-2 pt-4 text-sm">Interface theme</h3>
                     <p className="opacity-[0.6]">Select or customize your ui theme</p>
@@ -112,13 +112,17 @@ function Settings() {
                         }
                     </div>
 
+                    
+                </div>
+
+                <div className="py-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.08]">
                     <h3 id="preferences" className="py-2 opacity-[0.6] text-lg">Preferences</h3>
                     <h3 className="pb-2 pt-4 text-sm">Font</h3>
                     <p className="opacity-[0.6]">Font size</p>
                     <div className="flex items-center gap-4 py-2">
                         <select className="w-[100px] p-4 rounded bg-black text-white" onChange={(e) => setFontSize(e.target.value)} defaultValue={fontSize}>
                         {
-                            [10, 12, 16, 20].map((item, i) => (
+                            ["10px", "12px", "14px", "16px", "18px", "20px"].map((item, i) => (
                                 <option key={i} className="bg-black text-white">{item}</option>
                             ))
                         }
@@ -129,7 +133,7 @@ function Settings() {
 
                 {
                     user ?
-                    <div className="py-8 text-[12px]">
+                    <div className="py-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.08]">
                         <h3 id="account" className="py-2 opacity-[0.6] text-lg">Account</h3>
                         <h3 className="pb-2 pt-4 text-sm">Profile</h3>
                         <p className="opacity-[0.6]">Update your photo and personal details</p>

@@ -38,7 +38,7 @@ function Projects() {
     return (
         <div className="p-[3%] w-full">
             <h1 className="px-2 text-lg py-2">Renewable Energy Sources</h1>
-            <div className="w-full flex gap-4 border border-transparent border-y-gray-200 dark:border-y-gray-100/[0.1] bg-white dark:bg-slate-100/[0.01] p-2 my-4 text-[12px] overflow-x-auto scrollbar">
+            <div className="w-full flex gap-4 border border-transparent border-y-gray-200 dark:border-y-gray-100/[0.1] bg-white dark:bg-slate-100/[0.01] p-2 my-4 overflow-x-auto scrollbar">
                 {
                     categories.map(category => {
                         return (
