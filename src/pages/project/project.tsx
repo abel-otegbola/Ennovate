@@ -56,7 +56,7 @@ function Project() {
                     <div className="flex items-center my-2 gap-4 p-4">
                         <div className="h-[40px] w-[40px] rounded bg-slate-100 dark:bg-slate-200/[0.04]"></div>
                         <div className="text-[10px]">
-                            <h3>{user.email}</h3>
+                            <h3>{project.user}</h3>
                         </div>                    
                     </div>
                     {
