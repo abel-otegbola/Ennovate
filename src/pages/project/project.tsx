@@ -86,7 +86,7 @@ function Project() {
                 <div className="p-[3%] flex-1">
                     <div className="sticky -top-[65px] right-0">
                         {
-                            project.user === user.email ?
+                           user && project.user === user.email ?
                             <Button text="Edit Your Project" link="/edit" /> : ""
                         }
                     </div>
