@@ -58,7 +58,7 @@ function Project() {
                     <div className="flex items-center my-2 gap-4 p-4">
                         <div className="h-[40px] w-[40px] rounded bg-slate-100 dark:bg-slate-200/[0.04]"></div>
                         <div className="text-[10px]">
-                            <h3>{user?.email}</h3>
+                            <h3></h3>
                         </div>                    
                     </div>
                     {
@@ -86,7 +86,7 @@ function Project() {
                 <div className="p-[3%] flex-1">
                     <div className="sticky -top-[65px] right-0">
                         {
-                            !user ? "" : project.user === user.email ?
+                            !user || user === null ? "" : project.user === user.email ?
                             <Button text="Edit Your Project" link="/edit" /> : ""
                         
                         }
