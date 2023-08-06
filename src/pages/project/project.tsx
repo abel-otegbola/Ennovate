@@ -5,7 +5,6 @@ import { useSearchParams } from "react-router-dom";
 import { database } from "../../firebase/firebase";
 import { child, get, ref } from "firebase/database";
 import Chat from "../../components/chat/chat";
-import Button from "../../components/button/button";
 
 interface Link {
     id: number; label: string; icon: any, link: string
