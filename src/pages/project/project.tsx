@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaBars, FaMoneyCheck, FaTimes } from "react-icons/fa";
 import { FiBox, FiInfo, FiList, FiUsers, FiVideo } from "react-icons/fi";
 import { useSearchParams } from "react-router-dom";
 import { database } from "../../firebase/firebase";
 import { child, get, ref } from "firebase/database";
 import Chat from "../../components/chat/chat";
+import { AuthContext } from "../../customHooks/useAuth";
+import Button from "../../components/button/button";
 
 interface Link {
     id: number; label: string; icon: any, link: string
@@ -13,7 +15,9 @@ interface Link {
 interface Links extends Array<Link>{}
 
 function Project() {
+    const { user } = useContext(AuthContext);
     const [open, setOpen] = useState(false)
+    const [openChat, setOpenChat] = useState(false)
     const [active, setActive] = useState("Appearance")
     const [searchParams] = useSearchParams()
     const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], img: {name: "", url: ""}, links: "", procedures: "", user: "" })
@@ -24,7 +28,7 @@ function Project() {
         { id: 2, label: "Equipments", icon: <FiBox />, link: "#equipments" },
         { id: 3, label: "Procedures", icon: <FiList />, link: "#procedures" },
         { id: 4, label: "Estimations", icon: <FaMoneyCheck />, link: "#estimations" },
-        { id: 5, label: "Comments", icon: <FiUsers />, link: "#comments" },
+        { id: 5, label: "Chats", icon: <FiUsers />, link: "#" },
     ]
     const id = searchParams.get("id")
 
@@ -46,25 +50,46 @@ function Project() {
     return (
         <>
             <button className="md:hidden fixed z-50 top-0 left-0 p-5 text-lg opacity-[0.6] " onClick={() => setOpen(!open)}>{open ? <FaTimes /> : <FaBars />}</button>
-            <div className="md:flex">
+            
+            
+            <div className="md:flex relative bg-white dark:bg-transparent">
+                
                 <div className={`xl:w-[18%] lg:w-[22%] md:w-[27%] h-screen md:sticky fixed top-[60px] left-0 bg-white dark:bg-black border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px]": "w-0"}`}>  
                     <div className="flex items-center my-2 gap-4 p-4">
                         <div className="h-[40px] w-[40px] rounded bg-slate-100 dark:bg-slate-200/[0.04]"></div>
                         <div className="text-[10px]">
-                            <h3>{project.user}</h3>
+                            <h3>{user.email}</h3>
                         </div>                    
                     </div>
                     {
-                        generalLinks.map(link => {return (
-                            <a key={link.id} href={link.link} onClick={() => setActive(link.label)} className={`flex items-center justify-between w-full p-2 my-[1px] px-4 hover:bg-slate-100 dark:hover:bg-gray-200/[0.07] ${active === link.label ? "bg-slate-100 dark:bg-gray-200/[0.07] border border-transparent border-r-green text-green" : ""}`}>
-                                <span className="w-[30px] text-lg">{link.icon}</span>
-                                <span className="flex-1 p-2 break-normal">{link.label}</span>
-                            </a>
-                        )})
+                        generalLinks.map(link => {
+                            if(link.label === "Chats") {
+                                return (
+                                <p key={link.id} onClick={() => {setActive(link.label); setOpen(false); setOpenChat(!openChat)}} className={`flex items-center justify-between w-full p-2 my-[1px] px-4 hover:bg-slate-100 dark:hover:bg-gray-200/[0.07] ${active === link.label ? "bg-slate-100 dark:bg-gray-200/[0.07] border border-transparent border-r-green text-green" : ""}`}>
+                                    <span className="w-[30px] text-lg">{link.icon}</span>
+                                    <span className="flex-1 p-2 break-normal">{link.label}</span>
+                                </p>
+                                )
+                            }
+                            else {
+                                return (
+                                <a key={link.id} href={link.link} onClick={() => {setActive(link.label); setOpen(false) }} className={`flex items-center justify-between w-full p-2 my-[1px] px-4 hover:bg-slate-100 dark:hover:bg-gray-200/[0.07] ${active === link.label ? "bg-slate-100 dark:bg-gray-200/[0.07] border border-transparent border-r-green text-green" : ""}`}>
+                                    <span className="w-[30px] text-lg">{link.icon}</span>
+                                    <span className="flex-1 p-2 break-normal">{link.label}</span>
+                                </a>
+                                )
+                            }
+                        })
                     }
                 </div>
 
                 <div className="p-[3%] flex-1">
+                    <div className="sticky -top-[65px] right-0">
+                        {
+                            project.user === user.email ?
+                            <Button text="Edit Your Project" link="/edit" /> : ""
+                        }
+                    </div>
                     <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="md:text-4xl text-xl font-bold py-2">{project.title}</h1>
                         <p>By: {project.user}</p>
@@ -98,7 +123,8 @@ function Project() {
                     </div>
                 </div>
 
-                <div className="md:sticky top-[60px] h-screen bg-white dark:bg-black md:w-[30%] border border-transparent border-l-gray-200 dark:border-l-gray-100/[0.09]">
+                <div className={`md:sticky fixed top-[60px] right-0 h-screen bg-white dark:bg-black md:w-[30%] border border-transparent border-l-gray-200 dark:border-l-gray-100/[0.09] overflow-hidden transition-all duration-700 ${openChat ? "w-[75%]" : "w-0"}`}>
+                    <FaTimes className="absolute top-4 right-4 text-3xl p-2" onClick={() => setOpenChat(false)} />
                     <Chat project_id={id} />
                 </div>
             </div>
