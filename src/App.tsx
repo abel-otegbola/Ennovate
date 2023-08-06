@@ -9,6 +9,8 @@ import Login from './pages/login/login'
 import FinishSignup from './pages/finishSignup/finishSignup'
 import { AuthProvider } from './customHooks/useAuth'
 import Project from './pages/project/project'
+import TermsConditions from './pages/t&c/t&c'
+import PrivacyPolicy from './pages/privacypolicy/privacypolicy'
 
 function App() {
   useEffect(() => {
@@ -31,13 +33,15 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <div className={`bg-slate-100 dark:bg-[#101014] text-black dark:text-white/[0.8]`} style={{ fontSize: font }}>
+        <div className={`bg-slate-100 dark:bg-[#101014] text-black dark:text-white/[0.8] leading-[30px]`} style={{ fontSize: font }}>
           <Topbar />
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/settings' element={<Settings />} />
             <Route path='/login' element={<Login />} />
             <Route path='/project' element={<Project />} />
+            <Route path='/terms&Conditions' element={<TermsConditions />} />
+            <Route path='/privacypolicy' element={<PrivacyPolicy />} />
             <Route path={"/finishSignup"} element={<FinishSignup />} />
             <Route path="/dashboard/*" element={<Dashboard />} />
           </Routes>

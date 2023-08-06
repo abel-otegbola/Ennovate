@@ -14,9 +14,8 @@ function Create() {
     const [equipment, setEquipment] = useState("")
     const [equipments, setEquipments] = useState<string[]>([])
     const [procedures, setProcedures] = useState("")
-    const [img, setImg] = useState({id: "", name: "", type: "", url: "" })
     const [images, setImages] = useState<any>([])
-    const [video, setVideo] = useState({ name: "", type: "", url: "" })
+    const [video, setVideo] = useState("")
     const [links, setLinks] = useState("")
     const [error, setError] = useState("")
     const { user } = useContext(AuthContext)
@@ -38,14 +37,12 @@ function Create() {
         const projectId = nanoid();
         const date = new Date().toLocaleString('en-GB')
         set(ref(database, 'projects/' + projectId), {
-            title, category, description, equipments, procedures, img, video, links, user: user.email, date
-          });
-        console.log()
+            title, category, description, equipments, procedures, images, video, links, user: user.email, date
+        });
     }
 
     const handleImages = () => {
-        setImages([...images, img])
-        setImg({id: "", name: "", type: "", url: "" })
+        setImages([...images, {id: nanoid(), name: "", type: "", url: "" }])
     }
     const deleteImage = (id: string) => {
         setImages(images.filter((image: any) => image.id !== id))
@@ -118,12 +115,14 @@ function Create() {
                 </div>
                 <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
                     <div className="md:flex flex-wrap items-start">
-                        <p className="md:w-[20%] md:mb-0 py-2">Image: </p>
-                        <div className="md:w-[80%] w-full">
-                            { images.map((image: any) => (
-                                <div className="flex items-center justify-between w-full border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.03]">
-                                    <Upload id={nanoid(10)} accept={"image/*"} images={images} setImages={setImages} />
-                                    <FaTrashAlt className="text-3xl text-red-500 p-2" onClick={() => deleteImage(image.id)} />
+                        <p className="md:w-[23%] md:mb-0 py-2">Image: </p>
+                        <div className="md:w-[77%] w-full">
+                            { images.map((image: any, i: number) => (
+                                <div key={i} className="py-2 w-full border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.03]">
+                                    <div className="flex items-center justify-between ">
+                                        <Upload id={image.id} accept={"image/*"} images={images} setImages={setImages} />
+                                        <FaTrashAlt className="text-3xl text-red-500 p-2" onClick={() => deleteImage(image.id)} />
+                                    </div>
                                 </div>
                             )) }
                             <button className="m-3 p-6 py-[10px] rounded border border-gray-200/[0.3]" onClick={() => handleImages()}>Add new image</button>
@@ -132,14 +131,14 @@ function Create() {
                 </div>
                 <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
                     <div className="md:flex">
-                        <p className="md:w-[20%] md:mb-0 py-2">Video: </p>
-                        <Upload id={2} accept={"video/*"} img={video} setImg={setVideo} />
+                        <p className="md:w-[23%] md:mb-0 py-2">Video: </p>
+                        <input className="p-[12px] w-full rounded bg-transparent border border-gray-200/[0.4] flex-1 outline-none focus:border-2 focus:border-green" onChange={(e) => setVideo(e.target.value)} placeholder="Enter video link"/>                       
                     </div>
                 </div>
                 <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
                     <div className="md:flex">
                         <p className="md:w-[23%] md:mb-0 py-2">Other Links: </p>
-                        <textarea className="p-[12px] rounded bg-transparent min-h-[200px] border border-gray-200/[0.4] flex-1 outline-none focus:border-2 focus:border-green" onChange={(e) => setLinks(e.target.value)}></textarea>
+                        <textarea className="p-[12px] rounded bg-transparent min-h-[200px] w-full border border-gray-200/[0.4] flex-1 outline-none focus:border-2 focus:border-green" onChange={(e) => setLinks(e.target.value)}></textarea>
                     </div>
                 </div>
 
