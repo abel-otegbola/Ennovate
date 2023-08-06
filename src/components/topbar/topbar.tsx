@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
 function Topbar() {
     const {user} = useContext(AuthContext)
     const pathname = useLocation().pathname;
-    const paths = ["/dashboard", "/dashboard/projects", "/dashboard/create", "/dashboard/notifications",  "/settings", "/project"]
+    const paths = ["/dashboard/home", "/dashboard/projects", "/dashboard/create", "/dashboard/notifications",  "/settings", "/project/"]
 
     return (
         <div className="flex items-center justify-between sticky top-0 left-0 w-full bg-white dark:bg-black p-2 px-4 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.09] z-20">
