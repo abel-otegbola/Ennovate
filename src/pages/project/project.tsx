@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBars, FaMoneyCheck, FaTimes } from "react-icons/fa";
 import { FiBox, FiInfo, FiList, FiUsers, FiVideo } from "react-icons/fi";
 import { useSearchParams } from "react-router-dom";
 import { database } from "../../firebase/firebase";
 import { child, get, ref } from "firebase/database";
 import Chat from "../../components/chat/chat";
-import { AuthContext } from "../../customHooks/useAuth";
 import Button from "../../components/button/button";
 
 interface Link {
@@ -15,7 +14,7 @@ interface Link {
 interface Links extends Array<Link>{}
 
 function Project() {
-    const { user } = useContext(AuthContext);
+    
     const [open, setOpen] = useState(false)
     const [openChat, setOpenChat] = useState(false)
     const [active, setActive] = useState("Appearance")
@@ -84,12 +83,7 @@ function Project() {
                 </div>
 
                 <div className="p-[3%] flex-1">
-                    <div className="sticky -top-[65px] right-0">
-                        {
-                           user?.email && (project.user === user?.email) ?
-                            <Button text="Edit Your Project" link="/edit" /> : ""
-                        }
-                    </div>
+                    
                     <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="md:text-4xl text-xl font-bold py-2">{project.title}</h1>
                         <p>By: {project.user}</p>
