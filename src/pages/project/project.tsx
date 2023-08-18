@@ -115,7 +115,7 @@ function Project() {
                     </div>
                 </div>
 
-                <div className={`md:sticky fixed top-[60px] right-0 h-screen bg-white dark:bg-black md:w-[30%] border border-transparent border-l-gray-200 dark:border-l-gray-100/[0.09] overflow-hidden transition-all duration-700 ${openChat ? "w-[75%]" : "w-0"}`}>
+                <div className={`md:sticky fixed top-[60px] right-0 h-screen bg-white dark:bg-black md:w-[30%] border border-transparent border-l-gray-200 dark:border-l-gray-100/[0.09] overflow-hidden transition-all duration-700 ${openChat ? "w-[100%]" : "w-0"}`}>
                     <FaTimes className="absolute top-4 right-4 text-3xl p-2" onClick={() => setOpenChat(false)} />
                     <Chat project_id={id} />
                 </div>

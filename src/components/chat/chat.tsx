@@ -48,12 +48,12 @@ function Chat({ project_id }: any) {
                 }
                 {
                     chats.map((chat: any) => (
-                        <div key={chat.id} className={`flex flex-col ${user.email === chat.email ? "items-end" : ""} text-[12px] py-4`}>
+                        <div key={chat.id} className={`flex flex-col ${!user ? "" : user.email === chat.email ? "items-end" : ""} text-[12px] py-4`}>
                             <div className="flex items-center text-[10px] gap-4">
                                 <p>{chat.username}</p>
                                 <p>{chat.date}</p>
                             </div>
-                            <p className={`p-3 ${user.email === chat.email ? "rounded-l-lg bg-purple text-white" : "rounded-r-lg bg-white dark:bg-gray-200/[0.09]"} w-fit`}>{chat.msg}</p>
+                            <p className={`p-3 ${!user ? "" : user.email === chat.email ? "rounded-l-lg bg-purple text-white" : "rounded-r-lg bg-white dark:bg-gray-200/[0.09]"} w-fit`}>{chat.msg}</p>
                         </div>
                     ))
                 
