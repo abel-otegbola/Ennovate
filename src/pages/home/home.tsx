@@ -1,10 +1,10 @@
-import { FaBrain, FaConnectdevelop, FaObjectGroup, FaPenFancy } from "react-icons/fa";
+import { FaBrain, FaConnectdevelop, FaObjectGroup, FaPenFancy, FaPlay } from "react-icons/fa";
 import Button from "../../components/button/button";
 import ProjectGrid from "../../components/projectGrid/projectGrid";
 import { useEffect, useState } from "react";
 import { database } from "../../firebase/firebase";
 import { onValue, ref } from "firebase/database";
-import hero from "../../assets/renewable.jpg"
+import hero from "../../assets/bg.png"
 
 
 function Home()  {
@@ -24,16 +24,22 @@ function Home()  {
 
     return (
         <main>
-            <header className="flex flex-wrap jutify-between items-center px-[3%] py-[5%]">
-                <div className="md:w-[50%] w-full md:px-[5%] md:py-0 py-[10%]">
-                    <p className="p-1 rounded-full bg-white dark:bg-slate-100/[0.05] w-fit border border-slate-100/[0.04] px-3 mb-3">A better world, one project at a time</p>
-                    <p className="py-[3%] md:text-[40px] font-bold md:leading-[45px] text-[30px]">Learn, Explore, Share, and Create with the World's <span className=" bg-clip-text text-transparent bg-gradient-to-r from-purple to-green">Renewable Energy</span></p>
-                    <p className="pb-6">Explore a wide range of renewable energy projects and find the ones that are right for you. Share your own renewable energy projects with the community and get feedback from others. Create new renewable energy projects and help to make a difference in the world.</p>
-                    <Button text={"Get Started"} link={"/dashboard"} />
-                </div>
+            <header className="flex relative h-[600px]">
                 
-                <div className="p-4 md:h-[350px] md:w-[45%] w-full rounded-lg bg-gradient-to-r from-purple/[0.3] to-green/[0.3]">
-                    <img src={hero} className="rounded w-full h-full bg-slate-100/[0.08] object-cover" alt="renewable energy sources illustration" />
+                <div className="absolute top-0 left-0 h-full w-full">
+                    <img src={hero} className="rounded w-full h-full object-cover" alt="renewable energy sources illustration" />
+                </div>
+                <div className="m-auto flex flex-col md:items-center md:text-center md:px-[5%] md:py-0 py-[10%] z-[1] md:w-[60%] w-[90%]">
+                    <p className="text-[#5938DD80]">A better world, one project at a time</p>
+                    <h1 className="py-3 md:text-[40px] font-bold md:leading-[45px] leading-[40px] text-[30px]">Build, Explore, Share, and Create Renewable Energy Projects</h1>
+                    <p className="pb-6">Explore a wide range of renewable energy projects and find the ones that are right for you. Share your own renewable energy projects with the community and get feedback from others.</p>
+                    <div className="flex gap-2">
+                        <Button text={"Get Started"} link={"/dashboard"} />
+                        <Button text={"Explore Projects"} link={"/dashboard"} />
+                    </div>
+                    <div className="flex items-center justify-center my-[60px] -mb-[60px] md:h-[250px] h-[350px] md:w-[450px] w-full border-2 border-gray-700 rounded shadow-lg bg-[#5938DD] dark:bg-[#000]">
+                        <FaPlay />
+                    </div>
                 </div>
                 
             </header>
@@ -67,22 +73,22 @@ function Home()  {
                 <div className="">
                     <div className="w-full grid md:grid-cols-2 grid-cols-1 gap-4">
                         <div className="md:p-8 p-4 rounded border border-gray-100/[0.09] bg-white dark:bg-transparent shadow">
-                            <FaBrain className="text-5xl p-2 rounded bg-gray-100/[0.09] mb-3" />
+                            <FaBrain className="text-5xl p-2 rounded bg-gray-100/[0.09] mb-3 text-[#5938DD]" />
                             <h2 className="text-lg mb-4">Learn about different renewable energy projects</h2>
                             <p>Explore a wide range of renewable energy projects, from small-scale solar installations to large-scale wind farms</p>
                         </div>
                         <div className="md:p-8 p-4 rounded border border-gray-100/[0.09] bg-white dark:bg-transparent shadow">
-                            <FaObjectGroup className="text-5xl p-2 rounded bg-gray-100/[0.09] mb-3" />
+                            <FaObjectGroup className="text-5xl p-2 rounded bg-gray-100/[0.09] mb-3 text-[#5938DD]" />
                             <h2 className="text-lg mb-4">Get the full scope and resources needed</h2>
                             <p>Find detailed information about the scope, resources, and costs of each project</p>
                         </div>
                         <div className="md:p-8 p-4 rounded border border-gray-100/[0.09] bg-white dark:bg-transparent shadow">
-                            <FaPenFancy className="text-5xl p-2 rounded bg-gray-100/[0.09] mb-3" />
+                            <FaPenFancy className="text-5xl p-2 rounded bg-gray-100/[0.09] mb-3 text-[#5938DD]" />
                             <h2 className="text-lg mb-4">Post your own renewable energy projects</h2>
                             <p>Share your own renewable energy projects with the community and get feedback from others</p>
                         </div>
                         <div className="md:p-8 p-4 rounded border border-gray-100/[0.09] bg-white dark:bg-transparent shadow">
-                            <FaConnectdevelop className="text-5xl p-2 rounded bg-gray-100/[0.09] mb-3" />
+                            <FaConnectdevelop className="text-5xl p-2 rounded bg-gray-100/[0.09] mb-3 text-[#5938DD]" />
                             <h2 className="text-lg mb-4">Connect with other renewable energy enthusiasts</h2>
                             <p>Find like-minded people who are passionate about renewable energy and collaborate on projects</p>
                         </div>

@@ -22,13 +22,14 @@ function Topbar() {
                 <h1 className="mt-[2px] text-lg">Ennovate</h1>
             </a>
 
-            <div className="md:w-[50%] md:block hidden">
-                <Searchbar />
-            </div>
+            
 
 
             <div className="flex items-center gap-6">
-                <a href="/settings" className="relative hover:text-green">
+                <div className="md:w-[300px] md:block hidden">
+                    <Searchbar />
+                </div>
+                <a href="/settings" className="hover:text-green">
                     <FiSettings className="text-2xl p-1 rounded" />
                 </a>
                 {

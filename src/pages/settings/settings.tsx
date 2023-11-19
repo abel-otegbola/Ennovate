@@ -71,17 +71,15 @@ function Settings() {
         <div className="md:flex items-start">
             <div className={`xl:w-[18%] lg:w-[22%] md:w-[27%] h-screen md:sticky fixed top-[60px] left-0 bg-white dark:bg-black border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px]": "w-0"}`}>  
                 <div className="flex items-center my-2 gap-4 p-4">
-                    <div className="h-[40px] w-[40px] rounded bg-slate-100 dark:bg-slate-200/[0.04]"></div>
-                    <div className="text-[10px]">
+                    <div className="h-[40px] w-[40px] rounded-full bg-slate-100 dark:bg-slate-200/[0.04]"></div>
+                    <div className="text-[10px] leading-[20px]">
                         <h3>Abel Otegbola</h3>
-                        <div className="flex items-center gap-4">
-                            <p>Abelo</p>
-                        </div>
+                        <p className="opacity-[0.7]">Abelo</p>
                     </div>                    
                 </div>
             {
                 generalLinks.map(link => {return (
-                    <a key={link.id} href={link.link} onClick={() => setActive(link.label)} className={`flex items-center justify-between w-full p-2 my-[1px] px-4 hover:bg-slate-100 dark:hover:bg-gray-200/[0.07] ${active === link.label ? "bg-slate-100 dark:bg-gray-200/[0.07] border border-transparent border-r-green text-green" : ""}`}>
+                    <a key={link.id} href={link.link} onClick={() => setActive(link.label)} className={`flex items-center justify-between w-full p-1 my-[1px] px-4 hover:bg-slate-100 dark:hover:bg-gray-200/[0.07] ${active === link.label ? "bg-slate-100 dark:bg-gray-200/[0.07] border border-transparent border-r-green text-green" : ""}`}>
                         <span className="w-[30px] text-lg">{link.icon}</span>
                         <span className="flex-1 p-2 break-normal">{link.label}</span>
                     </a>
