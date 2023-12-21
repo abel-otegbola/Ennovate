@@ -13,14 +13,14 @@ function Topbar() {
     const paths = ["/dashboard/home", "/dashboard/projects", "/dashboard/create", "/dashboard/notifications",  "/settings", "/project/"]
 
     return (
-        <div className="flex items-center justify-between sticky top-0 left-0 w-full bg-white dark:bg-black p-2 md:px-[9%] px-[3%] border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.09] z-20">
+        <div className="flex items-center justify-between sticky top-0 left-0 w-full bg-white dark:bg-black p-[2px] md:px-[9%] px-[3%] border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.09] z-20">
 
             {/* Brand name and logo */}
 
-            <div className="flex gap-6 items-center">
+            <div className="flex gap-8 items-center">
                 <a href="/" className={`md:ml-0 ${paths.indexOf(pathname) !== -1 ? "ml-10" : ""} py-2 flex gap-2`}>
                     <img src={logo} className="w-[25px] h-[25px]" />
-                    <h1 className="font-bold">Ennovate</h1>
+                    <h1 className="font-bold text-[18px]">Ennovate</h1>
                 </a>
 
                 <ul className="flex gap-2 items-center">
@@ -35,7 +35,7 @@ function Topbar() {
                     <Searchbar />
                 </div>
                 <a href="/settings" className="hover:text-green">
-                    <FiSettings className="text-2xl p-1 rounded" />
+                    <FiSettings className="text-[25px] p-1 rounded" />
                 </a>
                 {
                     !user ? <Button text={"Login"} link={"/login"} />
