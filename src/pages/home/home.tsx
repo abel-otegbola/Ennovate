@@ -1,10 +1,11 @@
-import { FaBrain, FaConnectdevelop, FaObjectGroup, FaPenFancy, FaPlay } from "react-icons/fa";
+import { FaBrain, FaConnectdevelop, FaObjectGroup, FaPenFancy } from "react-icons/fa";
 import Button from "../../components/button/button";
 import ProjectGrid from "../../components/projectGrid/projectGrid";
 import { useEffect, useState } from "react";
 import { database } from "../../firebase/firebase";
 import { onValue, ref } from "firebase/database";
 import hero from "../../assets/bg.png"
+import Searchbar from "../../components/searchbar/searchbar";
 
 
 function Home()  {
@@ -24,7 +25,7 @@ function Home()  {
 
     return (
         <main>
-            <header className="flex relative h-[600px]">
+            <header className="flex relative">
                 
                 <div className="absolute top-0 left-0 h-full w-full">
                     <img src={hero} className="rounded w-full h-full object-cover" alt="renewable energy sources illustration" />
@@ -33,28 +34,29 @@ function Home()  {
                     <p className="text-[#5938DD80]">A better world, one project at a time</p>
                     <h1 className="py-3 md:text-[40px] font-bold md:leading-[45px] leading-[40px] text-[30px]">Build, Explore, Share, and Create Renewable Energy Projects</h1>
                     <p className="pb-6">Explore a wide range of renewable energy projects and find the ones that are right for you. Share your own renewable energy projects with the community and get feedback from others.</p>
-                    <div className="flex gap-2">
-                        <Button text={"Get Started"} link={"/dashboard"} />
-                        <Button text={"Explore Projects"} link={"/dashboard"} />
-                    </div>
-                    <div className="flex items-center justify-center my-[60px] -mb-[60px] md:h-[250px] h-[350px] md:w-[450px] w-full border-2 border-gray-700 rounded shadow-lg bg-[#5938DD] dark:bg-[#000]">
-                        <FaPlay />
+                    <Searchbar />
+                    <div className="flex items-center justify-center my-[60px] md:h-[250px] h-[350px] md:w-[450px] w-full rounded bg-gray-100 dark:bg-[#000]">
                     </div>
                 </div>
                 
             </header>
 
-            <section className="py-[70px] bg-white dark:bg-gray-100/[0.02]">
+            <section className="py-[70px] dark:bg-gray-100/[0.02] bg-gray-300/[0.2]">
                 <h2 className="md:text-3xl text-xl text-center py-4 mb-8">Explore Amazing Projects</h2>
 
-                <div className="w-full flex gap-4 p-2 my-4 overflow-x-auto scrollbar">
+                <div className="w-full flex gap-4 p-2 md:px-[9%] px-[3%] my-4 overflow-x-auto scrollbar">
                     {
                         data?.map((project: any) => {
                             return (
-                                <a href={`/project/?id=${project.id}`} key={project.id} className="hover:text-green">
-                                    <div className={`relative md:h-[250px] md:w-[500px] h-[200px] w-[350px] bg-slate-200 dark:bg-slate-200/[0.08] cursor-pointer roundedborder hover:border hover:border-green/[0.5]`}>
-                                        <img src={project.data.img.url} className="w-full h-full object-cover" />
-                                        <p className="absolute bottom-0 left-0 p-3 bg-gray-200 dark:bg-black">{project.data.title}</p>
+                                <a href={`/project/?id=${project.id}`} key={project.id} className="">
+                                    <div className={`w-[300px] p-4 rounded-[15px] cursor-pointer rounded border border-gray-600/[0.08] bg-white dark:bg-black`}>
+                                        <img src={project.data.img.url} className="w-full h-[200px] rounded-[5px] object-cover border border-gray-600/[0.08]" />
+                                        <h2 className="py-1 font-bold text-[14px]">{project.data.title}</h2>
+                                        <p className="h-[45px] leading-[20px] overflow-hidden py-2">{project.data.description}</p>
+                                        <div className="flex justify-between items-center py-2">
+                                            <p>User</p>
+                                            <p className="text-[10px] opacity-[0.7]">{project.data.date}</p>
+                                        </div>
                                     </div>
                                 </a>
                             )
