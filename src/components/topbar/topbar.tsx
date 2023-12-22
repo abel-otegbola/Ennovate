@@ -1,13 +1,14 @@
 import Searchbar from "../searchbar/searchbar";
-import { FiSettings } from "react-icons/fi";
+import { FiGlobe, FiPenTool, FiSettings } from "react-icons/fi";
 import logo from "../../assets/logo.png"
-import { FaUser } from "react-icons/fa";
-import { useContext } from "react";
+import { FaBars, FaTimes, FaUser } from "react-icons/fa";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../customHooks/useAuth";
 import Button from "../button/button";
 import { useLocation } from "react-router-dom";
 
 function Topbar() {
+    const [open, setOpen] = useState(false)
     const {user} = useContext(AuthContext)
     const pathname = useLocation().pathname;
     const paths = ["/dashboard/home", "/dashboard/projects", "/dashboard/create", "/dashboard/notifications",  "/settings", "/project/"]
@@ -23,14 +24,13 @@ function Topbar() {
                     <h1 className="font-bold text-[18px]">Ennovate</h1>
                 </a>
 
-                <ul className="flex gap-2 items-center">
-                    <li><button className="border-none"><a href="/" className={`px-4 py-2 rounded-full ${pathname === "/" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}>Home</a></button></li>
-                    <li><button className="border-none"><a href="/about" className={`px-4 py-2 rounded-full ${pathname === "/about" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}>About</a></button></li>
-                    <li><button className="border-none"><a href="/contacts" className={`px-4 py-2 rounded-full ${pathname === "/contacts" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}>Contacts</a></button></li>
+                <ul className="md:flex gap-2 items-center hidden">
+                    <li><button className="border-none"><a href="/create" className={`flex gap-2 items-center px-4 py-2 rounded-full ${pathname === "/create" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiPenTool className="text-[16px]"/> Create</a></button></li>
+                    <li><button className="border-none"><a href="/explore" className={`flex gap-2 items-center px-4 py-2 rounded-full ${pathname === "/explore" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiGlobe className="text-[16px]"/> Explore</a></button></li>
                 </ul>
             </div>
 
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-6 relative">
                 <div className="md:w-[300px] md:block hidden">
                     <Searchbar />
                 </div>
@@ -40,11 +40,20 @@ function Topbar() {
                 {
                     !user ? <Button text={"Login"} link={"/login"} />
                     : <>
-                        <a href="/dashboard" className="block rounded-full bg-slate-100/[0.5] outline outline-green/[0.3] hover:text-green">
-                            <FaUser className="p-2 text-3xl" />
+                        <a href="/dashboard" className="block rounded-full bg-slate-100/[0.5] outline outline-green/[0.1] hover:text-green">
+                            <FaUser className="p-[6px] text-2xl" />
                         </a>
                     </>
                 }
+                <div className="hover:text-green text-[18px] md:hidden block" onClick={() => setOpen(!open)}>
+                    {
+                        !open ? <FaBars /> : <FaTimes />
+                    }
+                </div>
+                <ul className={`gap-2 items-center absolute top-[50px] right-0 rounded bg-white dark:bg-black shadow-lg w-[200px] ${open ? "md:hidden block" : "hidden"}`}>
+                    <li className="w-full"><button className="border-none w-full"><a href="/create" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/create" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiPenTool className="text-[16px]"/> Create</a></button></li>
+                    <li className="w-full"><button className="border-none w-full"><a href="/explore" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/explore" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiGlobe className="text-[16px]"/> Explore</a></button></li>
+                </ul>
             </div>
         </div>
     )
