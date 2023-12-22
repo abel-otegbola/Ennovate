@@ -1,6 +1,6 @@
 import Searchbar from "../searchbar/searchbar";
 import { FiGlobe, FiPenTool, FiSettings, FiTablet, FiUser } from "react-icons/fi";
-import logo from "../../assets/logo.png"
+import logo from "../../assets/logo.svg"
 import { FaBars, FaTimes, FaUser } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../customHooks/useAuth";
@@ -33,14 +33,14 @@ function Topbar() {
             {/* Brand name and logo */}
 
             <div className="flex gap-8 items-center">
-                <a href="/" className={`md:ml-0 ${paths.indexOf(pathname) !== -1 ? "ml-10" : ""} py-2 flex gap-2`}>
+                <a href="/" className={`md:ml-0 ${paths.indexOf(pathname) !== -1 ? "ml-10" : ""} py-2 flex gap-1`}>
                     <img src={logo} className="w-[25px] h-[25px]" />
-                    <h1 className="font-bold text-[18px]">Ennovate</h1>
+                    <h1 className="font-bold text-[18px] text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-[#5938DD]">Ennovate</h1>
                 </a>
 
                 <ul className="md:flex gap-2 items-center hidden">
-                    <li><button className="border-none"><a href="/create" className={`flex gap-2 items-center px-4 py-2 rounded-full ${pathname === "/create" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiPenTool className="text-[16px]"/> Create</a></button></li>
-                    <li><button className="border-none"><a href="/explore" className={`flex gap-2 items-center px-4 py-2 rounded-full ${pathname === "/explore" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiGlobe className="text-[16px]"/> Explore</a></button></li>
+                    <li><button className="border-none"><a href="/create" className={`flex gap-2 items-center px-4 py-1 rounded-full ${pathname === "/create" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiPenTool className="text-[16px]"/> Create</a></button></li>
+                    <li><button className="border-none"><a href="/explore" className={`flex gap-2 items-center px-4 py-1 rounded-full ${pathname === "/explore" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiGlobe className="text-[16px]"/> Explore</a></button></li>
                 </ul>
             </div>
 

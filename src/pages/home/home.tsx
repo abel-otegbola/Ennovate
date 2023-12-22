@@ -42,11 +42,11 @@ function Home()  {
                 
             </header>
 
-            <section className="py-[70px] dark:bg-gray-100/[0.02] bg-gray-300/[0.2] px-6">
+            <section className="py-[70px] dark:bg-gray-100/[0.02] bg-gray-300/[0.2] md:px-[9%] px-[3%]">
                 <h2 className="md:text-2xl text-lg font-bold md:text-center py-4">Explore Amazing Projects</h2>
                 <p className="md:text-center mb-6">Transforming the Future with Sustainable Energy Solutions</p>
 
-                <div className="w-full flex gap-4 p-2 md:px-[9%] px-[3%] my-4 overflow-x-auto scrollbar">
+                <div className="w-full flex gap-4 py-2 my-4 overflow-x-auto scrollbar">
                     {
                         data?.map((project:any) => {
                             return (
