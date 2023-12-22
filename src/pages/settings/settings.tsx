@@ -1,17 +1,11 @@
-import { FiUser, FiSettings, FiTablet } from "react-icons/fi";
 import { useContext, useEffect, useState } from "react";
-import { FaBars, FaCheckCircle, FaTimes } from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
 import dark from "../../assets/dark.png";
 import light from "../../assets/light.png";
 import system from "../../assets/system.png";
 import { AuthContext } from "../../customHooks/useAuth";
 import { useLocalStorage } from "../../customHooks/useLocalStorage";
-
-interface Link {
-    id: number; label: string; icon: any, link: string
-}
-
-interface Links extends Array<Link>{}
+import { FiSettings } from "react-icons/fi";
 
 interface Theme {
     id: number, img: any, title: string
@@ -20,8 +14,6 @@ interface Themes extends Array<Theme>{}
 
 
 function Settings() {
-    const [open, setOpen] = useState(false)
-    const [active, setActive] = useState("Appearance")
     const [theme, setTheme] = useState(localStorage.theme)
     const [fontSize, setFontSize] = useLocalStorage("size", "14px")
     const { user } = useContext(AuthContext)
@@ -30,12 +22,6 @@ function Settings() {
         { id: 0, img: system, title: "System" },
         { id: 1, img: light, title: "light" },
         { id: 2, img: dark, title: "dark" },
-    ]
-
-    const generalLinks: Links = [
-        { id: 0, label: "Appearance", icon: <FiSettings />, link: "#appearance" },
-        { id: 1, label: "Preferences", icon: <FiUser />, link: "#preferences" },
-        { id: 2, label: "Profile", icon: <FiTablet />, link: user ? "#account" : "/login" }
     ]
 
     useEffect(() => {
@@ -67,31 +53,14 @@ function Settings() {
 
     return (
         <>
-        <button className="md:hidden fixed z-50 top-0 left-0 p-5 text-lg opacity-[0.6] " onClick={() => setOpen(!open)}>{open ? <FaTimes /> : <FaBars />}</button>
-        <div className="md:flex items-start">
-            <div className={`xl:w-[18%] lg:w-[22%] md:w-[27%] h-screen md:sticky fixed top-[60px] left-0 bg-white dark:bg-black border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px]": "w-0"}`}>  
-                <div className="flex items-center my-2 gap-4 p-4">
-                    <div className="h-[40px] w-[40px] rounded-full bg-slate-100 dark:bg-slate-200/[0.04]"></div>
-                    <div className="text-[10px] leading-[20px]">
-                        <h3>Abel Otegbola</h3>
-                        <p className="opacity-[0.7]">Abelo</p>
-                    </div>                    
-                </div>
-            {
-                generalLinks.map(link => {return (
-                    <a key={link.id} href={link.link} onClick={() => setActive(link.label)} className={`flex items-center justify-between w-full p-1 my-[1px] px-4 hover:bg-slate-100 dark:hover:bg-gray-200/[0.07] ${active === link.label ? "bg-slate-100 dark:bg-gray-200/[0.07] border border-transparent border-r-green text-green" : ""}`}>
-                        <span className="w-[30px] text-lg">{link.icon}</span>
-                        <span className="flex-1 p-2 break-normal">{link.label}</span>
-                    </a>
-                )})
-            }
-            </div>
-            <div className="md:m-2 p-4 bg-white dark:bg-[#1d1d23]/[0.5] flex-1">
-                <h2 className="text-xl pb-3 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.08]">Settings</h2>
+        <div className="md:flex items-start md:px-[8%] px-[3%]">
+            
+            <div className="md:m-2 flex-1 pt-[60px]">
+                <h2 className="flex items-center gap-3 text-xl font-bold pb-3 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.08]"><FiSettings /> Settings</h2>
 
 
                 <div className="py-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.08]">
-                    <h3 id="appearance" className="py-2 opacity-[0.6] text-lg">Appearance</h3>
+                    <h3 id="appearance" className="py-2 text-lg text-[#5938DD]">Appearance</h3>
                     <h3 className="pb-2 pt-4 text-sm">Interface theme</h3>
                     <p className="opacity-[0.6]">Select or customize your ui theme</p>
                     <div className="grid grid-cols-3 gap-4 py-2">
@@ -114,7 +83,7 @@ function Settings() {
                 </div>
 
                 <div className="py-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.08]">
-                    <h3 id="preferences" className="py-2 opacity-[0.6] text-lg">Preferences</h3>
+                    <h3 id="preferences" className="py-2 text-lg text-[#5938DD]">Preferences</h3>
                     <h3 className="pb-2 pt-4 text-sm">Font</h3>
                     <p className="opacity-[0.6]">Font size</p>
                     <div className="flex items-center gap-4 py-2">
@@ -132,25 +101,25 @@ function Settings() {
                 {
                     user ?
                     <div className="py-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.08]">
-                        <h3 id="account" className="py-2 opacity-[0.6] text-lg">Account</h3>
+                        <h3 id="account" className="py-2 text-lg text-[#5938DD]">Account</h3>
                         <h3 className="pb-2 pt-4 text-sm">Profile</h3>
                         <p className="opacity-[0.6]">Update your photo and personal details</p>
                         <div className="py-6">
                             <div className="md:flex items-center">
+                                <p className="md:w-[23%] md:mb-0 mb-2">Profile Image: </p>
+                                <div className="h-[60px] w-[60px] rounded-full bg-slate-200 dark:bg-slate-200/[0.04]"></div>
+                            </div>
+                        </div>
+                        <div className="py-6">
+                            <div className="md:flex items-center">
                                 <p className="md:w-[30%] md:mb-0 mb-2">Username: </p>
-                                <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full outline-none focus:border-2 focus:border-green" type="text" placeholder="Change your username" defaultValue={user?.displayName} />
+                                <input className="p-[12px] rounded border border-gray-600/[0.4] bg-transparent w-full outline-none focus:border-2 focus:border-green" type="text" placeholder="Change your username" defaultValue={user?.displayName} />
                             </div>
                         </div>
                         <div className="py-6">
                             <div className="md:flex items-center">
                                 <p className="md:w-[30%] md:mb-0 mb-2">Email: </p>
-                                <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full outline-none focus:border-2 focus:border-green" type="email" placeholder="Change your email" defaultValue={user?.email} />
-                            </div>
-                        </div>
-                        <div className="py-6">
-                            <div className="md:flex items-center">
-                                <p className="md:w-[23%] md:mb-0 mb-2">Your photo: </p>
-                                <div className="h-[60px] w-[60px] rounded bg-slate-100 dark:bg-slate-200/[0.04]"></div>
+                                <input className="p-[12px] rounded border border-gray-600/[0.4] bg-transparent w-full outline-none focus:border-2 focus:border-green" type="email" placeholder="Change your email" defaultValue={user?.email} />
                             </div>
                         </div>
                     </div>
