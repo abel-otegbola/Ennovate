@@ -4,7 +4,7 @@ interface buttonProps {
 }
 
 function Button({ text, link }: buttonProps) {
-    const innerStyle: string = "px-[40px] py-[15px] bg-[#5938DD] rounded hover:bg-[#000] text-white"
+    const innerStyle: string = "px-8 py-[10px] bg-[#5938DD] rounded hover:bg-[#000] text-white"
     
     return (
         <a href={link} className={innerStyle}>
