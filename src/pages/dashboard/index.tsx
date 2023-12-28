@@ -14,7 +14,7 @@ function Dashboard() {
     else {
         return (
         <>
-            <div className="md:flex md:px-[9%] px-[3%]">
+            <div className="md:flex md:px-[8%] px-[3%]">
                 <LeftBar />
                 <div className="xl:w-[80%] lg:w-[75%] md:w-[60%] ">
                     <Routes>

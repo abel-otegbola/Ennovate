@@ -1,13 +1,15 @@
 import { useContext, useEffect, useState } from "react"
 import Button from "../../../components/button/button"
-import { database } from "../../../firebase/firebase"
+import { app, database } from "../../../firebase/firebase"
 import { onValue, ref } from "firebase/database"
 import { AuthContext } from "../../../customHooks/useAuth"
+import { getAuth, signOut } from "firebase/auth";
 
 function DashboardHome() {
     const [active, setActive] = useState("Wind Power")
     const [projects, setProjects] = useState<any>([])
     const { user } = useContext(AuthContext);
+    const auth = getAuth(app)
 
     useEffect(() => {
         const projectsRef = ref(database, 'projects/');
@@ -23,9 +25,9 @@ function DashboardHome() {
 
     return (
         <div className="p-[3%] w-full">
-            <div className="">
-                <h1 className="text-[18px] text-purple">Welcome: {user?.displayName || user?.email}</h1>
-                
+            <div className="flex items-center justify-between">
+                <h1 className="text-[16px]">Welcome: {user?.displayName || user?.email}</h1>
+                <button className="border border-gray-500/[0.5] p-4 py-[6px] rounded" aria-label="logout" onClick={() => signOut(auth)} >Logout</button>
             </div>
 
             <h2 className="mt-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.1] text-[14px]">MY PROJECTS</h2>

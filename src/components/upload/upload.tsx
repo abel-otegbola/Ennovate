@@ -84,7 +84,7 @@ function Upload({ images, setImages, accept, id }: any) {
 
     return (
         <div className="flex flex-1">
-                <div className="p-4 rounded flex">
+                <div className="p-4 rounded">
                     <div>
                         <img src={img.url} alt={img.name} className={`max-w-[200px] w-full rounded object-cover`} />
                     </div>
@@ -97,18 +97,18 @@ function Upload({ images, setImages, accept, id }: any) {
                                         {
                                             uploadStatus.status === "finished" ? "" :
                                             <div onClick={uploadImg}>
-                                                <button className="p-[10px] px-6 rounded border border-gray-200/[0.2]">Upload</button>
+                                                <button className="p-[6px] px-4 rounded border border-gray-500/[0.2]">Upload</button>
                                             </div>
                                         }
-                                        <button className="p-[10px] px-6 rounded border border-red-200/[0.2]" onClick={() => { setImg({id , name: "", url: "", type: ""}); setStatus("not loaded"); }}>Delete</button>
+                                        <button className="p-[2px] px-4 rounded border border-red-500/[0.6]" onClick={() => { setImg({id , name: "", url: "", type: ""}); setStatus("not loaded"); }}>Delete</button>
                                     </div>
                                 : status === "uploaded" ?
                                     <div className="flex gap-2">
-                                        <button className="p-[10px] px-6 rounded border border-red-200/[0.2]" onClick={() => { setStatus("not loaded"); deleteImg() }}>Delete</button>
+                                        <button className="p-[2px] px-4 rounded border border-red-500/[0.6]" onClick={() => { setStatus("not loaded"); deleteImg() }}>Delete</button>
                                     </div>
                                 :
                                 <label htmlFor={`file${id}`}>
-                                    <span className="p-[10px] px-6 rounded border border-gray-200/[0.2]">Choose image</span>
+                                    <span className="p-[6px] px-4 text-[10px] rounded border border-gray-500/[0.2] cursor-pointer">Choose image</span>
                                     <input className="bg-gray-50 dark:bg-gray-900 hidden" accept={accept} id={`file${id}`} type="file" onChange={(e) => { previewFile(e); setStatus("preview") }} />
                                 </label>
                             }

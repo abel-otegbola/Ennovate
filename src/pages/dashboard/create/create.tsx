@@ -68,27 +68,27 @@ function Create() {
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
                         <div className="flex flex-col gap-2">
                             <p className="md:w-[30%] md:mb-0 mb-2">Title: </p>
-                            <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full focus:outline outline-purple outline-offset-1" onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Add a title" />
+                            <input className="p-[10px] rounded border border-gray-500/[0.5] bg-transparent w-full focus:outline outline-purple outline-offset-1" onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Add a title" />
                         </div>
                     </div>
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
                         <div className="flex flex-col gap-2">
                             <p className="md:w-[30%] md:mb-0 mb-2">Description: </p>
-                            <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full focus:outline outline-purple outline-offset-1" onChange={(e) => setDescription(e.target.value)} type="text" placeholder="Add a description"/>
+                            <input className="p-[10px] rounded border border-gray-500/[0.5] bg-transparent w-full focus:outline outline-purple outline-offset-1" onChange={(e) => setDescription(e.target.value)} type="text" placeholder="Add a description"/>
                         </div>
                     </div>
                     
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
                         <div className="flex flex-col gap-2">
                             <p className="md:w-[30%] md:mb-0 mb-2">Category: </p>
-                            <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full focus:outline outline-purple outline-offset-1" onChange={(e) => setCategory(e.target.value)} type="text" placeholder="Add a category"/>
+                            <input className="p-[10px] rounded border border-gray-500/[0.5] bg-transparent w-full focus:outline outline-purple outline-offset-1" onChange={(e) => setCategory(e.target.value)} type="text" placeholder="Add a category"/>
                         </div>
                     </div>
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
                         <div className="flex flex-col gap-2">
                             <p className="md:w-[30%] md:mb-0 mb-2">Equipments: </p>
-                            <div className="flex items-center w-full border border-gray-200/[0.5] rounded p-1 pr-2 ">
-                                <input className="p-[12px] rounded bg-transparent border-none flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setEquipment(e.target.value)} type="text" placeholder="Input an equipment"/>
+                            <div className="flex items-center w-full border border-gray-500/[0.5] rounded p-1 pr-2 ">
+                                <input className="p-[10px] rounded bg-transparent border-none flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setEquipment(e.target.value)} type="text" placeholder="Input an equipment"/>
                                 <div onClick={() => addEquipment()}>
                                     <Button text={"Add"} link={"#"}/>
                                 </div>
@@ -110,8 +110,8 @@ function Create() {
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
                         <div className="md:flex">
                             <p className="md:w-[30%] md:mb-0 py-2">Procedures: </p>
-                            <div className="flex items-center w-full border border-gray-200/[0.5] rounded p-1 pr-2 ">
-                                <textarea className="p-[12px] rounded bg-transparent min-h-[200px] border-none flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setProcedures(e.target.value)} placeholder="Highlight the project procedures"></textarea>
+                            <div className="flex items-center w-full border border-gray-500/[0.5] rounded p-1 pr-2 ">
+                                <textarea className="p-[10px] rounded bg-transparent min-h-[200px] border-none flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setProcedures(e.target.value)} placeholder="Highlight the project procedures"></textarea>
                             </div>
                         </div>
                     </div>
@@ -120,27 +120,27 @@ function Create() {
                             <p className="md:w-[23%] md:mb-0 py-2">Image: </p>
                             <div className="md:w-[77%] w-full">
                                 { images.map((image: any, i: number) => (
-                                    <div key={i} className="py-2 w-full border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.03]">
-                                        <div className="flex items-center justify-between ">
+                                    <div key={i} className="py-2 w-full rounded bg-gray-100 dark:bg-gray-100/[0.03] my-1">
+                                        <div className="flex items-center">
                                             <Upload id={image.id} accept={"image/*"} images={images} setImages={setImages} />
                                             <FaTrashAlt className="text-3xl text-red-500 p-2" onClick={() => deleteImage(image.id)} />
                                         </div>
                                     </div>
                                 )) }
-                                <button className="m-3 p-6 py-[10px] rounded border border-gray-200/[0.3]" onClick={() => handleImages()}>Add new image</button>
+                                <button className="m-3 p-6 py-[10px] rounded border border-gray-500/[0.3]" onClick={() => handleImages()}>Add new image</button>
                             </div>
                         </div>
                     </div>
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
                         <div className="md:flex">
                             <p className="md:w-[23%] md:mb-0 py-2">Video: </p>
-                            <input className="p-[12px] w-full rounded bg-transparent border border-gray-200/[0.4] flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setVideo(e.target.value)} placeholder="Enter video link"/>                       
+                            <input className="p-[10px] w-full rounded bg-transparent border border-gray-500/[0.4] flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setVideo(e.target.value)} placeholder="Enter video link"/>                       
                         </div>
                     </div>
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
                         <div className="md:flex">
                             <p className="md:w-[23%] md:mb-0 py-2">Other Links: </p>
-                            <textarea className="p-[12px] rounded bg-transparent min-h-[200px] w-full border border-gray-200/[0.4] flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setLinks(e.target.value)}></textarea>
+                            <textarea className="p-[10px] rounded bg-transparent min-h-[200px] w-full border border-gray-500/[0.4] flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setLinks(e.target.value)}></textarea>
                         </div>
                     </div>
 

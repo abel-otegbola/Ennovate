@@ -17,7 +17,7 @@ function Project() {
     const [openChat, setOpenChat] = useState(false)
     const [active, setActive] = useState("Appearance")
     const [searchParams] = useSearchParams()
-    const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], img: {name: "", url: ""}, links: "", procedures: "", user: "" })
+    const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], images: [{name: "", url: ""}], links: "", procedures: "", user: "" })
     
     const generalLinks: Links = [
         { id: 0, label: "Description", icon: <FiInfo />, link: "#description" },
@@ -91,7 +91,7 @@ function Project() {
                         </div>
                     </div>
                     <div className={`flex justify-center items-center w-full py-10 md:h-[400px] h-[350px] cursor-pointer rounded border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]`}>
-                        <img src={project.img?.url} className="w-full h-full object-cover" />
+                        <img src={project.images[0].url} className="w-full h-full object-cover" />
                     </div>
                     <div id="description" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="text-lg py-2">Description</h1>
