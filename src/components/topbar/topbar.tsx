@@ -39,7 +39,7 @@ function Topbar() {
                 </a>
 
                 <ul className="md:flex gap-2 items-center hidden">
-                    <li><button className="border-none"><a href="/create" className={`flex gap-2 items-center px-4 py-1 rounded-full ${pathname === "/create" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiPenTool className="text-[16px]"/> Create</a></button></li>
+                    <li><button className="border-none"><a href="/dashboard/create" className={`flex gap-2 items-center px-4 py-1 rounded-full ${pathname === "/dashboard/create" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiPenTool className="text-[16px]"/> Create</a></button></li>
                     <li><button className="border-none"><a href="/explore" className={`flex gap-2 items-center px-4 py-1 rounded-full ${pathname === "/explore" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiGlobe className="text-[16px]"/> Explore</a></button></li>
                 </ul>
             </div>

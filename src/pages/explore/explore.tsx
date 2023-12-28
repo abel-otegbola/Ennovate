@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import ProjectGrid from "../../../components/projectGrid/projectGrid"
-import { database } from "../../../firebase/firebase"
+import ProjectGrid from "../../components/projectGrid/projectGrid"
+import { database } from "../../firebase/firebase"
 import { onValue, ref } from "firebase/database"
 
 interface Category {
@@ -8,7 +8,7 @@ interface Category {
 }
 interface Categories extends Array<Category>{}
 
-function Projects() {
+function Explore() {
     const [active, setActive] = useState("solar")
     const [projects, setProjects] = useState<any>([])
 
@@ -36,9 +36,9 @@ function Projects() {
     }, [])
 
     return (
-        <div className="p-[3%] w-full">
-            <h1 className="px-2 text-lg py-2">Renewable Energy Sources</h1>
-            <div className="w-full flex gap-4 border border-transparent border-y-gray-200 dark:border-y-gray-100/[0.1] bg-white dark:bg-slate-100/[0.01] p-2 my-4 overflow-x-auto scrollbar">
+        <div className="md:px-[9%] p-[3%] w-full">
+            <h1 className="px-2 text-lg py-2 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.1]">Renewable Energy Sources</h1>
+            <div className="w-full flex gap-4 p-2 my-4 overflow-x-auto scrollbar">
                 {
                     categories.map(category => {
                         return (
@@ -66,4 +66,4 @@ function Projects() {
     )
 }
 
-export default Projects;
+export default Explore;

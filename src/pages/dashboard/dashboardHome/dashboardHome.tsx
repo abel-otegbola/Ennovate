@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Button from "../../../components/button/button"
 import { database } from "../../../firebase/firebase"
 import { onValue, ref } from "firebase/database"
+import { AuthContext } from "../../../customHooks/useAuth"
 
 function DashboardHome() {
     const [active, setActive] = useState("Wind Power")
     const [projects, setProjects] = useState<any>([])
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         const projectsRef = ref(database, 'projects/');
@@ -21,14 +23,23 @@ function DashboardHome() {
 
     return (
         <div className="p-[3%] w-full">
-            <div className="flex flex-wrap gap-6 justify-between">
-                <h1 className="px-2 text-lg">Explore Newest Renewable Energy Projects</h1>
-                <div className="ml-2">
-                    <Button text={"Create New Project"} link={"/dashboard/create"} />
+            <div className="">
+                <h1 className="text-[18px] text-purple">Welcome: {user?.displayName || user?.email}</h1>
+                
+            </div>
+
+            <h2 className="mt-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.1] text-[14px]">MY PROJECTS</h2>
+            <div className="w-full flex gap-4 py-2 my-4 overflow-x-auto scrollbar">
+                <div className="flex flex-col items-center justify-center h-[200px] w-[250px] rounded-[10px] border border-gray-500/[0.1] bg-gray-300/[0.07]">
+                    <p>You haven't created any project</p>
+                    <div className="mt-4">
+                        <Button text={"Create"} link={"/dashboard/create"} />
+                    </div>
                 </div>
             </div>
-            
-            <div className="w-full flex gap-4 border border-transparent border-y-gray-200 dark:border-y-gray-100/[0.1] bg-white dark:bg-slate-100/[0.01] p-2 my-4 overflow-x-auto scrollbar">
+            <h2 className="mt-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.1] text-[14px]">FEATURED</h2>
+
+            <div className="w-full min-h-[250px] flex gap-4 py-2 my-4 overflow-x-auto scrollbar">
                 {
                     projects.map((project: any) => {
                         return (
@@ -41,12 +52,6 @@ function DashboardHome() {
                         )
                     })
                 }
-            </div>
-            
-            
-            <h1 className="px-2 text-lg mt-8 py-2">Trending Renewable Energy Projects</h1>
-            <div className="py-2">
-                
             </div>
 
         </div>

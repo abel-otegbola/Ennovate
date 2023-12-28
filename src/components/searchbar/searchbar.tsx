@@ -1,5 +1,6 @@
 import { FaSearch } from "react-icons/fa";
 
+
 function Searchbar() {
     return (
         <form className="w-full text-[12px] gap-1 flex p-[2px] border border-gray-200 dark:border-slate-100/[0.09] rounded-full">

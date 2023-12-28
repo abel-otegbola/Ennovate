@@ -63,87 +63,128 @@ function Create() {
             </div> : ""
             }
             <h1 className="px-2 text-lg py-2">Create new project</h1>
-            <div className="py-8 px-2 border border-transparent border-y-gray-300/[0.2]">
-                <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
-                    <div className="md:flex items-center">
-                        <p className="md:w-[30%] md:mb-0 mb-2">Title: </p>
-                        <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full outline-none focus:border-2 focus:border-green" onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Add a title" />
+            <div className="grid md:grid-cols-2 py-8 px-2">
+                <div className="md:pr-[8%]">
+                    <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
+                        <div className="flex flex-col gap-2">
+                            <p className="md:w-[30%] md:mb-0 mb-2">Title: </p>
+                            <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full focus:outline outline-purple outline-offset-1" onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Add a title" />
+                        </div>
                     </div>
-                </div>
-                <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
-                    <div className="md:flex items-center">
-                        <p className="md:w-[30%] md:mb-0 mb-2">Category: </p>
-                        <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full outline-none focus:border-2 focus:border-green" onChange={(e) => setCategory(e.target.value)} type="text" placeholder="Add a category"/>
+                    <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
+                        <div className="flex flex-col gap-2">
+                            <p className="md:w-[30%] md:mb-0 mb-2">Description: </p>
+                            <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full focus:outline outline-purple outline-offset-1" onChange={(e) => setDescription(e.target.value)} type="text" placeholder="Add a description"/>
+                        </div>
                     </div>
-                </div>
-                <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
-                    <div className="md:flex items-center">
-                        <p className="md:w-[30%] md:mb-0 mb-2">Description: </p>
-                        <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full outline-none focus:border-2 focus:border-green" onChange={(e) => setDescription(e.target.value)} type="text" placeholder="Add a description"/>
+                    
+                    <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
+                        <div className="flex flex-col gap-2">
+                            <p className="md:w-[30%] md:mb-0 mb-2">Category: </p>
+                            <input className="p-[12px] rounded border border-gray-200/[0.5] bg-transparent w-full focus:outline outline-purple outline-offset-1" onChange={(e) => setCategory(e.target.value)} type="text" placeholder="Add a category"/>
+                        </div>
                     </div>
-                </div>
-                <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
-                    <div className="md:flex items-center">
-                        <p className="md:w-[30%] md:mb-0 mb-2">Equipments: </p>
-                        <div className="flex items-center w-full border border-gray-200/[0.5] rounded p-1 pr-2 ">
-                            <input className="p-[12px] rounded bg-transparent border-none flex-1 outline-none focus:border-2 focus:border-green" onChange={(e) => setEquipment(e.target.value)} type="text" placeholder="Input an equipment"/>
-                            <div onClick={() => addEquipment()}>
-                                <Button text={"Add"} link={"#"}/>
+                    <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
+                        <div className="flex flex-col gap-2">
+                            <p className="md:w-[30%] md:mb-0 mb-2">Equipments: </p>
+                            <div className="flex items-center w-full border border-gray-200/[0.5] rounded p-1 pr-2 ">
+                                <input className="p-[12px] rounded bg-transparent border-none flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setEquipment(e.target.value)} type="text" placeholder="Input an equipment"/>
+                                <div onClick={() => addEquipment()}>
+                                    <Button text={"Add"} link={"#"}/>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex gap-2 flex-wrap md:ml-[24%] my-2">
+                            {
+                                equipments.map((item, i) => {
+                                    return (
+                                        <p key={i} className="flex items-center gap-6 p-2 bg-gray-100/[0.2] rounded">
+                                            {item}
+                                            <span onClick={() => deleteEquipment(item)}><FaTimesCircle /></span>
+                                        </p>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                    <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
+                        <div className="md:flex">
+                            <p className="md:w-[30%] md:mb-0 py-2">Procedures: </p>
+                            <div className="flex items-center w-full border border-gray-200/[0.5] rounded p-1 pr-2 ">
+                                <textarea className="p-[12px] rounded bg-transparent min-h-[200px] border-none flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setProcedures(e.target.value)} placeholder="Highlight the project procedures"></textarea>
                             </div>
                         </div>
                     </div>
-                    <div className="flex gap-2 flex-wrap md:ml-[24%] my-2">
-                        {
-                            equipments.map((item, i) => {
-                                return (
-                                    <p key={i} className="flex items-center gap-6 p-2 bg-gray-100/[0.2] rounded">
-                                        {item}
-                                        <span onClick={() => deleteEquipment(item)}><FaTimesCircle /></span>
-                                    </p>
-                                )
-                            })
-                        }
-                    </div>
-                </div>
-                <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
-                    <div className="md:flex">
-                        <p className="md:w-[30%] md:mb-0 py-2">Procedures: </p>
-                        <div className="flex items-center w-full border border-gray-200/[0.5] rounded p-1 pr-2 ">
-                            <textarea className="p-[12px] rounded bg-transparent min-h-[200px] border-none flex-1 outline-none focus:border-2 focus:border-green" onChange={(e) => setProcedures(e.target.value)} placeholder="Highlight the project procedures"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
-                    <div className="md:flex flex-wrap items-start">
-                        <p className="md:w-[23%] md:mb-0 py-2">Image: </p>
-                        <div className="md:w-[77%] w-full">
-                            { images.map((image: any, i: number) => (
-                                <div key={i} className="py-2 w-full border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.03]">
-                                    <div className="flex items-center justify-between ">
-                                        <Upload id={image.id} accept={"image/*"} images={images} setImages={setImages} />
-                                        <FaTrashAlt className="text-3xl text-red-500 p-2" onClick={() => deleteImage(image.id)} />
+                    <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
+                        <div className="md:flex flex-wrap items-start">
+                            <p className="md:w-[23%] md:mb-0 py-2">Image: </p>
+                            <div className="md:w-[77%] w-full">
+                                { images.map((image: any, i: number) => (
+                                    <div key={i} className="py-2 w-full border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.03]">
+                                        <div className="flex items-center justify-between ">
+                                            <Upload id={image.id} accept={"image/*"} images={images} setImages={setImages} />
+                                            <FaTrashAlt className="text-3xl text-red-500 p-2" onClick={() => deleteImage(image.id)} />
+                                        </div>
                                     </div>
-                                </div>
-                            )) }
-                            <button className="m-3 p-6 py-[10px] rounded border border-gray-200/[0.3]" onClick={() => handleImages()}>Add new image</button>
+                                )) }
+                                <button className="m-3 p-6 py-[10px] rounded border border-gray-200/[0.3]" onClick={() => handleImages()}>Add new image</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
-                    <div className="md:flex">
-                        <p className="md:w-[23%] md:mb-0 py-2">Video: </p>
-                        <input className="p-[12px] w-full rounded bg-transparent border border-gray-200/[0.4] flex-1 outline-none focus:border-2 focus:border-green" onChange={(e) => setVideo(e.target.value)} placeholder="Enter video link"/>                       
+                    <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
+                        <div className="md:flex">
+                            <p className="md:w-[23%] md:mb-0 py-2">Video: </p>
+                            <input className="p-[12px] w-full rounded bg-transparent border border-gray-200/[0.4] flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setVideo(e.target.value)} placeholder="Enter video link"/>                       
+                        </div>
                     </div>
-                </div>
-                <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
-                    <div className="md:flex">
-                        <p className="md:w-[23%] md:mb-0 py-2">Other Links: </p>
-                        <textarea className="p-[12px] rounded bg-transparent min-h-[200px] w-full border border-gray-200/[0.4] flex-1 outline-none focus:border-2 focus:border-green" onChange={(e) => setLinks(e.target.value)}></textarea>
+                    <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
+                        <div className="md:flex">
+                            <p className="md:w-[23%] md:mb-0 py-2">Other Links: </p>
+                            <textarea className="p-[12px] rounded bg-transparent min-h-[200px] w-full border border-gray-200/[0.4] flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setLinks(e.target.value)}></textarea>
+                        </div>
                     </div>
+
+                    <div onClick={() => submitProject()} className="py-8">
+                        <Button text={"Publish Project"} link={"#"} />
+                    </div>
+
                 </div>
 
-                <div onClick={() => submitProject()} className="py-8">
-                    <Button text={"Publish Project"} link={"#"} />
+                <div>
+                <div className="p-[5%] flex-1 border border-transparent border-l-gray-200 dark:border-l-slate-100/[0.09]">
+                    <h2 className="font-bold">PREVIEW</h2>
+                    <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
+                        <h1 className="md:text-2xl text-lg font-bold py-2">{title}</h1>
+                        <p>By: {user.displayName}</p>
+                        <div className="flex items-center gap-4">
+                            <p>{new Date().getFullYear()}</p>
+                            <p>{category}</p>
+                        </div>
+                    </div>
+                    <div className={`flex justify-center items-center w-full py-10 md:h-[200px] h-[150px] cursor-pointer rounded border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]`}>
+                        {/* <img src={img?.url} className="w-full h-full object-cover" /> */}
+                    </div>
+                    <div id="description" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
+                        <h1 className="text-lg py-2">Description</h1>
+                        <p>{description}</p>
+                    </div>
+                    <div id="equipments" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
+                        <h1 className="text-lg py-2">Equipments</h1>
+                        {equipments.map((equipment, i) => {
+                            return (
+                                <p key={i} className="py-1 flex gap-2"><span>{i + 1}.</span>{equipment}</p>
+                            )
+                        })}
+                    </div>
+                    <div id="procedures" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
+                        <h1 className="text-lg py-2">Procedures</h1>
+                        <p>{procedures}</p>
+                    </div>
+                    <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
+                        <h1 className="text-lg py-2">Links</h1>
+                        <p>{links}</p>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>

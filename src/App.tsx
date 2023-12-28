@@ -11,6 +11,7 @@ import { AuthProvider } from './customHooks/useAuth'
 import Project from './pages/project/project'
 import TermsConditions from './pages/t&c/t&c'
 import PrivacyPolicy from './pages/privacypolicy/privacypolicy'
+import Explore from './pages/explore/explore'
 
 function App() {
   useEffect(() => {
@@ -40,6 +41,7 @@ function App() {
             <Route path='/settings' element={<Settings />} />
             <Route path='/login' element={<Login />} />
             <Route path='/project' element={<Project />} />
+            <Route path='/explore' element={<Explore />} />
             <Route path='/terms&Conditions' element={<TermsConditions />} />
             <Route path='/privacypolicy' element={<PrivacyPolicy />} />
             <Route path={"/finishSignup"} element={<FinishSignup />} />
