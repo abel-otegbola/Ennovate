@@ -30,7 +30,7 @@ function DashboardHome() {
                 <button className="border border-gray-500/[0.5] p-4 py-[6px] rounded" aria-label="logout" onClick={() => signOut(auth)} >Logout</button>
             </div>
 
-            <h2 className="mt-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.1] text-[14px]">MY PROJECTS</h2>
+            <h2 className="mt-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.1] text-[14px] text-purple">MY PROJECTS</h2>
             <div className="w-full flex flex-wrap gap-4 py-2 my-4 scrollbar">
                 {
                     projects?.filter((item: any) => item.user === user?.email).map((project: any) => {
@@ -39,7 +39,7 @@ function DashboardHome() {
                         )
                     })
                 }
-                <div className="flex flex-col items-center justify-center w-[280px] min-h-[300px] rounded-[10px] border border-gray-500/[0.1] bg-gray-300/[0.07]">
+                <div className="flex flex-col items-center justify-center w-[300px] min-h-[300px] rounded-[10px] border border-gray-700/[0.1] bg-gray-300/[0.07]">
                     {
                         projects.filter((item: any) => item.user !== user?.email).length === 0 ? <p>You haven't created any project</p> : ""
                     }
@@ -48,7 +48,7 @@ function DashboardHome() {
                     </div>
                 </div>
             </div>
-            <h2 className="mt-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.1] text-[14px]">FEATURED</h2>
+            <h2 className="mt-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.1] text-[14px] text-purple">FEATURED</h2>
 
             <div className="w-full min-h-[250px] flex gap-4 py-2 my-4 overflow-x-auto scrollbar">
                 {

@@ -16,7 +16,7 @@ function Dashboard() {
         <>
             <div className="md:flex md:px-[8%] px-[3%]">
                 <LeftBar />
-                <div className="xl:w-[80%] lg:w-[75%] md:w-[60%] ">
+                <div className="xl:w-[80%] lg:w-[75%] md:w-[60%] w-full">
                     <Routes>
                         <Route path="/" element={<Navigate to={"/dashboard/home"} />} />
                         <Route path="/home" element={<DashboardHome />} />

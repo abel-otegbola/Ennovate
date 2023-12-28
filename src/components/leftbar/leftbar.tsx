@@ -29,7 +29,7 @@ function LeftBar() {
     return (
         <>
         <button className="md:hidden fixed z-30 top-0 left-0 p-5 text-lg opacity-[0.6] " onClick={() => setOpen(!open)}><FaBars /></button>
-        <div className={`xl:w-[20%] lg:w-[25%] md:w-[30%] pb-[10px] h-screen md:sticky fixed top-[60px] p-2 left-0 bg-white dark:bg-black border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px]": "w-0"}`}>
+        <div className={`xl:w-[20%] lg:w-[25%] md:w-[30%] pb-[10px] h-screen md:sticky fixed top-[60px] left-0 md:p-2 bg-white dark:bg-black border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px] p-2": "w-0"}`}>
             <div className="flex items-center my-2 gap-4">
                 <div className="flex justify-center items-center text-[18px] py-2 px-4 rounded-full bg-slate-200 dark:bg-slate-200/[0.04]">
                     {user?.email.charAt(0).toUpperCase()}

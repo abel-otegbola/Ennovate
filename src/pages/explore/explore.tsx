@@ -37,7 +37,7 @@ function Explore() {
 
     return (
         <div className="md:px-[9%] p-[3%] w-full">
-            <h1 className="px-2 text-lg py-2 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.1]">Renewable Energy Sources</h1>
+            <h1 className="px-2 text-[16px] py-2 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.1] uppercase">Renewable Energy Sources</h1>
             <div className="w-full flex gap-4 p-2 my-4 overflow-x-auto scrollbar">
                 {
                     categories.map(category => {
@@ -51,8 +51,8 @@ function Explore() {
                 }
             </div>
             
-            <h3 className="px-2 text-transparent bg-clip-text bg-gradient-to-b from-purple to-green mt-12 capitalized">{active} Energy</h3>
-            <div className="py-2">
+            <h3 className="px-2 mt-12 text-[16px] uppercase border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.1]">{active}</h3>
+            <div className="flex gap-4 flex-wrap py-4">
                 {
                     projects.filter((item: any) => item.data.category === active).map((project: any) => {
                         return (

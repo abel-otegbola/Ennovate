@@ -43,7 +43,7 @@ function Home()  {
                 <div className="grid lg:grid-cols-4 grid-cols-2 md:gap-8 gap-2 overflow-hidden my-[60px] px-[3%]">
                     {
                         [boy, innov, team, solar].map((img, i:number) => (
-                            <div key={i} style={{ backgroundImage: `url("${img}")` }} className="flex bg-cover items-center justify-center md:h-[250px] h-[200px] w-full rounded-[10px] border border-gray-500/[0.1] bg-gray-300/[0.07]">
+                            <div key={i} style={{ backgroundImage: `url("${img}")` }} className="flex bg-cover bg-center items-center justify-center md:h-[250px] h-[200px] w-full rounded-[10px] border border-gray-500/[0.1] bg-gray-300/[0.07]">
                                 
                             </div>
                         ))

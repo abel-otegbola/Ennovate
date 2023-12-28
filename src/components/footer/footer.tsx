@@ -4,7 +4,7 @@ function Footer() {
             <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-[30px] py-[30px] md:px-[9%] px-[3%] border border-transparent border-t-gray-200/[0.09]">
                 <ul className="w-full">
                     <h2 className="py-2 text-lg font-bold">Products</h2>
-                    <li className="flex w-full"><a href="/dashboard/projects" className="py-[5px] w-full hover:text-green">Projects</a></li>
+                    <li className="flex w-full"><a href="/explore" className="py-[5px] w-full hover:text-green">Projects</a></li>
                     <li className="flex w-full"><a href="https://sdgs.un.org" className="py-[5px] w-full hover:text-green">Learn</a></li>
                     <li className="flex w-full"><a href="/dashboard/create" className="py-[5px] w-full hover:text-green">Create</a></li>
                 </ul>
