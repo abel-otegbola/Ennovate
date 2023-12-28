@@ -55,7 +55,7 @@ function Home()  {
                 <h2 className="md:text-2xl text-lg font-bold md:text-center py-4">Explore Amazing Projects</h2>
                 <p className="md:text-center mb-6">Transforming the Future with Sustainable Energy Solutions</p>
 
-                <div className="w-full flex gap-4 py-2 my-4 overflow-x-auto scrollbar">
+                <div className="w-full flex gap-4 py-2 pb-8 my-4 overflow-x-auto scrollbar">
                     {
                         data?.map((project:any) => {
                             return (

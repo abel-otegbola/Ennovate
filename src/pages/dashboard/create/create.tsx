@@ -49,7 +49,7 @@ function Create() {
     }
 
     return (
-        <div className="p-[3%] relative bg-white dark:bg-black"> 
+        <div className="md:p-[3%] relative bg-white dark:bg-black"> 
             {    
             error ? 
             <div className="absolute bg-white/[0.8] dark:bg-black/[0.9] backdrop-blur-sm top-0 left-0 w-full h-full flex items-center justify-center">
@@ -151,8 +151,8 @@ function Create() {
                 </div>
 
                 <div>
-                <div className="p-[5%] flex-1 border border-transparent border-l-gray-200 dark:border-l-slate-100/[0.09]">
-                    <h2 className="font-bold">PREVIEW</h2>
+                <div className="p-[5%] flex-1 bg-gray-100 dark:bg-gray-100/[0.05] border border-gray-200 dark:border-slate-100/[0.09]">
+                    <h2 className="font-bold uppercase">Preview</h2>
                     <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="md:text-2xl text-lg font-bold py-2">{title}</h1>
                         <p>By: {user.displayName}</p>
@@ -165,11 +165,11 @@ function Create() {
                         {/* <img src={img?.url} className="w-full h-full object-cover" /> */}
                     </div>
                     <div id="description" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
-                        <h1 className="text-lg py-2">Description</h1>
+                        <h1 className="font-semibold uppercase">Description</h1>
                         <p>{description}</p>
                     </div>
                     <div id="equipments" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
-                        <h1 className="text-lg py-2">Equipments</h1>
+                        <h1 className="font-semibold uppercase">Equipments</h1>
                         {equipments.map((equipment, i) => {
                             return (
                                 <p key={i} className="py-1 flex gap-2"><span>{i + 1}.</span>{equipment}</p>
@@ -177,11 +177,11 @@ function Create() {
                         })}
                     </div>
                     <div id="procedures" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
-                        <h1 className="text-lg py-2">Procedures</h1>
+                        <h1 className="font-semibold uppercase">Procedures</h1>
                         <p>{procedures}</p>
                     </div>
                     <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
-                        <h1 className="text-lg py-2">Links</h1>
+                        <h1 className="font-semibold uppercase">Links</h1>
                         <p>{links}</p>
                     </div>
                 </div>

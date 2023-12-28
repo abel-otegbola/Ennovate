@@ -24,7 +24,7 @@ function DashboardHome() {
     }, [])
 
     return (
-        <div className="p-[3%] w-full">
+        <div className="md:px-[3%] py-[40px] w-full">
             <div className="flex items-center justify-between">
                 <h1 className="text-[16px]">Welcome: {user?.displayName || user?.email}</h1>
                 <button className="border border-gray-500/[0.5] p-4 py-[6px] rounded" aria-label="logout" onClick={() => signOut(auth)} >Logout</button>

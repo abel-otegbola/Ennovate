@@ -52,12 +52,7 @@ function Project() {
             <div className="md:flex relative bg-white dark:bg-transparent">
                 
                 <div className={`xl:w-[18%] lg:w-[22%] md:w-[27%] h-screen md:sticky fixed top-[60px] left-0 bg-white dark:bg-black border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px]": "w-0"}`}>  
-                    <div className="flex items-center my-2 gap-4 p-4">
-                        <div className="h-[40px] w-[40px] rounded bg-slate-100 dark:bg-slate-200/[0.04]"></div>
-                        <div className="text-[10px]">
-                            <h3></h3>
-                        </div>                    
-                    </div>
+                    
                     {
                         generalLinks.map(link => {
                             if(link.label === "Chats") {
@@ -94,11 +89,11 @@ function Project() {
                         <img src={project.images[0].url} className="w-full h-full object-cover" />
                     </div>
                     <div id="description" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
-                        <h1 className="text-lg py-2">Description</h1>
+                        <h1 className="font-semibold uppercase">Description</h1>
                         <p>{project.description}</p>
                     </div>
                     <div id="equipments" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
-                        <h1 className="text-lg py-2">Equipments</h1>
+                        <h1 className="font-semibold uppercase">Equipments</h1>
                         {project.equipments.map((equipment, i) => {
                             return (
                                 <p key={i} className="py-1 flex gap-2"><span>{i + 1}.</span>{equipment}</p>
@@ -106,11 +101,11 @@ function Project() {
                         })}
                     </div>
                     <div id="procedures" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
-                        <h1 className="text-lg py-2">Procedures</h1>
+                        <h1 className="font-semibold uppercase">Procedures</h1>
                         <p>{project.procedures}</p>
                     </div>
                     <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
-                        <h1 className="text-lg py-2">Links</h1>
+                        <h1 className="font-semibold uppercase">Links</h1>
                         <p>{project.links}</p>
                     </div>
                 </div>

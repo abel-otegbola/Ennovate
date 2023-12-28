@@ -1,6 +1,6 @@
 import { FiLogOut, FiPenTool } from "react-icons/fi";
 import { TbDashboard } from "react-icons/tb";
-import { FaBars } from "react-icons/fa"
+import { FaBars, FaTimes } from "react-icons/fa"
 import { useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../customHooks/useAuth";
@@ -28,10 +28,10 @@ function LeftBar() {
 
     return (
         <>
-        <button className="md:hidden fixed z-30 top-0 left-0 p-5 text-lg opacity-[0.6] " onClick={() => setOpen(!open)}><FaBars /></button>
+        <button className="md:hidden fixed z-30 top-0 left-0 p-4 text-lg opacity-[0.6] " onClick={() => setOpen(!open)}>{open ? <FaTimes /> : <FaBars /> }</button>
         <div className={`xl:w-[20%] lg:w-[25%] md:w-[30%] pb-[10px] h-screen md:sticky fixed top-[60px] left-0 md:p-2 bg-white dark:bg-black border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px] p-2": "w-0"}`}>
-            <div className="flex items-center my-2 gap-4">
-                <div className="flex justify-center items-center text-[18px] py-2 px-4 rounded-full bg-slate-200 dark:bg-slate-200/[0.04]">
+            <div className="flex items-center mb-4 gap-4">
+                <div className="flex justify-center items-center text-[18px] py-1 px-3 rounded-full bg-slate-200 dark:bg-slate-200/[0.04]">
                     {user?.email.charAt(0).toUpperCase()}
                 </div>
                 <div className="text-[10px] leading-[20px]">

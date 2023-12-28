@@ -1,10 +1,9 @@
 import Searchbar from "../searchbar/searchbar";
 import { FiGlobe, FiPenTool, FiSettings, FiTablet, FiUser } from "react-icons/fi";
 import logo from "../../assets/logo.svg"
-import { FaBars, FaTimes, FaUser } from "react-icons/fa";
-import { useContext, useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../customHooks/useAuth";
-import Button from "../button/button";
 import { useLocation } from "react-router-dom";
 
 
@@ -26,6 +25,10 @@ function Topbar() {
         { id: 1, label: "Preferences", icon: <FiUser />, link: "#preferences" },
         { id: 2, label: "Profile", icon: <FiTablet />, link: user ? "#account" : "/login" }
     ]
+
+    useEffect(() => {
+        console.log(user)
+    }, [user])
 
     return (
         <div className="flex items-center justify-between sticky top-0 left-0 w-full bg-white dark:bg-black p-[2px] md:px-[9%] px-[3%] border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.09] z-20">
@@ -52,10 +55,11 @@ function Topbar() {
                     <FiSettings className="text-[25px] p-1 rounded" />
                 </a>
                 {
-                    !user ? <Button text={"Login"} link={"/login"} />
+                    !user ? <a href="/login" className="md:block hidden px-8 py-1 rounded-full border border-purple text-purple">Login</a>
                     : <>
-                        <a href="/dashboard" className="block rounded-full bg-slate-100/[0.5] outline outline-green/[0.1] hover:text-green">
-                            <FaUser className="p-[6px] text-2xl" />
+                        <a href="/dashboard" className="flex items-center justify-center w-[25px] h-[25px] py-0 rounded-full bg-slate-100/[0.5] outline outline-offset-2 outline-green/[0.1] hover:text-green">
+                            { user?.photoURL ? <img src={user?.photoURL} alt="user" className="rounded-full" width={25} height={25} /> : user?.displayName.charAt(0)}
+                            
                         </a>
                     </>
                 }
@@ -83,6 +87,10 @@ function Topbar() {
                                 }
                             </div>
                         : ""
+                    }
+                    {
+                        user ? <li className="w-full"><button className="border-none w-full"><a href="/dashboard" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/dashboard" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiUser className="text-[16px]"/> Dashboard</a></button></li>
+                        : <li className="w-full"><button className="border-none w-full"><a href="/login" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/login" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiUser className="text-[16px]"/> Login</a></button></li>
                     }
                     <li className="w-full"><button className="border-none w-full"><a href="/dashboard/create" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/create" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiPenTool className="text-[16px]"/> Create</a></button></li>
                     <li className="w-full"><button className="border-none w-full"><a href="/explore" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/explore" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiGlobe className="text-[16px]"/> Explore</a></button></li>
