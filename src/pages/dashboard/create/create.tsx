@@ -62,8 +62,8 @@ function Create() {
                 </div>
             </div> : ""
             }
-            <h1 className="px-2 text-lg py-2">Create new project</h1>
-            <div className="grid md:grid-cols-2 py-8 px-2">
+            <h1 className="font-semibold uppercase py-2 mt-6">Create new project</h1>
+            <div className="grid md:grid-cols-2 py-8">
                 <div className="md:pr-[8%]">
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
                         <div className="flex flex-col gap-2">

@@ -45,10 +45,9 @@ function Project() {
 
     return (
         <>
-            <button className="md:hidden fixed z-50 top-0 left-0 p-5 text-lg opacity-[0.6] " onClick={() => setOpen(!open)}>{open ? <FaTimes /> : <FaBars />}</button>
+            <button className="md:hidden fixed z-50 top-0 left-0 p-4 text-lg opacity-[0.6]" onClick={() => setOpen(!open)}>{open ? <FaTimes /> : <FaBars />}</button>
             
-            
-            <div className="md:flex relative bg-white dark:bg-transparent">
+            <div className="md:flex relative md:px-[9%] bg-white dark:bg-transparent">
                 
                 <div className={`xl:w-[18%] lg:w-[22%] md:w-[27%] h-screen md:sticky fixed top-[60px] left-0 bg-white dark:bg-black md:p-2 border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px] p-2": "w-0"}`}>  
                     
