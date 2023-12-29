@@ -51,13 +51,13 @@ function Project() {
             
             <div className="md:flex relative bg-white dark:bg-transparent">
                 
-                <div className={`xl:w-[18%] lg:w-[22%] md:w-[27%] h-screen md:sticky fixed top-[60px] left-0 bg-white dark:bg-black border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px]": "w-0"}`}>  
+                <div className={`xl:w-[18%] lg:w-[22%] md:w-[27%] h-screen md:sticky fixed top-[60px] left-0 bg-white dark:bg-black md:p-2 border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-10 transition-all duration-700 ${open ? " w-[240px] p-2": "w-0"}`}>  
                     
                     {
                         generalLinks.map(link => {
                             if(link.label === "Chats") {
                                 return (
-                                <p key={link.id} onClick={() => {setActive(link.label); setOpen(false); setOpenChat(!openChat)}} className={`flex items-center justify-between w-full p-2 my-[1px] px-4 hover:bg-slate-100 dark:hover:bg-gray-200/[0.07] ${active === link.label ? "bg-slate-100 dark:bg-gray-200/[0.07] border border-transparent border-r-green text-green" : ""}`}>
+                                <p key={link.id} onClick={() => {setActive(link.label); setOpen(false); setOpenChat(!openChat)}} className={`flex items-center justify-between w-full p-1 my-[1px] px-4 hover:bg-purple hover:text-white rounded ${active === link.label ? "bg-purple text-white" : ""}`}>
                                     <span className="w-[30px] text-lg">{link.icon}</span>
                                     <span className="flex-1 p-2 break-normal">{link.label}</span>
                                 </p>
@@ -65,7 +65,7 @@ function Project() {
                             }
                             else {
                                 return (
-                                <a key={link.id} href={link.link} onClick={() => {setActive(link.label); setOpen(false) }} className={`flex items-center justify-between w-full p-2 my-[1px] px-4 hover:bg-slate-100 dark:hover:bg-gray-200/[0.07] ${active === link.label ? "bg-slate-100 dark:bg-gray-200/[0.07] border border-transparent border-r-green text-green" : ""}`}>
+                                <a key={link.id} href={link.link} onClick={() => {setActive(link.label); setOpen(false) }} className={`flex items-center justify-between w-full p-1 my-[1px] px-4 hover:bg-purple hover:text-white rounded ${active === link.label ? "bg-purple text-white" : ""}`}>
                                     <span className="w-[30px] text-lg">{link.icon}</span>
                                     <span className="flex-1 p-2 break-normal">{link.label}</span>
                                 </a>
