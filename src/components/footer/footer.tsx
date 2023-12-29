@@ -23,8 +23,8 @@ function Footer() {
                 <ul className="w-full">
                     <h2 className="py-1 text-lg mb-3 font-bold">Ennovate</h2>
                     <p className="py-1">300 Park Avenue, Lagos, Nigeria</p>
-                    <p className="mt-4 py-1">+234 706 0989 331</p>
-                    <p className="py-1">Support@ennovate.com</p>
+                    <a href="tel:+2347060989331" className="block mt-4 py-1">+2347060989331</a>
+                    <a href="mailto:support@ennovate.com" className="block py-1">Support@ennovate.com</a>
                 </ul>
             </div>
             <div className="bg-gray-900 text-white text-center">

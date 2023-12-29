@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { app } from "../../firebase/firebase";
 import Button from "../../components/button/button";
 import { useNavigate } from "react-router-dom";
+import miniSolar from "../../assets/3d-illus-innov.jpg"
 
 function Login() {
     const [email, setEmail] = useState("")
@@ -61,9 +62,9 @@ function Login() {
     }, [])
 
     return (
-            <div className="w-full flex flex-wrap jutify-between bg-white dark:bg-black items-center md:px-[3%] p-6 py-[5%]">
-                <div className="sm:max-w-[400px] w-full m-auto md:py-0 py-[10%]">
-                    <p className="py-[3%] md:text-[40px] font-bold md:leading-[45px] text-[30px] bg-clip-text text-transparent bg-gradient-to-r from-purple to-green">Welcome!</p>
+            <div className="w-full flex flex-wrap gap-[5%] jutify-between bg-white dark:bg-black items-center md:px-[10%] px-[3%] py-[5%]">
+                <div className="sm:max-w-[400px] md:mx-0 mx-auto w-full md:py-0 py-[10%]">
+                    <p className="py-[3%] text-[20px] uppercase font-semibold md:leading-[45px] bg-clip-text text-transparent bg-gradient-to-r from-purple to-green">Welcome!</p>
                     <p className="pb-6">Login to share your ideas, get insights and join in the projects of making the world a better place.</p>
 
                     <div className="grid grid-cols-1 gap-4 my-8">
@@ -108,8 +109,7 @@ function Login() {
 
                 </div>
                 
-                <div className="p-4 h-[550px] w-[45%] rounded-lg bg-gray-200/[0.09] md:block hidden">
-                    <img className="hidden rounded w-full h-full bg-slate-100/[0.08]" alt="renewable energy sources illustration" />
+                <div style={{ backgroundImage: `url("${miniSolar}")` }} className="bg-cover bg-center backdrop-blur-sm p-4 h-[500px] flex-1 rounded-lg bg-gray-200/[0.09] md:block hidden">
                 </div>
                 
             </div>

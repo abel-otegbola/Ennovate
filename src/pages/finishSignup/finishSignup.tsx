@@ -33,7 +33,7 @@ function FinishSignup() {
                 <p className="my-2">Please provide a username and profile image for your account</p>
                         
                 <label htmlFor="email" className="block py-2 pt-4">Email:</label>
-                <input className="p-[12px] bg-transparent max-w-[300px] outline-none border border-gray-400/[0.3] focus:border-green/[0.5] rounded" id="email" name="email" disabled={email ? true : false} type="email" defaultValue={email ? email : ""} placeholder="Enter your email" onChange={(e) => setEmail(e.target.value)} />
+                <input className="p-[12px] bg-transparent max-w-[300px] outline-none border border-gray-400/[0.3] focus:border-green/[0.5] rounded" id="email" name="email" type="email" defaultValue={email ? email : ""} placeholder="Enter your email" onChange={(e) => setEmail(e.target.value)} />
 
                 <label htmlFor="username" className="block py-2 pt-4">Username:</label>
                 <input className="p-[12px] bg-transparent max-w-[300px] outline-none border border-gray-400/[0.3] focus:border-green/[0.5] rounded" id="username" name="username" type="text" placeholder="Enter your username" onChange={(e) => setEmail(e.target.value)} />

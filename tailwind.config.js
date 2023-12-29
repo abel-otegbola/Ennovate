@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'purple': '#903CFC',
+        'purple': '#5938DD',
         'green': '#18DD96',
         'black': '#101016',
       },

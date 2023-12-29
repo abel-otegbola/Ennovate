@@ -1,15 +1,17 @@
 interface buttonProps {
     text: string,
-    link: string
+    link: string,
 }
 
 function Button({ text, link }: buttonProps) {
-    const innerStyle: string = "px-8 py-[10px] bg-[#5938DD] rounded hover:bg-[#000] text-white"
+    const innerStyle: string = `px-8 py-[10px] rounded bg-purple hover:bg-purple/[0.8] text-white`
     
     return (
-        <a href={link} className={innerStyle}>
-            <span>{text}</span>
-        </a>
+        <button>
+            <a href={link} className={innerStyle}>
+                <span>{text}</span>
+            </a>
+        </button>
     )
 }
 

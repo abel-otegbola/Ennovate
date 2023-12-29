@@ -39,7 +39,7 @@ function Chat({ project_id }: any) {
     }, [])
 
     return (
-        <div className="p-4 h-[90vh] flex flex-col justify-between">
+        <div className="h-[30vh] flex flex-col justify-between">
             <div>
                 <h2 className="py-2 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.06]">Chat</h2>
 

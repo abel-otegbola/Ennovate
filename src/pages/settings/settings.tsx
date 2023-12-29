@@ -6,6 +6,7 @@ import system from "../../assets/system.png";
 import { AuthContext } from "../../customHooks/useAuth";
 import { useLocalStorage } from "../../customHooks/useLocalStorage";
 import { FiSettings } from "react-icons/fi";
+import Button from "../../components/button/button";
 
 interface Theme {
     id: number, img: any, title: string
@@ -53,7 +54,7 @@ function Settings() {
 
     return (
         <>
-        <div className="md:flex items-start md:px-[8%] px-[3%]">
+        <div className="md:flex items-start md:px-[9%] px-[3%]">
             
             <div className="md:m-2 flex-1 pt-[60px]">
                 <h2 className="flex items-center gap-3 text-xl font-bold pb-3 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.08]"><FiSettings /> Settings</h2>
@@ -63,11 +64,11 @@ function Settings() {
                     <h3 id="appearance" className="py-2 text-lg text-[#5938DD]">Appearance</h3>
                     <h3 className="pb-2 pt-4 text-sm">Interface theme</h3>
                     <p className="opacity-[0.6]">Select or customize your ui theme</p>
-                    <div className="grid grid-cols-3 gap-4 py-2">
+                    <div className="md:w-[50%] grid grid-cols-3 gap-4 py-2">
                         {
                             themes.map(item => {
                                 return (
-                                    <div key={item.id} className={`relative ${item.title === theme ? "text-green" : "hover:text-green"}`} onClick={() => setTheme(item.title)}>
+                                    <div key={item.id} className={`relative ${item.title === theme ? "text-green" : "hover:text-green"}`} aria-label={"Theme setting changed to "+ theme} onClick={() => setTheme(item.title)}>
                                         { theme === item.title ? <FaCheckCircle className="absolute -top-1 -right-1 text-lg text-green" /> : "" }
                                         <div className={`w-full bg-gray-200 dark:bg-slate-200/[0.08] cursor-pointer rounded  ${theme === item.title ? "border border-green/[0.5]" : "hover:border hover:border-green/[0.5]"}`}>
                                             <img src={item.img} className="w-full rounded" />
@@ -87,7 +88,7 @@ function Settings() {
                     <h3 className="pb-2 pt-4 text-sm">Font</h3>
                     <p className="opacity-[0.6]">Font size</p>
                     <div className="flex items-center gap-4 py-2">
-                        <select className="w-[100px] p-4 rounded bg-black text-white" onChange={(e) => setFontSize(e.target.value)} defaultValue={fontSize}>
+                        <select className="w-[100px] p-4 rounded border border-gray-600/[0.2] bg-black text-white" aria-label={"Font size changed to "+ fontSize} onChange={(e) => setFontSize(e.target.value)} defaultValue={fontSize}>
                         {
                             ["10px", "12px", "14px", "16px", "18px", "20px"].map((item, i) => (
                                 <option key={i} className="bg-black text-white">{item}</option>
@@ -100,28 +101,29 @@ function Settings() {
 
                 {
                     user ?
-                    <div className="py-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.08]">
+                    <div className="md:w-[50%] py-8 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.08]">
                         <h3 id="account" className="py-2 text-lg text-[#5938DD]">Account</h3>
                         <h3 className="pb-2 pt-4 text-sm">Profile</h3>
                         <p className="opacity-[0.6]">Update your photo and personal details</p>
-                        <div className="py-6">
-                            <div className="md:flex items-center">
+                        <div className="py-2">
+                            <div className="">
                                 <p className="md:w-[23%] md:mb-0 mb-2">Profile Image: </p>
                                 <div className="h-[60px] w-[60px] rounded-full bg-slate-200 dark:bg-slate-200/[0.04]"></div>
                             </div>
                         </div>
-                        <div className="py-6">
-                            <div className="md:flex items-center">
+                        <div className="py-2">
+                            <div className="">
                                 <p className="md:w-[30%] md:mb-0 mb-2">Username: </p>
                                 <input className="p-[12px] rounded border border-gray-600/[0.4] bg-transparent w-full outline-none focus:border-2 focus:border-green" type="text" placeholder="Change your username" defaultValue={user?.displayName} />
                             </div>
                         </div>
-                        <div className="py-6">
-                            <div className="md:flex items-center">
+                        <div className="py-2">
+                            <div className="">
                                 <p className="md:w-[30%] md:mb-0 mb-2">Email: </p>
                                 <input className="p-[12px] rounded border border-gray-600/[0.4] bg-transparent w-full outline-none focus:border-2 focus:border-green" type="email" placeholder="Change your email" defaultValue={user?.email} />
                             </div>
                         </div>
+                        <Button text="Save changes" link="#" />
                     </div>
                     : ""
                 }

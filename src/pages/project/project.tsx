@@ -14,7 +14,6 @@ interface Links extends Array<Link>{}
 
 function Project() {
     const [open, setOpen] = useState(false)
-    const [openChat, setOpenChat] = useState(false)
     const [active, setActive] = useState("Appearance")
     const [searchParams] = useSearchParams()
     const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], images: [{name: "", url: ""}], links: "", procedures: "", user: "" })
@@ -55,22 +54,12 @@ function Project() {
                     
                     {
                         generalLinks.map(link => {
-                            if(link.label === "Chats") {
-                                return (
-                                <p key={link.id} onClick={() => {setActive(link.label); setOpen(false); setOpenChat(!openChat)}} className={`flex items-center justify-between w-full p-1 my-[1px] px-4 hover:bg-purple hover:text-white rounded ${active === link.label ? "bg-purple text-white" : ""}`}>
-                                    <span className="w-[30px] text-lg">{link.icon}</span>
-                                    <span className="flex-1 p-2 break-normal">{link.label}</span>
-                                </p>
-                                )
-                            }
-                            else {
                                 return (
                                 <a key={link.id} href={link.link} onClick={() => {setActive(link.label); setOpen(false) }} className={`flex items-center justify-between w-full p-1 my-[1px] px-4 hover:bg-purple hover:text-white rounded ${active === link.label ? "bg-purple text-white" : ""}`}>
                                     <span className="w-[30px] text-lg">{link.icon}</span>
                                     <span className="flex-1 p-2 break-normal">{link.label}</span>
                                 </a>
                                 )
-                            }
                         })
                     }
                 </div>
@@ -108,11 +97,10 @@ function Project() {
                         <h1 className="font-semibold uppercase">Links</h1>
                         <p>{project.links}</p>
                     </div>
-                </div>
-
-                <div className={`md:sticky fixed top-[60px] right-0 h-screen bg-white dark:bg-black md:w-[30%] border border-transparent border-l-gray-200 dark:border-l-gray-100/[0.09] overflow-hidden transition-all duration-700 ${openChat ? "w-[100%]" : "w-0"}`}>
-                    <FaTimes className="absolute top-4 right-4 text-3xl p-2" onClick={() => setOpenChat(false)} />
-                    <Chat project_id={id} />
+                    <div id="chats" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
+                        <h1 className="font-semibold uppercase">Chats</h1>
+                        <Chat project_id={id} />
+                    </div>
                 </div>
             </div>
         </>
