@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import ProjectGrid from "../../components/projectGrid/projectGrid"
 import { database } from "../../firebase/firebase"
 import { onValue, ref } from "firebase/database"
+import { TbBuildingWindTurbine, TbSun } from "react-icons/tb"
+import { FcBiomass } from "react-icons/fc"
 
 interface Category {
     id: number, img: any, title: string, info: string
@@ -13,10 +15,10 @@ function Explore() {
     const [projects, setProjects] = useState<any>([])
 
     const categories: Categories = [
-        { id: 0, img: "./", title: "Wind Power", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 1, img: "./", title: "solar", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 2, img: "./", title: "Biomass", info: "Wind turbine projects which involves using wind as source of energy" },
-        { id: 3, img: "./", title: "Green Hydrogen", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 0, img: <TbBuildingWindTurbine />, title: "Wind Power", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 1, img: <TbSun />, title: "solar", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 2, img: <FcBiomass />, title: "Biomass", info: "Wind turbine projects which involves using wind as source of energy" },
+        { id: 3, img: "H+", title: "Green Hydrogen", info: "Wind turbine projects which involves using wind as source of energy" },
     ]
     
 
@@ -40,7 +42,9 @@ function Explore() {
                     categories.map(category => {
                         return (
                             <div key={category.id} className={`${active === category.title ? "text-green" : "hover:text-green"}`} onClick={() => setActive(category.title)}>
-                                <div className={`h-[150px] w-[250px] bg-slate-200 dark:bg-slate-200/[0.08] cursor-pointer rounded ${active === category.title ? "border border-green/[0.5]" : "hover:border hover:border-green/[0.5]"}`}></div>
+                                <div className={`flex items-center justify-center text-[30px] text-emerald-600 h-[150px] w-[250px] bg-slate-200 dark:bg-slate-200/[0.08] cursor-pointer rounded ${active === category.title ? "border border-green/[0.5]" : "hover:border hover:border-green/[0.5]"}`}>
+                                    {category.img}
+                                </div>
                                 <h2 className="p-2">{category.title}</h2>
                             </div>
                         )
