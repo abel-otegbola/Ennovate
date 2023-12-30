@@ -13,6 +13,7 @@ import TermsConditions from './pages/t&c/t&c'
 import PrivacyPolicy from './pages/privacypolicy/privacypolicy'
 import Explore from './pages/explore/explore'
 import Search from './pages/search/search'
+import ErrorPage from './pages/404/404'
 
 function App() {
   useEffect(() => {
@@ -48,6 +49,7 @@ function App() {
             <Route path='/privacypolicy' element={<PrivacyPolicy />} />
             <Route path={"/finishSignup"} element={<FinishSignup />} />
             <Route path="/dashboard/*" element={<Dashboard />} />
+            <Route path="/*" element={<ErrorPage />} />
           </Routes>
           <Footer />
         </div>
