@@ -17,7 +17,7 @@ function ProjectGrid({ project, id }: any ) {
                         <img src={project.user.photoURL} alt={project.user.displayName} className="w-[25px] h-[25px] rounded-full outline outline-offset-1 outline-purple/[0.3]" />
                         
                     </div>
-                    <p className="opacity-[0.7]">{project.estimation}</p>
+                    <p className="opacity-[0.7]">Estimation: {project.estimation}</p>
                 </div>
             </div>
         </a>
