@@ -5,7 +5,7 @@ import { onValue, ref } from "firebase/database";
 import ProjectGrid from "../../components/projectGrid/projectGrid";
 
 export default function Search() {
-    const [URLSearchParams, setURLSearchParams] = useSearchParams()
+    const [URLSearchParams] = useSearchParams()
     const query = URLSearchParams.get("search")
     const [projects, setProjects] = useState<any>([])
 
@@ -19,15 +19,10 @@ export default function Search() {
             })
             setProjects(arr)
         });
-    }, [])
-
-    useEffect(() => {
-        console.log(projects)
-    }, [projects])
-
+    }, [query])
 
     return (
-        <div onClick={() => setURLSearchParams()} className="md:px-[9%] px-[3%] py-[40px] min-h-[80vh]">
+        <div className="md:px-[9%] px-[3%] py-[40px] min-h-[80vh]">
             <h1 className="uppercase font-semibold">Search results for: <span className="text-purple"> {query}</span></h1>
 
             <div className="w-full flex flex-wrap gap-4 py-2 my-4 scrollbar">
