@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
 import Button from "../../../components/button/button";
-import { FaTimesCircle, FaTrashAlt } from "react-icons/fa";
+import { FaSpinner, FaTimesCircle, FaTrashAlt } from "react-icons/fa";
 import Upload from "../../../components/upload/upload";
 import { database } from "../../../firebase/firebase";
 import { ref, set } from "firebase/database";
 import { AuthContext } from "../../../customHooks/useAuth";
 import { nanoid } from "nanoid";
+import Popup from "../../../components/popup/popup";
 
 function Create() {
     const [title, setTitle] = useState("")
@@ -17,7 +18,8 @@ function Create() {
     const [images, setImages] = useState<any>([])
     const [video, setVideo] = useState("")
     const [links, setLinks] = useState("")
-    const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
+    const [popup, setPopup] = useState({type: "", msg: ""})
     const { user } = useContext(AuthContext)
 
     const addEquipment = () => {
@@ -25,7 +27,7 @@ function Create() {
             setEquipments([ ...equipments, equipment ])
         }
         else {
-            setError("Please type the equipment before adding")
+            setPopup({type: "error", msg: "Please type the equipment before adding"})
         }
     }
 
@@ -34,11 +36,19 @@ function Create() {
     }
 
     const submitProject = () => {
+        setLoading(true)
         const projectId = nanoid();
         const date = new Date().toLocaleString('en-GB')
         set(ref(database, 'projects/' + projectId), {
             title, category, description, equipments, procedures, images, video, links, user: user.email, date
-        });
+        })
+        .then(() => {
+            setLoading(false)
+            setPopup({type: "success", msg: "Project saved succesfully"})
+        })
+        .catch(() => {
+            setPopup({type: "error", msg: "Error occured. Project not saved"})
+        })
     }
 
     const handleImages = () => {
@@ -51,16 +61,8 @@ function Create() {
     return (
         <div className="md:p-[3%] relative bg-white dark:bg-black"> 
             {    
-            error ? 
-            <div className="absolute bg-white/[0.8] dark:bg-black/[0.9] backdrop-blur-sm top-0 left-0 w-full h-full flex items-center justify-center">
-                <div className="bg-white dark:bg-black p-[40px] m-[5%] shadow-lg rounded">
-                    <h2 className="mb-3 text-2xl">An error occured</h2>
-                    <p className="py-2 mb-4">{error}</p>
-                    <div onClick={() => setError("")}>
-                        <Button text={"Try again"} link={"#"} />
-                    </div>
-                </div>
-            </div> : ""
+            popup.type !== "" ? 
+            <Popup type={popup.type} msg={popup.msg} setPopup={setPopup} /> : ""
             }
             <h1 className="font-semibold uppercase py-2 mt-6">Create new project</h1>
             <div className="grid md:grid-cols-2 py-8">
@@ -118,16 +120,18 @@ function Create() {
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
                         <div className="md:flex flex-wrap items-start">
                             <p className="md:w-[23%] md:mb-0 py-2">Image: </p>
-                            <div className="md:w-[77%] w-full">
+                            <div className="flex items-center flex-wrap gap-2 md:w-[77%] w-full">
                                 { images.map((image: any, i: number) => (
-                                    <div key={i} className="py-2 w-full rounded bg-gray-100 dark:bg-gray-100/[0.03] my-1">
+                                    <div key={i} className="relative py-2 rounded bg-gray-100 dark:bg-gray-100/[0.03] my-1">
                                         <div className="flex items-center">
-                                            <Upload id={image.id} accept={"image/*"} images={images} setImages={setImages} />
-                                            <FaTrashAlt className="text-3xl text-red-500 p-2" onClick={() => deleteImage(image.id)} />
+                                            <Upload id={image.id} i={i} accept={"image/*"} images={images} setImages={setImages} />
+                                            <button onClick={() => deleteImage(image.id)} className="absolute top-1 left-1 bg-white dark:bg-black shadow-lg  text-red-500 p-2"><FaTrashAlt  /></button>
                                         </div>
                                     </div>
                                 )) }
-                                <button className="m-3 p-6 py-[10px] rounded border border-gray-500/[0.3]" onClick={() => handleImages()}>Add new image</button>
+                                <div className="flex items-center justify-center w-[200px] h-[245px] py-2 rounded bg-gray-100 dark:bg-gray-100/[0.03] my-1">
+                                    <button className="m-3 p-6 py-[10px] text-sm rounded border border-gray-500/[0.3]" onClick={() => handleImages()}>Add new image</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -145,7 +149,7 @@ function Create() {
                     </div>
 
                     <div onClick={() => submitProject()} className="py-8">
-                        <Button text={"Publish Project"} link={"#"} />
+                        <button className="p-2 px-4 rounded bg-purple text-white">{!loading ? "Publish project" : <FaSpinner className="animate-spin text-[18px]" />}</button>
                     </div>
 
                 </div>
@@ -161,8 +165,8 @@ function Create() {
                             <p>{category}</p>
                         </div>
                     </div>
-                    <div className={`flex justify-center items-center w-full py-10 md:h-[200px] h-[150px] cursor-pointer rounded border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]`}>
-                        {/* <img src={img?.url} className="w-full h-full object-cover" /> */}
+                    <div className={`flex justify-center items-center w-full py-2 md:h-[300px] h-[150px] rounded border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]`}>
+                        <img src={images[0]?.url} alt={images[0]?.name} className="w-full h-full object-cover" />
                     </div>
                     <div id="description" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="font-semibold uppercase">Description</h1>
