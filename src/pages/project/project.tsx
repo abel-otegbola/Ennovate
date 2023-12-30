@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
-import { FaBars, FaMoneyCheck, FaTimes } from "react-icons/fa";
-import { FiBox, FiInfo, FiList, FiUsers, FiVideo } from "react-icons/fi";
+import { useContext, useEffect, useState } from "react";
+import { FaBars, FaMoneyCheck, FaSpinner, FaTimes } from "react-icons/fa";
+import { FiBox, FiEdit, FiInfo, FiList, FiTrash, FiUsers, FiVideo } from "react-icons/fi";
 import { useSearchParams } from "react-router-dom";
 import { database } from "../../firebase/firebase";
-import { child, get, ref } from "firebase/database";
+import { child, get, ref, remove } from "firebase/database";
 import Chat from "../../components/chat/chat";
+import { AuthContext } from "../../customHooks/useAuth";
+import Popup from "../../components/popup/popup";
 
 interface Link {
     id: number; label: string; icon: any, link: string
@@ -16,6 +18,9 @@ function Project() {
     const [open, setOpen] = useState(false)
     const [active, setActive] = useState("Appearance")
     const [searchParams] = useSearchParams()
+    const [loading, setLoading] = useState(false)
+    const [popup, setPopup] = useState({type: "", msg: ""})
+    const { user } = useContext(AuthContext)
     const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], images: [{name: "", url: ""}], links: "", procedures: "", user: "" })
     
     const generalLinks: Links = [
@@ -43,9 +48,27 @@ function Project() {
 
     }, [searchParams])
 
+    const handleDelete = () => {
+        setLoading(true)
+        remove(ref(database, `projects/${id}`))
+        .then(() => {
+            setLoading(false)
+            setPopup({type: "success", msg: "Project deleted succesfully"})
+        })
+        .catch(() => {
+            setPopup({type: "error", msg: "Error occured. Project not deleted"})
+        })
+
+    }
+
     return (
         <>
             <button className="md:hidden fixed z-50 top-0 left-0 p-4 text-lg opacity-[0.6]" onClick={() => setOpen(!open)}>{open ? <FaTimes /> : <FaBars />}</button>
+
+            {    
+            popup.type !== "" ? 
+            <Popup type={popup.type} msg={popup.msg} setPopup={setPopup} /> : ""
+            }
             
             <div className="md:flex relative md:px-[9%] bg-white dark:bg-transparent">
                 
@@ -96,6 +119,17 @@ function Project() {
                         <h1 className="font-semibold uppercase">Links</h1>
                         <p>{project.links}</p>
                     </div>
+                    {
+                        user?.email === project.user ? 
+                        <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
+                            <h1 className="font-semibold uppercase mb-4">Project actions</h1>
+                            <div className="flex gap-4">
+                                <a href={`/dashboard/edit-project/?id=${id}`} className="flex items-center gap-2 border border-gray-600 rounded p-2 px-4"><FiEdit /> Edit project</a>
+                                <button onClick={() => handleDelete()} className="flex items-center gap-2 text-red-500 border border-red-600 rounded p-2 px-4"><FiTrash /> {!loading ? "Delete project" : <FaSpinner className="animate-spin" />}</button>
+                            </div>
+                        </div>
+                        : ""
+                    }
                     <div id="chats" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="font-semibold uppercase">Chats</h1>
                         <Chat project_id={id} />
