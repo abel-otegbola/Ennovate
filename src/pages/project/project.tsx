@@ -92,7 +92,10 @@ function Project() {
                     
                     <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="md:text-4xl text-xl font-bold py-2">{project.title}</h1>
-                        <p>By: </p>
+                        <div className="flex items-center gap-2">
+                            <img src={project.user.photoURL} alt={project.user.displayName} className="w-[25px] h-[25px] rounded-full outline outline-offset-1 outline-purple/[0.3]" />
+                            <p className="opacity-[0.7]">{project.user.displayName}</p>
+                        </div>
                         <div className="flex items-center gap-4">
                             <p>{project.date}</p>
                             <p>{project.category}</p>

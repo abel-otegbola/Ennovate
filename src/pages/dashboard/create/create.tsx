@@ -151,7 +151,6 @@ function Create() {
                     <div onClick={() => submitProject()} className="py-8">
                         <button className="p-2 px-4 rounded bg-purple text-white">{!loading ? "Publish project" : <FaSpinner className="animate-spin text-[18px]" />}</button>
                     </div>
-
                 </div>
 
                 <div>
