@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { FaBars, FaMoneyCheck, FaSpinner, FaTimes } from "react-icons/fa";
-import { FiBox, FiEdit, FiInfo, FiList, FiTrash, FiUsers, FiVideo } from "react-icons/fi";
+import { FiBox, FiEdit, FiInfo, FiList, FiTrash, FiUsers } from "react-icons/fi";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { database } from "../../firebase/firebase";
 import { child, get, ref, remove } from "firebase/database";
@@ -21,12 +21,11 @@ function Project() {
     const [loading, setLoading] = useState(false)
     const [popup, setPopup] = useState({type: "", msg: ""})
     const { user } = useContext(AuthContext)
-    const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], images: [{name: "", url: ""}], links: "", procedures: "", user: { displayName: "", email: "", photoURL: ""} })
+    const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], images: [{name: "", url: ""}], links: "", video: "", procedures: "", user: { displayName: "", email: "", photoURL: ""} })
     const navigate = useNavigate()
     
     const generalLinks: Links = [
         { id: 0, label: "Description", icon: <FiInfo />, link: "#description" },
-        { id: 1, label: "Video", icon: <FiVideo />, link: "#video" },
         { id: 2, label: "Equipments", icon: <FiBox />, link: "#equipments" },
         { id: 3, label: "Procedures", icon: <FiList />, link: "#procedures" },
         { id: 4, label: "Estimations", icon: <FaMoneyCheck />, link: "#estimations" },
@@ -101,8 +100,12 @@ function Project() {
                             <p>{project.category}</p>
                         </div>
                     </div>
-                    <div className={`flex justify-center items-center w-full py-10 md:h-[400px] h-[350px] cursor-pointer rounded border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]`}>
+                    <div className={`w-full py-10 md:h-[400px] h-[350px] rounded border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]`}>
+                        { project.video === "" ?
                         <img src={project.images[0].url} className="w-full h-full object-cover" />
+                        :
+                        <iframe className="w-full h-full" src={project.video}></iframe>
+                        }
                     </div>
                     <div id="description" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="font-semibold uppercase">Description</h1>
