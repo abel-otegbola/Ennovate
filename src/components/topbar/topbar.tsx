@@ -46,12 +46,12 @@ function Topbar() {
                 <div className="md:w-[300px] md:block hidden">
                     <Searchbar />
                 </div>
-                <a href="/settings" className="hover:text-green" role="menuitem">
+                <a href="/settings" className="hover:text-purple hover:outline hover:outline-purple/[0.3] outline-offset-1 p-1 rounded-full bg-gray-300/[0.5]" role="menuitem">
                     <FiSettings className="text-[25px] p-1 rounded" />
                 </a>
 
                 <button 
-                    className="flex items-center justify-center w-[25px] h-[25px] py-0 rounded-full bg-slate-100/[0.5] outline outline-offset-2 outline-green/[0.1] hover:text-green"
+                    className="flex items-center justify-center w-[25px] h-[25px] py-0 rounded-full bg-slate-300/[0.5] outline outline-offset-2 outline-purple/[0.3] hover:text-green"
                     role="menuitem" 
                     aria-haspopup="true" aria-expanded={open} aria-controls="menu-popup"  
                     onKeyUp={(e) => handleKeyUp(e.key)} onClick={() => setOpen(!open)}  
