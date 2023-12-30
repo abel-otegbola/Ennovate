@@ -29,7 +29,7 @@ function Footer() {
                     <a href="mailto:support@ennovate.com" className="block py-1">Support@ennovate.com</a>
                 </ul>
             </div>
-            <div className="bg-gray-100 bg-purple/[0.03] text-white text-center">
+            <div className="bg-gray-100 dark:bg-purple/[0.03] dark:text-white text-center">
                 <p className="p-[3%] flex items-center gap-2 justify-center">Built with <FaHeart className="text-red-500 text-[14px]"/> Copyright &copy; {new Date().getFullYear()}</p>
             </div>
         </div>
