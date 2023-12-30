@@ -3,7 +3,7 @@
 function ProjectGrid({ project, id }: any ) {
 
     return (
-        <a href={`/project/?id=${id}`} className="sm:w-[300px] w-full" aria-label={"Project "+ project.title+ " succesfully selected"}>
+        <a href={`/project/?id=${id}`} className="sm:w-[300px] w-full animate-zoom-in" aria-label={"Project "+ project.title+ " succesfully selected"}>
             <div className={`w-full px-4 pt-4 rounded-[15px] cursor-pointer rounded shadow-sm border border-gray-200 dark:border-gray-300/[0.2] bg-white dark:bg-black`}>
                 <img src={project.images[0].url} className="w-full h-[200px] rounded-[5px] object-cover border border-gray-600/[0.08]" />
                 <h2 className="py-1 font-bold text-[14px]">{project.title}</h2>

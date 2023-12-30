@@ -32,10 +32,10 @@ function Home()  {
                     <img src={hero} className="rounded w-full h-full object-cover" alt="renewable energy sources illustration" />
                 </div> */}
                 <div className="m-auto flex flex-col md:px-[5%] md:pt-[30px] pt-[60px] z-[1] md:w-[60%] w-[94%]">
-                    <p className="text-[#5938DD]">A better world, one project at a time</p>
-                    <h1 className="py-3 md:text-[40px] font-bold md:leading-[45px] leading-[40px] text-[35px]">Build, Explore, Share, and Create Renewable Energy Projects</h1>
-                    <p className="pb-6">Explore a wide range of renewable energy projects and find the ones that are right for you. Share your own renewable energy projects with the community and get feedback from others.</p>
-                    <div className="md:w-[75%]">
+                    <p className="text-[#5938DD] animate-zoom-in">A better world, one project at a time</p>
+                    <h1 className="py-3 md:text-[40px] font-bold md:leading-[45px] leading-[40px] text-[35px] animate-zoom-in">Build, Explore, Share, and Create Renewable Energy Projects</h1>
+                    <p className="pb-6 animate-zoom-in">Explore a wide range of renewable energy projects and find the ones that are right for you. Share your own renewable energy projects with the community and get feedback from others.</p>
+                    <div className="md:w-[75%] animate-zoom-in">
                         <Button text="Eplore" link="/explore" />
                     </div>
                 </div>
@@ -43,7 +43,7 @@ function Home()  {
                 <div className="grid lg:grid-cols-4 grid-cols-2 md:gap-8 gap-2 overflow-hidden my-[60px] px-[3%]">
                     {
                         [boy, innov, team, solar].map((img, i:number) => (
-                            <div key={i} style={{ backgroundImage: `url("${img}")` }} className="flex bg-cover bg-center items-center justify-center md:h-[250px] h-[200px] w-full rounded-[10px] border border-gray-500/[0.1] bg-gray-300/[0.07]">
+                            <div key={i} style={{ backgroundImage: `url("${img}")` }} className="flex bg-cover bg-center animate-zoom-in items-center justify-center md:h-[250px] h-[200px] w-full rounded-[10px] border border-gray-500/[0.1] bg-gray-300/[0.07]">
                                 
                             </div>
                         ))
