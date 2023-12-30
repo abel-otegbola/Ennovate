@@ -46,7 +46,7 @@ function Topbar() {
                 <div className="md:w-[300px] md:block hidden">
                     <Searchbar />
                 </div>
-                <a href="/settings" className="hover:text-purple hover:outline hover:outline-purple/[0.3] outline-offset-1 p-1 rounded-full bg-gray-300/[0.5]" role="menuitem">
+                <a href="/settings" className="hover:text-purple hover:outline hover:outline-purple/[0.3] outline-offset-1 p-[3px] rounded-full bg-gray-300/[0.5]" role="menuitem">
                     <FiSettings className="text-[25px] p-1 rounded" />
                 </a>
 
