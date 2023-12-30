@@ -40,7 +40,7 @@ function Create() {
         const projectId = nanoid();
         const date = new Date().toLocaleString('en-GB')
         set(ref(database, 'projects/' + projectId), {
-            title, category, description, equipments, procedures, images, video, links, user: user.email, date
+            title, category, description, equipments, procedures, images, video, links, user: { displayName: user.displayName, email: user.email, photoURL: user.photoURL}, date
         })
         .then(() => {
             setLoading(false)

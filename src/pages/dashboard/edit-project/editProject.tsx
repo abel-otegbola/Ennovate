@@ -22,7 +22,7 @@ export default function EditProject() {
     const [images, setImages] = useState<any>([])
     const [video, setVideo] = useState("")
     const [links, setLinks] = useState("")
-    const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], images: [{name: "", url: ""}], video: "", links: "", procedures: "", user: "" })
+    const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], images: [{name: "", url: ""}], video: "", links: "", procedures: "", user: { displayName: "", email: "", photoURL: ""}})
     const [searchParams] = useSearchParams()
     const { user } = useContext(AuthContext)
 
@@ -58,7 +58,7 @@ export default function EditProject() {
         setLoading(true)
         const date = new Date().toLocaleString('en-GB')
         set(ref(database, 'projects/' + id), {
-            title, category, description, equipments, procedures, images, video, links, user: user.email, date
+            title, category, description, equipments, procedures, images, video, links, user: { displayName: user.displayName, email: user.email, photoURL: user.photoURL}, date
         })
         .then(() => {
             setLoading(false)

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { FaBars, FaMoneyCheck, FaSpinner, FaTimes } from "react-icons/fa";
 import { FiBox, FiEdit, FiInfo, FiList, FiTrash, FiUsers, FiVideo } from "react-icons/fi";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { database } from "../../firebase/firebase";
 import { child, get, ref, remove } from "firebase/database";
 import Chat from "../../components/chat/chat";
@@ -21,7 +21,8 @@ function Project() {
     const [loading, setLoading] = useState(false)
     const [popup, setPopup] = useState({type: "", msg: ""})
     const { user } = useContext(AuthContext)
-    const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], images: [{name: "", url: ""}], links: "", procedures: "", user: "" })
+    const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], images: [{name: "", url: ""}], links: "", procedures: "", user: { displayName: "", email: "", photoURL: ""} })
+    const navigate = useNavigate()
     
     const generalLinks: Links = [
         { id: 0, label: "Description", icon: <FiInfo />, link: "#description" },
@@ -54,6 +55,7 @@ function Project() {
         .then(() => {
             setLoading(false)
             setPopup({type: "success", msg: "Project deleted succesfully"})
+            navigate("/dashboard")
         })
         .catch(() => {
             setPopup({type: "error", msg: "Error occured. Project not deleted"})
@@ -90,7 +92,7 @@ function Project() {
                     
                     <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="md:text-4xl text-xl font-bold py-2">{project.title}</h1>
-                        <p>By: {project.user}</p>
+                        <p>By: </p>
                         <div className="flex items-center gap-4">
                             <p>{project.date}</p>
                             <p>{project.category}</p>
@@ -120,7 +122,7 @@ function Project() {
                         <p>{project.links}</p>
                     </div>
                     {
-                        user?.email === project.user ? 
+                        user?.email === project.user.email ? 
                         <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                             <h1 className="font-semibold uppercase mb-4">Project actions</h1>
                             <div className="flex gap-4">
