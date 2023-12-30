@@ -47,13 +47,12 @@ export default function EditProject() {
             setTitle(snapshot.val().title)
             setCategory(snapshot.val().category)
             setDescription(snapshot.val().description)
-            setProcedures(snapshot.val().procedure)
+            setProcedures(snapshot.val().procedures)
             setEstimation(snapshot.val().estimation)
             setVideo(snapshot.val().video)
             setLinks(snapshot.val().links)
             setImages(snapshot.val().images)
             setEquipments(snapshot.val().equipments)
-            console.log(snapshot.val().estimation)
         } else {
             setPopup({type: "error", msg: "No data available"});
         }
