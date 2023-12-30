@@ -3,6 +3,7 @@ import DashboardHome from "./dashboardHome/dashboardHome";
 import { useContext } from "react";
 import { AuthContext } from "../../customHooks/useAuth";
 import Create from "./create/create";
+import EditProject from "./edit-project/editProject";
 
 function Dashboard() {
     const { user } = useContext(AuthContext); 
@@ -18,6 +19,7 @@ function Dashboard() {
                     <Route path="/" element={<Navigate to={"/dashboard/home"} />} />
                     <Route path="/home" element={<DashboardHome />} />
                     <Route path="/create" element={<Create />} />
+                    <Route path="/edit-project" element={<EditProject />} />
                 </Routes>
             </div>
         </>
