@@ -15,6 +15,7 @@ function Create() {
     const [equipment, setEquipment] = useState("")
     const [equipments, setEquipments] = useState<string[]>([])
     const [procedures, setProcedures] = useState("")
+    const [estimation, setEstimation] = useState("")
     const [images, setImages] = useState<any>([])
     const [video, setVideo] = useState("")
     const [links, setLinks] = useState("")
@@ -40,7 +41,7 @@ function Create() {
         const projectId = nanoid();
         const date = new Date().toLocaleString('en-GB')
         set(ref(database, 'projects/' + projectId), {
-            title, category, description, equipments, procedures, images, video, links, user: { displayName: user.displayName, email: user.email, photoURL: user.photoURL}, date
+            title, category, description, equipments, procedures, images, video, links, estimation, user: { displayName: user.displayName, email: user.email, photoURL: user.photoURL}, date
         })
         .then(() => {
             setLoading(false)
@@ -114,6 +115,14 @@ function Create() {
                             <p className="md:w-[30%] md:mb-0 py-2">Procedures: </p>
                             <div className="flex items-center w-full border border-gray-500/[0.5] rounded p-1 pr-2 ">
                                 <textarea className="p-[10px] rounded bg-transparent min-h-[200px] border-none flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setProcedures(e.target.value)} placeholder="Highlight the project procedures"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
+                        <div className="md:flex">
+                            <p className="md:w-[30%] md:mb-0 py-2">Estimation: </p>
+                            <div className="flex items-center w-full border border-gray-500/[0.5] rounded p-1 pr-2 ">
+                                <textarea className="p-[10px] rounded bg-transparent min-h-[200px] border-none flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setEstimation(e.target.value)} placeholder="Add an estimatated amount for the project"></textarea>
                             </div>
                         </div>
                     </div>

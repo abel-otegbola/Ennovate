@@ -21,7 +21,7 @@ function Project() {
     const [loading, setLoading] = useState(false)
     const [popup, setPopup] = useState({type: "", msg: ""})
     const { user } = useContext(AuthContext)
-    const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], images: [{name: "", url: ""}], links: "", video: "", procedures: "", user: { displayName: "", email: "", photoURL: ""} })
+    const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], images: [{name: "", url: ""}], links: "", estimation: "", video: "", procedures: "", user: { displayName: "", email: "", photoURL: ""} })
     const navigate = useNavigate()
     
     const generalLinks: Links = [
@@ -136,6 +136,10 @@ function Project() {
                     <div id="procedures" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="font-semibold uppercase">Links</h1>
                         <p>{project.links}</p>
+                    </div>
+                    <div id="procedures" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
+                        <h1 className="font-semibold uppercase">Estimation</h1>
+                        <p>{project.estimation}</p>
                     </div>
                     {
                         user?.email === project.user.email ? 

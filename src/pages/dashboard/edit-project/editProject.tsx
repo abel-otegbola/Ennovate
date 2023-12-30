@@ -19,10 +19,11 @@ export default function EditProject() {
     const [equipment, setEquipment] = useState("")
     const [equipments, setEquipments] = useState<string[]>([])
     const [procedures, setProcedures] = useState("")
+    const [estimation, setEstimation] = useState("")
     const [images, setImages] = useState<any>([])
     const [video, setVideo] = useState("")
     const [links, setLinks] = useState("")
-    const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], images: [{name: "", url: ""}], video: "", links: "", procedures: "", user: { displayName: "", email: "", photoURL: ""}})
+    const [project, setProject] = useState({ title: "", category: "", date: "", description: "", equipments: [], images: [{name: "", url: ""}], video: "", estimation:"", links: "", procedures: "", user: { displayName: "", email: "", photoURL: ""}})
     const [searchParams] = useSearchParams()
     const { user } = useContext(AuthContext)
 
@@ -43,8 +44,16 @@ export default function EditProject() {
         .then((snapshot) => {
         if (snapshot.exists()) {
             setProject(snapshot.val());
+            setTitle(snapshot.val().title)
+            setCategory(snapshot.val().category)
+            setDescription(snapshot.val().description)
+            setProcedures(snapshot.val().procedure)
+            setEstimation(snapshot.val().estimation)
+            setVideo(snapshot.val().video)
+            setLinks(snapshot.val().links)
             setImages(snapshot.val().images)
             setEquipments(snapshot.val().equipments)
+            console.log(snapshot.val().estimation)
         } else {
             setPopup({type: "error", msg: "No data available"});
         }
@@ -58,7 +67,7 @@ export default function EditProject() {
         setLoading(true)
         const date = new Date().toLocaleString('en-GB')
         set(ref(database, 'projects/' + id), {
-            title, category, description, equipments, procedures, images, video, links, user: { displayName: user.displayName, email: user.email, photoURL: user.photoURL}, date
+            title, category, description, equipments, procedures, images, video, links, estimation, user: { displayName: user.displayName, email: user.email, photoURL: user.photoURL}, date
         })
         .then(() => {
             setLoading(false)
@@ -136,6 +145,14 @@ export default function EditProject() {
                             <p className="md:w-[30%] md:mb-0 py-2">Procedures: </p>
                             <div className="flex items-center w-full border border-gray-500/[0.5] rounded p-1 pr-2 ">
                                 <textarea className="p-[10px] rounded bg-transparent min-h-[200px] border-none flex-1 focus:outline outline-purple outline-offset-1" defaultValue={project.procedures} onChange={(e) => setProcedures(e.target.value)} placeholder="Highlight the project procedures"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
+                        <div className="md:flex">
+                            <p className="md:w-[30%] md:mb-0 py-2">Estimation: </p>
+                            <div className="flex items-center w-full border border-gray-500/[0.5] rounded p-1 pr-2 ">
+                                <textarea className="p-[10px] rounded bg-transparent min-h-[200px] border-none flex-1 focus:outline outline-purple outline-offset-1" defaultValue={project.estimation} onChange={(e) => setEstimation(e.target.value)} placeholder="Add an estimatated amount for the project"></textarea>
                             </div>
                         </div>
                     </div>
