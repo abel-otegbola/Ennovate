@@ -124,6 +124,16 @@ function Project() {
                         <p>{project.procedures}</p>
                     </div>
                     <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
+                        <h1 className="font-semibold uppercase">Images</h1>
+                        <div className="flex gap-2">
+                        {
+                            project.images.map((image: any) => (
+                                <img key={image.title} src={image.url} className="sm:w-[200px] w-full object-cover" />
+                            ))
+                        }
+                        </div>
+                    </div>
+                    <div id="procedures" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="font-semibold uppercase">Links</h1>
                         <p>{project.links}</p>
                     </div>
