@@ -125,10 +125,10 @@ function Project() {
                     </div>
                     <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="font-semibold uppercase">Images</h1>
-                        <div className="flex gap-2">
+                        <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-2">
                         {
                             project.images.map((image: any) => (
-                                <img key={image.title} src={image.url} className="sm:w-[200px] w-full object-cover" />
+                                <img key={image.title} src={image.url} className="h-full rounded object-cover" />
                             ))
                         }
                         </div>
