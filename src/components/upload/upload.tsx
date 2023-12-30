@@ -118,7 +118,7 @@ function Upload({ images, setImages, accept, id, i }: any) {
                                 uploadStatus.status === "preview" ?
                                 <>
                                     <button className="p-[2px] px-4 rounded border border-gray-500/[0.2]" onClick={uploadImg}>Upload</button>
-                                    <button className="p-[2px] px-4 rounded border border-red-500/[0.6]" onClick={() => { setImages(images.filter((item: any) => item.id === id)); setUploadStatus({status: "not loaded", percent: 0}); }}>Delete</button>
+                                    <button className="p-[2px] px-4 rounded border border-red-500/[0.6]" onClick={() => { setImages(images.filter((item: any) => item.id !== id)); setUploadStatus({status: "not loaded", percent: 0}); }}>Delete</button>
                                 </>
                                 : 
                                 uploadStatus.status === "uploaded" || uploadStatus.status === "finished"?
