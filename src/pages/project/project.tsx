@@ -113,7 +113,7 @@ function Project() {
                     </div>
                     <div id="equipments" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="font-semibold uppercase">Equipments</h1>
-                        {project.equipments.map((equipment, i) => {
+                        {project.equipments?.map((equipment, i) => {
                             return (
                                 <p key={i} className="py-1 flex gap-2"><span>{i + 1}.</span>{equipment}</p>
                             )
