@@ -53,7 +53,7 @@ function Explore() {
             </div>
             
             <h3 className="md:px-2 mt-12 font-semibold uppercase border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.1]">{active}</h3>
-            <div className="flex gap-4 flex-wrap py-4">
+            <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-4 py-4">
                 {
                     projects.filter((item: any) => item.data.category.toUpperCase() === active.toUpperCase()).map((project: any) => {
                         return (

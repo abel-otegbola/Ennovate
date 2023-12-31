@@ -43,7 +43,7 @@ function Topbar() {
             </div>
 
             <div className="flex items-center gap-6 relative">
-                <div className="md:w-[300px] md:block hidden">
+                <div className="md:w-[300px] ">
                     <Searchbar />
                 </div>
                 <a href="/settings" className="hover:text-purple hover:outline hover:outline-purple/[0.3] outline-offset-1 p-[2px] rounded-full bg-gray-300/[0.5]" role="menuitem">
