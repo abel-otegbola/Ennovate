@@ -36,7 +36,7 @@ function Home()  {
                     <h1 className="py-3 md:text-[40px] font-bold md:leading-[45px] leading-[40px] text-[35px] animate-zoom-in">Build, Explore, Share, and Create Renewable Energy Projects</h1>
                     <p className="pb-6 animate-zoom-in">Explore a wide range of renewable energy projects and find the ones that are right for you. Share your own renewable energy projects with the community and get feedback from others.</p>
                     <div className="md:w-[75%] animate-zoom-in">
-                        <Button text="Eplore" link="/explore" />
+                        <Button text="Eplore projects" link="/explore" />
                     </div>
                 </div>
             

@@ -4,7 +4,7 @@ interface buttonProps {
 }
 
 function Button({ text, link }: buttonProps) {
-    const innerStyle: string = `px-8 py-[10px] rounded bg-purple hover:bg-purple/[0.8] text-white`
+    const innerStyle: string = `px-8 py-[13px] rounded bg-purple hover:bg-purple/[0.8] text-white`
     
     return (
         <button>
