@@ -47,7 +47,7 @@ function Topbar() {
                     <Searchbar />
                 </div>
                 <a href="/settings" className="hover:text-purple hover:outline hover:outline-purple/[0.3] outline-offset-1 p-[2px] rounded-full bg-gray-300/[0.5]" role="menuitem">
-                    <FiSettings className="text-[25px] p-1 rounded" />
+                    <FiSettings className="text-[22px] p-1 rounded" />
                 </a>
 
                 <button 
