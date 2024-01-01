@@ -23,6 +23,9 @@ h1, h2, h3, h4, h5 {
 body {
   font-family: 'Roboto', sans-serif;
 }
+html.dark {
+  background-color: #101016;
+}
 
 .scrollbar::-webkit-scrollbar {
   width: 100%;

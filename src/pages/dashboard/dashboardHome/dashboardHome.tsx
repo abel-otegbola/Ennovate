@@ -34,7 +34,7 @@ function DashboardHome() {
                         )
                     })
                 }
-                <div className="flex flex-col items-center justify-center sm:w-[300px] w-full min-h-[300px] rounded-[10px] border border-gray-700/[0.1] bg-gray-300/[0.07]">
+                <div className="flex flex-col items-center justify-center w-full min-h-[300px] rounded-[10px] border border-gray-700/[0.1] bg-gray-300/[0.07]">
                     {
                         projects.filter((item: any) => item.data.user.email === user?.email).length === 0 ? <p>You haven't created any project</p> : ""
                     }
