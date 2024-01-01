@@ -7,12 +7,15 @@ import boy from "../../assets/3d-illus-boy.png"
 import innov from "../../assets/3d-illus-innov.jpg"
 import team from "../../assets/3d-illus-team.jpg"
 import solar from "../../assets/3d-mini-solar.png"
+import Skeleton from "../../components/projectGrid/projectSkeleton";
 
 
 function Home()  {
     const [data, setData] = useState<any>([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
         const projectsRef = ref(database, 'projects/');
         let arr: any[] = []
         onValue(projectsRef, (snapshot) => {
@@ -21,6 +24,7 @@ function Home()  {
                 arr.push({id: key, data: data[key]})
             })
             setData(arr)
+            setLoading(false)
         });
     }, [])
 
@@ -57,11 +61,14 @@ function Home()  {
 
                 <div className="w-full grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-4 py-2 pb-8 my-4 overflow-x-auto scrollbar">
                     {
+                        !loading ?
                         data?.map((project:any) => {
                             return (
                                 <ProjectGrid key={project.id} id={project.id} project={project.data} />
                             )
                         })
+                        :
+                        <Skeleton numbers={[0, 1, 2, 3]} />
                     }
                 </div>
 

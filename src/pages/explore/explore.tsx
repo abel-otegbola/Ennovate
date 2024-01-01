@@ -4,6 +4,7 @@ import { database } from "../../firebase/firebase"
 import { onValue, ref } from "firebase/database"
 import { TbBuildingWindTurbine, TbSun } from "react-icons/tb"
 import { FcBiomass } from "react-icons/fc"
+import Skeleton from "../../components/projectGrid/projectSkeleton"
 
 interface Category {
     id: number, img: any, title: string, info: string
@@ -12,6 +13,7 @@ interface Categories extends Array<Category>{}
 
 function Explore() {
     const [active, setActive] = useState("Wind Power")
+    const [loading, setLoading] = useState(false)
     const [projects, setProjects] = useState<any>([])
 
     const categories: Categories = [
@@ -23,6 +25,7 @@ function Explore() {
     
 
     useEffect(() => {
+        setLoading(true)
         const projectsRef = ref(database, 'projects/');
         let arr: any[] = []
         onValue(projectsRef, (snapshot) => {
@@ -31,6 +34,7 @@ function Explore() {
                 arr.push({id: key, data: data[key]})
             })
             setProjects(arr)
+            setLoading(false)
         });
     }, [])
 
@@ -55,11 +59,14 @@ function Explore() {
             <h3 className="md:px-2 mt-12 font-semibold uppercase border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.1]">{active}</h3>
             <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-4 py-4">
                 {
+                    !loading ?
                     projects.filter((item: any) => item.data.category.toUpperCase() === active.toUpperCase()).map((project: any) => {
                         return (
                             <ProjectGrid key={project.id} id={project.id} project={project.data} />
                         )
                     })
+                    :
+                    <Skeleton numbers={[0, 1, 2, 3]} />
                 }
             </div>
 
