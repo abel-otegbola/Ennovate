@@ -65,26 +65,25 @@ function Topbar() {
                     <a href="/login" className="md:block hidden px-6 py-[4px] bg-purple text-white rounded">Login</a>
                 }
                 
-                <button className="md:hidden text-[16px]" onClick={() => setOpen(!open)} aria-haspopup="true" aria-expanded={open} aria-controls="menu-popup" >
+                <button className="text-[16px]" onClick={() => setOpen(!open)} aria-haspopup="true" aria-expanded={open} aria-controls="menu-popup" >
                     { !open ? <FaBars /> : <FaTimes /> }
                 </button>
                     
 
                 {/* Menu links for mobile */}
-                <ul className={`gap-2 items-center absolute top-[50px] text-[13px] right-0 rounded-[10px] bg-white border border-gray-500/[0.1] dark:bg-black shadow-lg w-[230px] ${open ? "md:hidden block" : "hidden"}`} id="menu-popup">
+                <ul className={`gap-2 items-center absolute top-[50px] text-[13px] right-0 rounded-[10px] bg-white border border-gray-500/[0.1] dark:bg-black shadow-lg w-[230px] ${open ? "block" : "hidden"}`} id="menu-popup">
                     <div className="w-full p-2 sm:hidden block">
                         <Searchbar />
                     </div>
                     <li className="w-full"><a href={user ? "/dashboard" : "/login"} role="menuitem" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/login" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiUser className="text-[16px]"/> {user ? "Dashboard" : "Login" }</a></li>
-                    <li className="w-full"><a href="/dashboard/create" role="menuitem" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/create" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiPenTool className="text-[16px]"/> Create</a></li>
-                    <li className="w-full"><a href="/explore" role="menuitem" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/explore" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiGlobe className="text-[16px]"/> Explore</a></li> 
-                    <li className="w-full"><a href="/settings" role="menuitem" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/settings" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiSettings className="text-[16px]"/> Settings</a></li> 
-                    <li className="w-full"><a href="/resources" role="menuitem" className={`flex gap-2 items-center px-4 py-2 rounded border border-transparent border-t-gray-500/[0.1] ${pathname === "/explore" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiDatabase className="text-[16px]"/> Resources</a></li> 
+                    <li className="w-full md:hidden"><a href="/dashboard/create" role="menuitem" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/create" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiPenTool className="text-[16px]"/> Create</a></li>
+                    <li className="w-full md:hidden"><a href="/explore" role="menuitem" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/explore" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiGlobe className="text-[16px]"/> Explore</a></li> 
+                    <li className="w-full md:hidden"><a href="/resources" role="menuitem" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/explore" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiDatabase className="text-[16px]"/> Resources</a></li> 
+                    <li className="w-full"><a href="/settings" role="menuitem" className={`flex gap-2 items-center px-4 py-2 rounded border border-transparent border-t-gray-500/[0.1] ${pathname === "/settings" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiSettings className="text-[16px]"/> Settings</a></li> 
                     {
                         user ? <li className="w-full"><button role="menuitem" onClick={() => {signOut(auth); setOpen(false)}} className={`flex gap-2 mx-[5%] my-3 bg-purple w-[90%] text-white items-center px-4 py-2 rounded `}><FiLogOut className="text-[16px]"/> Logout</button></li> 
                         : ""
-                    }
-                    
+                    }                    
                 </ul>
             </div>
         </div>
