@@ -31,11 +31,11 @@ function Home()  {
                 {/* <div className="absolute left-0 h-[85%] w-[100%]">
                     <img src={hero} className="rounded w-full h-full object-cover" alt="renewable energy sources illustration" />
                 </div> */}
-                <div className="m-auto flex flex-col md:px-[5%] md:pt-[30px] pt-[60px] z-[1] md:w-[60%] w-[94%]">
+                <div className="m-auto flex flex-col md:items-center md:px-[5%] md:pt-[30px] pt-[60px] z-[1] md:w-[60%] w-[94%]">
                     <p className="text-[#5938DD] animate-zoom-in">A better world, one project at a time</p>
-                    <h1 className="py-3 md:text-[40px] font-bold md:leading-[45px] leading-[40px] text-[35px] animate-zoom-in">Build, Explore, Share, and Create Renewable Energy Projects</h1>
-                    <p className="pb-6 animate-zoom-in">Explore a wide range of renewable energy projects and find the ones that are right for you. Share your own renewable energy projects with the community and get feedback from others.</p>
-                    <div className="md:w-[75%] animate-zoom-in">
+                    <h1 className="py-3 md:text-[40px] md:text-center font-bold md:leading-[45px] leading-[40px] text-[35px] animate-zoom-in">Build, Explore, Share, and Create Renewable Energy Projects</h1>
+                    <p className="pb-6 animate-zoom-in md:text-center">Explore a wide range of renewable energy projects and find the ones that are right for you. Share your own renewable energy projects with the community and get feedback from others.</p>
+                    <div className="animate-zoom-in">
                         <Button text="Eplore projects" link="/explore" />
                     </div>
                 </div>
