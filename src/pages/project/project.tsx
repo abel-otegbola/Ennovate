@@ -121,7 +121,8 @@ function Project() {
                     </div>
                     <div id="procedures" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="font-semibold uppercase">Procedures</h1>
-                        <p>{project.procedures}</p>
+                        <div dangerouslySetInnerHTML={{ __html: project.procedures }}></div>
+                            
                     </div>
                     <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="font-semibold uppercase">Images</h1>
