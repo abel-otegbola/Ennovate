@@ -7,6 +7,7 @@ import { ref, set } from "firebase/database";
 import { AuthContext } from "../../../customHooks/useAuth";
 import { nanoid } from "nanoid";
 import Popup from "../../../components/popup/popup";
+import ContentEditor from "../../../components/quillEditor/quillEditor";
 
 function Create() {
     const [title, setTitle] = useState("")
@@ -111,11 +112,9 @@ function Create() {
                         </div>
                     </div>
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
-                        <div className="md:flex">
+                        <div className="dark:text-white">
                             <p className="md:w-[30%] md:mb-0 py-2">Procedures: </p>
-                            <div className="flex items-center w-full border border-gray-500/[0.5] rounded p-1 pr-2 ">
-                                <textarea className="p-[10px] rounded bg-transparent min-h-[200px] border-none flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setProcedures(e.target.value)} placeholder="Highlight the project procedures"></textarea>
-                            </div>
+                            <ContentEditor procedures={procedures} setProcedures={setProcedures} />
                         </div>
                     </div>
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">

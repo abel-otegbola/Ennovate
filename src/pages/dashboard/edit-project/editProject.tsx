@@ -8,6 +8,7 @@ import { database } from "../../../firebase/firebase";
 import { child, get, ref, set } from "firebase/database";
 import { useSearchParams } from "react-router-dom";
 import { AuthContext } from "../../../customHooks/useAuth";
+import ContentEditor from "../../../components/quillEditor/quillEditor";
 
 
 export default function EditProject() {
@@ -52,7 +53,7 @@ export default function EditProject() {
             setVideo(snapshot.val().video)
             setLinks(snapshot.val().links)
             setImages(snapshot.val().images)
-            setEquipments(snapshot.val().equipments)
+            setEquipments(snapshot.val().equipments || [])
         } else {
             setPopup({type: "error", msg: "No data available"});
         }
@@ -140,12 +141,10 @@ export default function EditProject() {
                         </div>
                     </div>
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
-                        <div className="md:flex">
+                        <div className="">
                             <p className="md:w-[30%] md:mb-0 py-2">Procedures: </p>
-                            <div className="flex items-center w-full border border-gray-500/[0.5] rounded p-1 pr-2 ">
-                                <textarea className="p-[10px] rounded bg-transparent min-h-[200px] border-none flex-1 focus:outline outline-purple outline-offset-1" defaultValue={project.procedures} onChange={(e) => setProcedures(e.target.value)} placeholder="Highlight the project procedures"></textarea>
-                            </div>
                         </div>
+                        <ContentEditor procedures={procedures} setProcedures={setProcedures} />
                     </div>
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
                         <div className="md:flex">
