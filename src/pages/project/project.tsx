@@ -7,6 +7,7 @@ import { child, get, ref, remove } from "firebase/database";
 import Chat from "../../components/chat/chat";
 import { AuthContext } from "../../customHooks/useAuth";
 import Popup from "../../components/popup/popup";
+import Skeleton from "../../components/projectGrid/projectSkeleton";
 
 interface Link {
     id: number; label: string; icon: any, link: string
@@ -34,16 +35,20 @@ function Project() {
     const id = searchParams.get("id")
 
     useEffect(() => {
+        setLoading(true)
         const dbRef = ref(database);
         get(child(dbRef, `projects/${id}`))
         .then((snapshot) => {
         if (snapshot.exists()) {
             setProject(snapshot.val());
+            setLoading(false)
         } else {
-            console.log("No data available");
+            setPopup({type: "error", msg: "No data available"});
+            setLoading(false)
         }
         }).catch((error) => {
             console.error(error);
+            setLoading(false)
         });
 
     }, [searchParams])
@@ -88,7 +93,9 @@ function Project() {
                 </div>
 
                 <div className="p-[3%] flex-1">
-                    
+                    {
+                    !loading ?
+                    <>
                     <div className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="md:text-4xl text-xl font-bold py-2">{project.title}</h1>
                         <div className="flex items-center gap-2">
@@ -107,6 +114,11 @@ function Project() {
                         <iframe className="w-full h-full" src={project.video}></iframe>
                         }
                     </div>
+                    </>
+                    :
+                    <Skeleton numbers={[0]} />
+                    }
+                    
                     <div id="description" className="py-10 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="font-semibold uppercase">Description</h1>
                         <p>{project.description}</p>
