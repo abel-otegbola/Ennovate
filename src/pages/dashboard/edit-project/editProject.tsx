@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import Popup from "../../../components/popup/popup";
-import Button from "../../../components/button/button";
 import { FaSpinner, FaTimesCircle, FaTrashAlt } from "react-icons/fa";
 import Upload from "../../../components/upload/upload";
 import { nanoid } from "nanoid";
@@ -120,24 +119,26 @@ export default function EditProject() {
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
                         <div className="flex flex-col gap-2">
                             <p className="md:w-[30%] md:mb-0 mb-2">Equipments: </p>
-                            <div className="flex items-center w-full border border-gray-500/[0.5] rounded p-1 pr-2 ">
-                                <input className="p-[10px] rounded bg-transparent border-none flex-1 focus:outline outline-purple outline-offset-1" onChange={(e) => setEquipment(e.target.value)} type="text" placeholder="Input an equipment"/>
-                                <div onClick={() => addEquipment()}>
-                                    <Button text={"Add"} link={"#"}/>
+                            <div className=" w-full border border-gray-500/[0.5] rounded p-1 pr-2 ">
+                                <div className="flex items-center gap-2">
+                                    <input className="p-1 px-2 rounded-[1px] bg-transparent border-none flex-1 focus:outline outline-purple outline-offset-1" value={equipment} onChange={(e) => setEquipment(e.target.value)} type="text" placeholder="Input an equipment"/>
+                                    <button className="text-[10px] rounded p-[6px] px-8 rounde bg-purple text-white" onClick={() => addEquipment()}>
+                                    Add
+                                    </button>
+                                </div>
+                                <div className="flex gap-2 flex-wrap">
+                                    {
+                                        equipments.map((item, i) => {
+                                            return (
+                                                <p key={i} className="animate-zoom-in flex items-center gap-6 p-1 px-4 my-2 text-[10px] border border-gray-300 dark:border-gray-100/[0.2] rounded">
+                                                    {item}
+                                                    <span onClick={() => deleteEquipment(item)}><FaTimesCircle /></span>
+                                                </p>
+                                            )
+                                        })
+                                    }
                                 </div>
                             </div>
-                        </div>
-                        <div className="flex gap-2 flex-wrap md:ml-[24%] my-2">
-                            {
-                                equipments.map((item, i) => {
-                                    return (
-                                        <p key={i} className="flex items-center gap-6 p-2 bg-gray-100/[0.2] rounded">
-                                            {item}
-                                            <span onClick={() => deleteEquipment(item)}><FaTimesCircle /></span>
-                                        </p>
-                                    )
-                                })
-                            }
                         </div>
                     </div>
                     <div className="py-6 border border-transparent border-y-gray-100 dark:border-y-gray-100/[0.06]">
