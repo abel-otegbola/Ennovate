@@ -47,7 +47,7 @@ export default function Resources() {
                     }
                 </div>
 
-                <div className="md:p-[3%] py-4">
+                <div className="md:p-[3%] py-3">
                     <h1 className="font-semibold uppercase text-[15px] text-purple">Energy Calculator</h1>
                         <p>Welcome to the Energy Calculator. We help you detect the amount of energy your devices use and best way to optimize.</p>
                     <AIChat />

@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect } from "react";
 
 const AIChat = () => {
@@ -6,13 +5,14 @@ const AIChat = () => {
 //   const [input, setInput] = useState('');
 
   useEffect(() => {
-        axios.get(import.meta.env.VITE_OPENEI_URL + "topic:solar", { headers: { "API_KEY" : import.meta.env.VITE_OPENEI_KEY, "Access-Control-Allow-Origin": true } })
-        .then((response) => {
-            console.log(response)
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+    fetch(`https://api.brainshop.ai/get?bid=179815&key=TNAXJ9TeAaCCmW0V&uid=15655&msg=Hello`)
+    .then(response => {
+      const aiResponse = response;
+      console.log(aiResponse);
+    })
+    .catch(error => {
+      console.error(error);
+    });
   }, [])
 
   return (
