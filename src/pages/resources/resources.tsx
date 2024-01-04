@@ -16,7 +16,7 @@ export default function Resources() {
 
     const generalLinks: Links = [
         { id: 0, label: "Overview", icon: <FiDatabase />, link: "#overview" },
-        { id: 2, label: "Energy Optimization", icon: <FiSettings />, link: "#optimization" },
+        { id: 1, label: "Energy Optimization", icon: <FiSettings />, link: "#optimization" },
         { id: 2, label: "Energy Calculator", icon: <TbCalculator />, link: "#calculator" },
         { id: 3, label: "AI Chat", icon: <FiMessageSquare />, link: "#chat" }
     ]
