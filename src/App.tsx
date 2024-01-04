@@ -14,7 +14,6 @@ import PrivacyPolicy from './pages/privacypolicy/privacypolicy'
 import Explore from './pages/explore/explore'
 import Search from './pages/search/search'
 import ErrorPage from './pages/404/404'
-import Resources from './pages/resources/resources'
 
 function App() {
   useEffect(() => {
@@ -46,7 +45,6 @@ function App() {
             <Route path='/project' element={<Project />} />
             <Route path='/explore' element={<Explore />} />
             <Route path='/search' element={<Search />} />
-            <Route path='/resources' element={<Resources />} />
             <Route path='/terms&Conditions' element={<TermsConditions />} />
             <Route path='/privacypolicy' element={<PrivacyPolicy />} />
             <Route path={"/finishSignup"} element={<FinishSignup />} />

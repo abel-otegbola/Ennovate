@@ -1,23 +1,27 @@
-import { useEffect } from "react";
+import { useState } from "react";
 
 const AIChat = () => {
-//   const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<any>([]);
 //   const [input, setInput] = useState('');
 
-  useEffect(() => {
-    fetch(`https://api.brainshop.ai/get?bid=179815&key=TNAXJ9TeAaCCmW0V&uid=15655&msg=Hello`)
-    .then(response => {
-      const aiResponse = response;
-      console.log(aiResponse);
+  const getData = () => {
+    fetch(`http://api.brainshop.ai/get?bid=179815&key=TNAXJ9TeAaCCmW0V&uid=abel15655@gmail.com&msg=Hello`, {
+      mode: "no-cors"
+    })
+    .then(res => res)
+    .then(data => {
+      setData(data)
+      console.log(data);
     })
     .catch(error => {
       console.error(error);
+      console.log(data)
     });
-  }, [])
+  }
 
   return (
     <div>
-      
+      <button onClick={() => getData()}>get response</button>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import Searchbar from "../searchbar/searchbar";
-import { FiDatabase, FiGlobe, FiLogOut, FiPenTool, FiSettings, FiUser } from "react-icons/fi";
+import { FiGlobe, FiLogOut, FiPenTool, FiSettings, FiUser } from "react-icons/fi";
 import logo from "../../assets/logo.svg"
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../customHooks/useAuth";
@@ -43,7 +43,6 @@ function Topbar() {
                 <ul className="md:flex gap-2 items-center hidden">
                     <li><a href="/dashboard/create" className={`flex gap-2 items-center px-4 py-1 rounded-full ${pathname === "/dashboard/create" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiPenTool className="text-[16px]"/> Create</a></li>
                     <li><a href="/explore" className={`flex gap-2 items-center px-4 py-1 rounded-full ${pathname === "/explore" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiGlobe className="text-[16px]"/> Explore</a></li>
-                    <li><a href="/resources" className={`flex gap-2 items-center px-4 py-1 rounded-full ${pathname === "/resources" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiDatabase className="text-[16px]"/> Resources</a></li>
                 </ul>
             </div>
 
@@ -78,7 +77,6 @@ function Topbar() {
                     <li className="w-full"><a href={user ? "/dashboard" : "/login"} role="menuitem" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/login" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiUser className="text-[16px]"/> {user ? "Dashboard" : "Login" }</a></li>
                     <li className="w-full md:hidden"><a href="/dashboard/create" role="menuitem" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/create" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiPenTool className="text-[16px]"/> Create</a></li>
                     <li className="w-full md:hidden"><a href="/explore" role="menuitem" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/explore" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiGlobe className="text-[16px]"/> Explore</a></li> 
-                    <li className="w-full md:hidden"><a href="/resources" role="menuitem" className={`flex gap-2 items-center px-4 py-2 rounded ${pathname === "/explore" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiDatabase className="text-[16px]"/> Resources</a></li> 
                     <li className="w-full"><a href="/settings" role="menuitem" className={`flex gap-2 items-center px-4 py-2 rounded border border-transparent border-t-gray-500/[0.1] ${pathname === "/settings" ? "bg-[#5938DD]/[0.05]" : "hover:bg-[#5938DD]/[0.05]"}`}><FiSettings className="text-[16px]"/> Settings</a></li> 
                     {
                         user ? <li className="w-full"><button role="menuitem" onClick={() => {signOut(auth); setOpen(false)}} className={`flex gap-2 mx-[5%] my-3 bg-purple w-[90%] text-white items-center px-4 py-2 rounded `}><FiLogOut className="text-[16px]"/> Logout</button></li> 
