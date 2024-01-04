@@ -79,7 +79,7 @@ function Project() {
                 <a href="/" className="text-lg"><FiHome /></a> | <a href="/project" className="opacity-[0.6]"> Project</a> | <span className="opacity-[0.6]"> {active}</span>
             </div>
             
-            <div className="md:flex relative md:px-[9%] px-[3%] bg-white dark:bg-transparent">
+            <div className="md:flex relative md:px-[9%] bg-white dark:bg-transparent">
                 <div className={`lg:w-[25%] md:w-[27%] w-[240px] md:h-screen h-full md:sticky absolute md:top-[115px] top-0 md:pl-0 p-4 left-0 bg-white dark:bg-black border border-transparent border-r-gray-200 dark:border-r-slate-100/[0.09] overflow-hidden z-[1] transition-all duration-700 ${open ? "translate-x-[0]": "md:translate-x-[0] translate-x-[-130%]"}`}>  
                     
                     {
@@ -98,7 +98,7 @@ function Project() {
                     {
                     !loading ?
                     <>
-                    <div className="py-6 border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
+                    <div className="border border-transparent border-b-gray-200 dark:border-b-gray-100/[0.04]">
                         <h1 className="md:text-4xl text-xl font-bold py-2">{project.title}</h1>
                         <div className="flex items-center gap-2">
                             <img src={project.user.photoURL} alt={project.user.displayName} className="w-[25px] h-[25px] rounded-full outline outline-offset-1 outline-purple/[0.3]" />

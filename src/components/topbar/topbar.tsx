@@ -13,7 +13,6 @@ function Topbar() {
     const [open, setOpen] = useState(false)
     const {user} = useContext(AuthContext)
     const pathname = useLocation().pathname;
-    const paths = [ "/project/"]
     const auth = getAuth(app)
     const menuRef = useRef<HTMLDivElement>(null)
 
@@ -34,7 +33,7 @@ function Topbar() {
 
             <div className="flex gap-8 items-center">
                 {/* Brand name and logo */}
-                <a href="/" className={`md:ml-0 ${paths.indexOf(pathname) !== -1 ? "ml-10" : ""} py-2 flex gap-1`}>
+                <a href="/" className={`md:ml-0 py-2 flex gap-1`}>
                     <img src={logo} className="h-[25px]" />
                     <h1 className="font-bold text-[18px] text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-[#5938DD]">Ennovate</h1>
                 </a>

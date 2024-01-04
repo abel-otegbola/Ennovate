@@ -18,7 +18,7 @@ function Footer() {
                 </ul>
                 <ul className="w-full">
                     <h2 className="py-2 font-semibold uppercase">Resources and Blogs</h2>
-                    <li className="flex w-full"><a href="/dashboard/projects" className="py-[5px] w-full hover:text-green">Project Resources</a></li>
+                    <li className="flex w-full"><a href="/explore" className="py-[5px] w-full hover:text-green">Project Resources</a></li>
                     <li className="flex w-full"><a href="https://sdgs.un.org/goals/goal7" className="py-[5px] w-full hover:text-green">SDG goal7 - Access to affordable, reliable, sustainable and modern energy</a></li>
                     <li className="flex w-full"><a href="https://sdgs.un.org/events/hlpf-2023-side-event-youth-engagement-systemic-transformation-sdg-summit-implementing-global" className="py-[5px] w-full hover:text-green">Youth engagement for systemic transformation at SDG-summit</a></li>
                 </ul>
