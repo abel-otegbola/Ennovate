@@ -64,7 +64,6 @@ function Project() {
         .catch(() => {
             setPopup({type: "error", msg: "Error occured. Project not deleted"})
         })
-
     }
 
     return (
