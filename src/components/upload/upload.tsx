@@ -123,10 +123,9 @@ function Upload({ images, setImages, accept, id, i }: any) {
                                 : 
                                 uploadStatus.status === "uploaded" || uploadStatus.status === "finished"?
                                     <button className="p-[2px] px-4 rounded border border-red-500/[0.6]" onClick={() => { setUploadStatus({status: "not loaded", percent: 0}); deleteImg() }}>Delete</button>
-                                
                                 :
                                 <label htmlFor={`file${id}`}>
-                                    <span className="p-[10px] px-4 text-[10px] rounded border border-gray-500/[0.2] cursor-pointer">Choose image</span>
+                                    <span tabindex="1" className="p-[10px] px-4 text-[10px] rounded border border-gray-500/[0.2] cursor-pointer">Choose image</span>
                                     <input className="bg-gray-50 dark:bg-gray-900 hidden" accept={accept} id={`file${id}`} type="file" onChange={(e) => { previewFile(e); setUploadStatus({status:"preview", percent: 0}) }} />
                                 </label>
                             }
