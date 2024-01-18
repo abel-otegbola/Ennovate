@@ -98,8 +98,8 @@ function Create() {
                             <p className="md:w-[30%] md:mb-0 mb-2">Equipments: </p>
                             <div className=" w-full border border-gray-500/[0.5] rounded p-1 pr-2 ">
                                 <div className="flex items-center gap-2">
-                                    <input className="p-1 px-2 rounded-[1px] bg-transparent border-none flex-1 focus:outline outline-purple outline-offset-1" value={equipment} onChange={(e) => setEquipment(e.target.value)} type="text" placeholder="Input an equipment"/>
-                                    <button className="text-[10px] rounded p-[6px] px-8 rounde bg-purple text-white" onClick={() => addEquipment()}>
+                                    <input className="p-1 px-2 rounded-[1px] bg-transparent border-none flex-1 focus:outline outline-purple outline-offset-1" type="search" onSubmit={() => addEquipment()} value={equipment} onChange={(e) => setEquipment(e.target.value)} placeholder="Input an equipment"/>
+                                    <button aria-label="Add equipment into equipments list" className="text-[10px] rounded p-[6px] px-8 rounde bg-purple text-white" onClick={() => addEquipment()}>
                                     Add
                                     </button>
                                 </div>
@@ -109,7 +109,7 @@ function Create() {
                                             return (
                                                 <p key={i} className="animate-zoom-in flex items-center gap-6 p-1 px-4 my-2 text-[10px] border border-gray-300 dark:border-gray-100/[0.2] rounded">
                                                     {item}
-                                                    <span onClick={() => deleteEquipment(item)}><FaTimesCircle /></span>
+                                                    <button aria-label={"delete equipment: " + item} onClick={() => deleteEquipment(item)}><FaTimesCircle /></button>
                                                 </p>
                                             )
                                         })
@@ -142,12 +142,12 @@ function Create() {
                                     <div key={i} className="relative py-2 rounded bg-gray-100 dark:bg-gray-100/[0.03] my-1">
                                         <div className="flex items-center">
                                             <Upload id={image.id} i={i} accept={"image/*"} images={images} setImages={setImages} />
-                                            <button onClick={() => deleteImage(image.id)} className="absolute top-1 left-1 bg-white dark:bg-black shadow-lg  text-red-500 p-2"><FaTrashAlt  /></button>
+                                            <button aria-label={"Delete image: " + image.name} onClick={() => deleteImage(image.id)} className="absolute top-1 left-1 bg-white dark:bg-black shadow-lg  text-red-500 p-2"><FaTrashAlt  /></button>
                                         </div>
                                     </div>
                                 )) }
                                 <div className="flex items-center justify-center w-[200px] h-[245px] py-2 rounded bg-gray-100 dark:bg-gray-100/[0.03] my-1">
-                                    <button className="m-3 p-6 py-[10px] text-sm rounded border border-gray-500/[0.3]" onClick={() => handleImages()}>Add new image</button>
+                                    <button aria-label="Add new image" className="m-3 p-6 py-[10px] text-sm rounded border border-gray-500/[0.3]" onClick={() => handleImages()}>Add new image</button>
                                 </div>
                             </div>
                         </div>
