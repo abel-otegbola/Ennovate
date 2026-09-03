@@ -9,13 +9,13 @@ import {
   Film,
   ImageIcon,
   Link2,
-  Minus,
   Plus,
   Quote,
   Trash2,
   Type,
 } from 'lucide-react'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import Image from 'next/image'
 
 export type ArticleContentBlock =
   | { id: string; type: 'text'; text: string }
@@ -50,6 +50,7 @@ interface ArticleContentEditorProps {
 
 export default function ArticleContentEditor({ blocks, onChange }: ArticleContentEditorProps) {
   const [showBlockMenu, setShowBlockMenu] = useState(false)
+  const blockId = useRef(1)
 
   const updateBlock = (id: string, changes: Partial<ArticleContentBlock>) => {
     onChange(blocks.map((block) => (block.id === id ? { ...block, ...changes } as ArticleContentBlock : block)))
@@ -70,7 +71,8 @@ export default function ArticleContentEditor({ blocks, onChange }: ArticleConten
   }
 
   const addBlock = (type: ArticleContentBlock['type']) => {
-    onChange([...blocks, createBlock(type, `${type}-${Date.now()}`)])
+    blockId.current += 1
+    onChange([...blocks, createBlock(type, `${type}-${blockId.current}`)])
     setShowBlockMenu(false)
   }
 
@@ -134,7 +136,7 @@ export default function ArticleContentEditor({ blocks, onChange }: ArticleConten
                 <Input value={block.url} onChange={(event) => updateBlock(block.id, { url: event.target.value })} placeholder="Image URL" aria-label="Image URL" />
                 <Input value={block.alt} onChange={(event) => updateBlock(block.id, { alt: event.target.value })} placeholder="Alt text" aria-label="Image alt text" />
                 <Input className="sm:col-span-2" value={block.caption} onChange={(event) => updateBlock(block.id, { caption: event.target.value })} placeholder="Caption (optional)" aria-label="Image caption" />
-                {block.url && <img src={block.url} alt={block.alt} className="aspect-video w-full rounded-md object-cover sm:col-span-2" />}
+                {block.url && <Image src={block.url} alt={block.alt} className="aspect-video w-full rounded-md object-cover sm:col-span-2" />}
               </div>
             )}
 
