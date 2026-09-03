@@ -81,10 +81,9 @@ export default function ArticleContentEditor({ blocks, onChange }: ArticleConten
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Article body</p>
-          <h2 id="content-editor-heading" className="mt-1 text-xl font-semibold">Build your story</h2>
         </div>
         <div className="relative">
-          <Button type="button" variant="outline" size="sm" onClick={() => setShowBlockMenu((open) => !open)}>
+          <Button type="button" variant="outline" size="xs" onClick={() => setShowBlockMenu((open) => !open)}>
             <Plus /> Add block
           </Button>
           {showBlockMenu && (

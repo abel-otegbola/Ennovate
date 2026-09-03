@@ -4,7 +4,6 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
-import Topbar from "@/components/general/topbar/topbar";
 import ArticleProvider from "@/context/articleContext";
 import AuthProvider from "@/context/useAuth";
 
@@ -51,11 +50,10 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn("antialiased", mona_sans.variable) }
     >
-      <body className="">
+      <body className="text-[14px]">
         <AuthProvider>
         <ArticleProvider>
           <ThemeProvider>
-            <Topbar />
             {children}
           </ThemeProvider>
         </ArticleProvider>

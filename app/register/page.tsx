@@ -21,7 +21,7 @@ export default function Register() {
                 <Image src={"/auth-bg.png"} alt="auth-bg" fill sizes={"100%"} className="object-cover" />
             </div>
 
-            <div className="sm:flex-1 w-full p-8 sm:px-[10%] flex items-center h-screen justify-center">
+            <div className="sm:flex-1 w-full p-8 sm:max-w-[380px] mx-auto flex flex-col items-center h-screen justify-center">
                 <Formik
                     initialValues={{ email: '', password: '', confirmPassword: "" }}
                     validationSchema={registerSchema}
@@ -40,7 +40,7 @@ export default function Register() {
                         isSubmitting,
                         /* and other goodies */
                       }) => (
-                        <form className="flex flex-col gap-3 sm:min-w-[300px]" onSubmit={handleSubmit}>
+                        <form className="flex flex-col gap-3 w-full" onSubmit={handleSubmit}>
                             <div className="w-full mb-2 text-center">
                                 <h1 className="font-bold text-xl">Create account</h1>
                                 <p className="mt-2 mb-6">Let&apos;s get you started sharing your account</p>

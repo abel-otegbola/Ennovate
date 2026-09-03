@@ -1,9 +1,9 @@
 'use client'
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const returnInitialState = (storageKey: string, initialState: unknown) => {
     try {
-        const items = window.localStorage.getItem(storageKey);
+        const items = localStorage.getItem(storageKey);
         return items ? JSON.parse(items) : initialState;
     }
     catch (error) {
@@ -15,9 +15,11 @@ const returnInitialState = (storageKey: string, initialState: unknown) => {
 
 
 export const useLocalStorage = (storageKey: string, initialState: unknown) => {
-    const [storedValue, setStoredValue] = useState(
+    const [storedValue, setStoredValue] = useState()
+
+    useEffect(() => {
         returnInitialState(storageKey, initialState)
-    )
+    }, [storageKey, initialState])
 
     const setValue = useCallback((value: unknown) => {
         try {
