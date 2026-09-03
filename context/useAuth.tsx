@@ -35,7 +35,7 @@ const AuthProvider = ({ children }: { children: ReactNode}) => {
     const syncUser = useCallback(async (firebaseUser: FirebaseUser) => {
         const appUser = await getUserFromAuth(firebaseUser);
         setUser(appUser);
-        setStoredUser(appUser);
+        if(setStoredUser)setStoredUser(appUser);
         return appUser;
     }, [setStoredUser]);
 
@@ -61,7 +61,7 @@ const AuthProvider = ({ children }: { children: ReactNode}) => {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const appUser = await createUserProfile(userCredential.user);
             setUser(appUser);
-            setStoredUser(appUser);
+            if(setStoredUser)setStoredUser(appUser);
             setPopup({ type: "success", msg: "Signup Successful" });
             router.push("/discover");
         } catch (error) {
@@ -83,7 +83,7 @@ const AuthProvider = ({ children }: { children: ReactNode}) => {
                 : await createUserProfile(userCredential.user);
 
             setUser(appUser);
-            setStoredUser(appUser);
+            if(setStoredUser)setStoredUser(appUser);
             setPopup({ type: "success", msg: "Login Successful" });
             router.push("/discover");
         } catch (error) {
@@ -97,7 +97,7 @@ const AuthProvider = ({ children }: { children: ReactNode}) => {
         try {
             await signOut(auth);
             setUser(null);
-            setStoredUser(null);
+            if(setStoredUser)setStoredUser(null);
             setPopup({ type: "success", msg: "Logout Successful" });
         } catch (error) {
             setPopup({ type: "error", msg: error instanceof Error ? error.message.replace("Firebase: Error", "") : "Logout failed" });
@@ -108,7 +108,7 @@ const AuthProvider = ({ children }: { children: ReactNode}) => {
         const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
             if (!firebaseUser) {
                 setUser(null);
-                setStoredUser(null);
+                if(setStoredUser)setStoredUser(null);
                 return;
             }
 
