@@ -24,7 +24,7 @@ function AcoountLayout({
               <Link href={"/"} className={`md:hidden flex items-center fill-black dark:fill-white h-[24px]`}>
                   {/* <LogoIcon width={20} /> */}
               </Link>
-              <Link href="/" title="Go back to home" className="md:flex hidden items-center justify-center h-10 w-10 rounded-full bg-gray-100 ">
+              <Link href="/" title="Go back to home" className="md:flex hidden items-center justify-center h-8 w-8 rounded-full bg-gray-100 ">
                 <GlobeIcon strokeWidth={1} size={20} />
               </Link>
 
@@ -36,9 +36,9 @@ function AcoountLayout({
                   </Button>
                 </Link>
                 {/* <Button href="/account/create-video">Create Pitch</Button> */}
-                <Link href="/inbox"> <button className="flex items-center justify-center h-10 w-10 rounded-full bg-gray-100 dark:bg-gray-500/[0.05]"><BellIcon strokeWidth={1} size={20} /></button></Link>
+                <Link href="/inbox"> <button className="flex items-center justify-center h-8 w-8 rounded-full bg-gray-100 dark:bg-gray-500/[0.05]"><BellIcon strokeWidth={1} size={20} /></button></Link>
                 <div className="flex gap-2 items-center w-fit">
-                  <div className="h-10 w-10 rounded-full bg-[url('/profile.jpg')] bg-cover bg-center">
+                  <div className="h-8 w-8 rounded-full bg-[url('/profile.jpg')] bg-cover bg-center">
                     <Image src={user?.avatar || "/profile.jpg"} alt="profile" width={32} height={32} className="rounded-full" />
                   </div>
                   <div className="flex-col gap-1 md:flex hidden">

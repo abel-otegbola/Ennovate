@@ -3,13 +3,14 @@ import ScrollTextReveal from "../components/animations/scroll-text-reveal";
 import ScrollAnimate from "../components/animations/scrollAnimation";
 import { Button } from "../components/ui/button";
 import Link from "next/link";
+import Image from "next/image"
 
 export default function Page() {
   return (
     <main className="">
       <header className="md:gap-12 gap-4">
         <Topbar />
-        <div className="md:px-[5%] px-5 py-[5%] md:w-[55%] mx-auto min-h-[600px] flex flex-col flex-1 gap-6 text-center items-center justify-center">
+        <div className="md:px-[5%] px-3 py-[5%] md:w-[55%] mx-auto min-h-[500px] flex flex-col flex-1 gap-6 text-center items-center justify-center">
           <ScrollTextReveal repeat={true} tag="h1" className="font-medium 2xl:text-[44px] lg:text-[36px] sm:text-[40px] text-[32px] leading-[120%] tracking-[-2%]">
             Insights and Innovations Shaping the Future of Engineering
           </ScrollTextReveal>
@@ -23,6 +24,7 @@ export default function Page() {
             </Link>
           </ScrollAnimate>
         </div>
+        <Image src="/hero-bg.webp" width={2000} height={100} alt="hero" className="md:h-auto h-[300px] object-cover object-center w-[95%] mx-auto md:rounded-[20px] rounded-[10px]" />
       </header>
     </main>
   )

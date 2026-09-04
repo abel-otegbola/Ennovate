@@ -10,6 +10,7 @@ import Image from "next/image";
 import { ChevronDownIcon } from "lucide-react";
 import ScrollAnimate from "@/components/animations/scrollAnimation";
 import ResourcesSubMenu from "@/components/subMenus/resourcesSubMenu";
+import LogoIcon from "@/assets/icons/logo";
 
 export default function Topbar() {
     const [open, setOpen] = useState(false)
@@ -61,8 +62,8 @@ export default function Topbar() {
         </ul>
         <div className="flex items-center justify-between md:px-8 px-4 border-b border-input/[0.4] py-2 sticky top-0 z-5">
             <div className="flex items-center gap-6 md:min-w-[15%]">
-                {/* <img src="/logo.png" className="w-[40px] h-[36px]" /> */}
-                <Link href={"/"} className="flex flex-col gap-0">
+                <Link href={"/"} className="flex items-center gap-2">
+                    <LogoIcon width={28} />
                     <h1 className="tracking-[10%] font-semibold text-[15px] uppercase">Ennovate.</h1>
                 </Link>
                 
