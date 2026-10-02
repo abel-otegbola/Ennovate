@@ -3,7 +3,7 @@ import ArticleCard from "@/components/cards/articleCard";
 import { ArticleContext } from "@/context/articleContext";
 import { useContext, useEffect, useState } from "react"
 
-function DashboardPage() {
+function DiscoverPage() {
   const [active, setActive] = useState("For you")
   const { articles, getArticles } = useContext(ArticleContext);
 
@@ -44,4 +44,4 @@ function DashboardPage() {
   )
 }
 
-export default DashboardPage
+export default DiscoverPage

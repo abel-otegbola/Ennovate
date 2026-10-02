@@ -26,7 +26,7 @@ type ScrollAnimateProps = {
 export default function ScrollAnimate({
   children,
   animation = "fadeIn",
-  duration = 1,
+  duration = 0.5,
   delay = 0,
   start = "top 80%",
   end = "bottom 10%",

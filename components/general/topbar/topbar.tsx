@@ -26,7 +26,7 @@ export default function Topbar() {
     return (
         <>
         <ul className={`
-            md:hidden fixed top-0 right-0 z-2 flex lg:flex-row flex-col lg:px-0 md:py-0 py-6 pt-12 px-4 bg-white dark:bg-dark-bg lg:w-auto md:h-full h-screen w-full overflow-hidden
+            md:hidden fixed top-0 right-0 z-2 flex lg:flex-row flex-col lg:px-0 md:py-0 py-6 pt-12 px-4 bg-background lg:w-auto md:h-full h-screen w-full overflow-hidden
             ${open ? "translate-x-[0px] w-full" : "lg:translate-x-[0] translate-x-[120%] lg:w-auto w-0"} duration-500
         `}>
             <div className="py-6 mb-12">
@@ -60,7 +60,7 @@ export default function Topbar() {
             <p className="opacity-50 uppercase text-sm mt-18">Contact</p>
             <Link href="mailto:info@ennovate.com" className="text-lg opacity-70">info@ennovate.com</Link>
         </ul>
-        <div className="flex items-center justify-between md:px-8 px-4 border-b border-input/[0.4] py-2 sticky top-0 z-5">
+        <div className="flex items-center justify-between md:px-8 px-4 bg-background border-b border-input/[0.4] py-2 sticky top-0 z-5">
             <div className="flex items-center gap-6 md:min-w-[15%]">
                 <Link href={"/"} className="flex items-center gap-2">
                     <LogoIcon width={28} />
@@ -75,9 +75,8 @@ export default function Topbar() {
                             { id: 2, title: "Resources", href: "#", subMenu: <ResourcesSubMenu /> },
                             { id: 3, title: "Products", href: "/products" },
                         ].map(link => (
-                            <>
-                            <Link 
-                                key={link.id} 
+                            <div key={link.id} >
+                            <Link
                                 className="px-2 py-2 capitalize flex gap-1 items-center opacity-75" 
                                 href={link.href}
                                 onClick={() => {
@@ -91,12 +90,14 @@ export default function Topbar() {
                             </Link>
                             {
                                 openSubMenu === link.title &&
-                                <ScrollAnimate animation="slideDown" className="px-[3%] py-8 absolute top-[60px] w-[99%] mx-auto left-[0.5%] border border-input/[0.6] rounded-[8px] bg-[#fff] shadow-[0px_20px_120px_0px_#10101010] duration-300 z-10">
+                                <ScrollAnimate animation="slideDown" repeat={openSubMenu === link.title || openSubMenu === ""} className="w-[99%] mx-auto absolute top-[60px] left-[0.5%]">
+                                    <div className="px-[3%] py-8 w-full border border-input/[0.6] rounded-[8px] bg-[#fff] shadow-[0px_20px_120px_0px_#10101020] duration-300 z-10">
                                     { link?.subMenu && link.subMenu }
+                                    </div>
                                 </ScrollAnimate>
                             }
                                 
-                            </>
+                            </div>
                         ))
                     }
                 </div>
@@ -112,7 +113,7 @@ export default function Topbar() {
                     ) : (
                         <>
                             <Link href="/login">
-                                <Button variant="ghost" className="" size="sm">Sign in</Button>
+                                <Button variant="outline" className="" size="sm">Sign in</Button>
                             </Link>
                             <Link href="/register">
                                 <Button className="" size="sm">Sign up</Button>
